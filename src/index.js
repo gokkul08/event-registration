@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
-import App from './App';
+import './styles/index.less';
+import App from './components/App';
+import UserProvider from "./providers/UserProvider";
+import ResponsesProvider from "./providers/ResponsesProvider";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <UserProvider>
+        <ResponsesProvider>
+            <App />
+        </ResponsesProvider>
+    </UserProvider>,
   document.getElementById('root')
 );

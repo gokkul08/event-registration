@@ -1,6 +1,6 @@
 import React from 'react';
-import FormsContainer from './FormsContainer';
-import './App.css';
+import '../styles/App.less';
+import Authentication from "./Authentication";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
               <span>Welcome to the IAC Executive Retreat Registration Questionnaire</span>
               <span>Come join the rest of the Executive Team</span>
           </div>
-          <FormsContainer />
+          <Authentication />
       </div>
     </div>
   );

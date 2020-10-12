@@ -2,9 +2,29 @@ import React, { Component } from 'react';
 
 class Step1 extends Component {
     render() {
-        if (this.props.currentStep !== 1) {
+        const { currentStep, value } = this.props;
+        const {
+            firstName,
+            lastName,
+            company,
+            title,
+            officePhone,
+            mobilePhone,
+            emailAddress,
+            addressLine1,
+            addressLine2,
+            city,
+            stateUS,
+            zipCode,
+        } = value;
+
+        if (currentStep !== 1) {
             return null;
         }
+
+        const handleChange = (e) => {
+            this.props.handleChange(e);
+        };
 
         return (
             <div>
@@ -18,6 +38,9 @@ class Step1 extends Component {
                                 className="form-control"
                                 id="firstName"
                                 placeholder="First Name"
+                                name="firstName"
+                                value={firstName}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className="form-group col-md-6">
@@ -27,6 +50,9 @@ class Step1 extends Component {
                                 className="form-control"
                                 id="lastName"
                                 placeholder="Last Name"
+                                name="lastName"
+                                value={lastName}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -38,6 +64,9 @@ class Step1 extends Component {
                                 className="form-control"
                                 id="company"
                                 placeholder="Company"
+                                name="company"
+                                value={company}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className="form-group col-md-6">
@@ -47,6 +76,9 @@ class Step1 extends Component {
                                 className="form-control"
                                 id="title"
                                 placeholder="Title"
+                                name="title"
+                                value={title}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -57,10 +89,12 @@ class Step1 extends Component {
                                 type="tel"
                                 className="form-control"
                                 id="ophone"
-                                name="ophone"
                                 placeholder="(111)-222-3333"
                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                                 required
+                                name="officePhone"
+                                value={officePhone}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className="col">
@@ -69,10 +103,12 @@ class Step1 extends Component {
                                 type="tel"
                                 className="form-control"
                                 id="mphone"
-                                name="mphone"
                                 placeholder="(111)-222-3333"
                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                                 required
+                                name="mobilePhone"
+                                value={mobilePhone}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className="form-group col-md-6">
@@ -80,11 +116,11 @@ class Step1 extends Component {
                             <input
                                 className="form-control"
                                 id="email"
-                                name="email"
                                 type="email"
                                 placeholder="Email"
-                                value={this.props.email} // Prop: The email input data
-                                onChange={this.props.handleChange} // Prop: Puts data into state
+                                name="emailAddress"
+                                value={emailAddress}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -96,6 +132,9 @@ class Step1 extends Component {
                                 className="form-control"
                                 id="address1"
                                 placeholder="Address Line 1"
+                                name="addressLine1"
+                                value={addressLine1}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className="form-group col-md-6">
@@ -105,6 +144,9 @@ class Step1 extends Component {
                                 className="form-control"
                                 id="city"
                                 placeholder="City"
+                                name="city"
+                                value={city}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -116,6 +158,9 @@ class Step1 extends Component {
                                 className="form-control"
                                 id="address2"
                                 placeholder="Address Line 2"
+                                name="addressLine2"
+                                value={addressLine2}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className="form-group col-md-6">
@@ -125,6 +170,9 @@ class Step1 extends Component {
                                 className="form-control"
                                 id="state"
                                 placeholder="State"
+                                name="stateUS"
+                                value={stateUS}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -137,6 +185,9 @@ class Step1 extends Component {
                                 id="zip"
                                 placeholder="Zip Code"
                                 pattern="[0-9]*"
+                                name="zipCode"
+                                value={zipCode}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>

@@ -29,7 +29,7 @@ class Step3 extends Component {
         };
 
         return(
-            <React.Fragment>
+            <div>
                 <div>
                     <p className="lead">Travel Information:</p>
                     <div className="form-group">
@@ -230,7 +230,7 @@ class Step3 extends Component {
                     </div>
                 </div>
                 <button className="btn btn-success float-right">Submit</button>
-            </React.Fragment>
+            </div>
         )
     }
 }

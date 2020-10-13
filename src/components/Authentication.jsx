@@ -3,9 +3,8 @@ import SignIn from "./SignIn";
 import FormsContainer from './FormsContainer';
 import { UserContext } from "../providers/UserProvider";
 
-const Authentication = ({ loading }) => {
+const Authentication = () => {
     const user = useContext(UserContext);
-    if (loading) return null;
 
     return <div>{user ? <FormsContainer {...user} /> : <SignIn />}</div>;
 };

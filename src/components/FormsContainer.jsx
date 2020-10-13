@@ -4,6 +4,7 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 import { firestore, auth, signOut } from "../firebase";
 import { ResponsesContext } from '../providers/ResponsesProvider';
+import { Route } from 'react-router-dom';
 
 const FormsContainer = (props) => {
     const responses = useContext(ResponsesContext);
@@ -65,7 +66,7 @@ const FormsContainer = (props) => {
         }));
     };
 
-    const handleSubmit = event => {
+    const handleSubmit = history => event => {
         event.preventDefault();
         const { uid, displayName, email } = auth.currentUser;
 
@@ -153,6 +154,7 @@ const FormsContainer = (props) => {
         };
 
         firestore.collection('responses').doc(response.id).set(response);
+        history.history.push('/thankyou');
     };
 
     const _next = () => {
@@ -198,25 +200,27 @@ const FormsContainer = (props) => {
     return (
         <div className="jumbotron">
             <div className="text-center welcome">Welcome {displayName}</div>
-            <form onSubmit={handleSubmit}>
-                <Step1
-                    currentStep={step}
-                    handleChange={handleChange}
-                    value={state}
-                />
-                <Step2
-                    currentStep={step}
-                    handleChange={handleChange}
-                    value={state}
-                />
-                <Step3
-                    currentStep={step}
-                    handleChange={handleChange}
-                    value={state}
-                />
-                {nextButton()}
-                {previousButton()}
-            </form>
+            <Route render={(history) => (
+                <form onSubmit={handleSubmit(history)}>
+                    <Step1
+                        currentStep={step}
+                        handleChange={handleChange}
+                        value={state}
+                    />
+                    <Step2
+                        currentStep={step}
+                        handleChange={handleChange}
+                        value={state}
+                    />
+                    <Step3
+                        currentStep={step}
+                        handleChange={handleChange}
+                        value={state}
+                    />
+                    {nextButton()}
+                    {previousButton()}
+                </form>
+            )} />
             <button className="btn btn-danger" onClick={signOut}>Sign Out</button>
         </div>
     );

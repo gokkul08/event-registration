@@ -3,14 +3,14 @@ import "firebase/firestore";
 import "firebase/auth";
 
 var firebaseConfig = {
-    apiKey: "AIzaSyBLAC25gh8KmCsm6sUflZi1EnmXiJlhIVE",
-    authDomain: "event-registration-gokkul.firebaseapp.com",
-    databaseURL: "https://event-registration-gokkul.firebaseio.com",
-    projectId: "event-registration-gokkul",
-    storageBucket: "event-registration-gokkul.appspot.com",
-    messagingSenderId: "983889783728",
-    appId: "1:983889783728:web:c7eec830d7c45c68b74475",
-    measurementId: "G-X2349T9V8Z"
+    apiKey: "AIzaSyD4i9Pi_jU1NlcOIgGDBUYfkCxx7-MCIgA",
+    authDomain: "event-registration-iac.firebaseapp.com",
+    databaseURL: "https://event-registration-iac.firebaseio.com",
+    projectId: "event-registration-iac",
+    storageBucket: "event-registration-iac.appspot.com",
+    messagingSenderId: "281915809309",
+    appId: "1:281915809309:web:70ea0e8d53e5781c3ab0f4",
+    measurementId: "G-GGTD0SDX51"
 };
 
 firebase.initializeApp(firebaseConfig);

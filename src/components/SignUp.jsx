@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { auth, createUserProfileDocument, signInWithGoogle } from '../firebase';
+import { auth, createUserProfileDocument } from '../firebase';
 import { Link } from 'react-router-dom';
 
 class SignUp extends Component {
@@ -29,11 +29,16 @@ class SignUp extends Component {
     render() {
         const { displayName, email, password } = this.state;
         return (
-            <div className="jumbotron bg-transparent">
+            <div className="jumbotron sign">
                 <form className="container text-center sign-in" onSubmit={this.handleSubmit}>
                     <div className="form-group">
+                        <div className="form-row request">
+                            Please Register
+                        </div>
+                    </div>
+                    <div className="form-group">
                         <div className="form-row">
-                            <div className="form-group col-md-6">
+                            <div className="form-group col-md-12">
                                 <input
                                     type="text"
                                     className="form-control"
@@ -43,7 +48,9 @@ class SignUp extends Component {
                                     onChange={this.handleChange}
                                 />
                             </div>
-                            <div className="form-group col-md-6">
+                        </div>
+                        <div className="form-row">
+                            <div className="form-group col-md-12">
                                 <input
                                     type="email"
                                     className="form-control"
@@ -66,12 +73,18 @@ class SignUp extends Component {
                                 />
                             </div>
                         </div>
+                        <div className="form-row">
+                            <div className="form-group col-md-6">
+                                <input type="submit" className="btn btn-primary btn-lg sign-up" value="Register"/>
+                            </div>
+                        </div>
+                        <hr className="line-break"/>
+                        <div className="account">Already have an account?
+                            <Link to="/">
+                                <span className="register text-decoration-none"> Sign In</span>
+                            </Link>
+                        </div>
                     </div>
-                    <input type="submit" className="btn btn-primary btn-lg sign-up" value="Register"/>
-                    <Link to="/">
-                        <button className="btn btn-secondary btn-lg sign-up" onClick={signInWithGoogle}>Register With Google</button>
-                        <button className="btn btn-outline-light btn-sm">Sign In</button>
-                    </Link>
                 </form>
             </div>
         );

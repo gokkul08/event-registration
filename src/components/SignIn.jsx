@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { auth, createUserProfileDocument, signInWithGoogle } from '../firebase';
+import { auth, createUserProfileDocument } from '../firebase';
 import { Link } from 'react-router-dom';
 
 class SignIn extends Component {
@@ -29,8 +29,13 @@ class SignIn extends Component {
     render() {
         const { email, password, forgotPassword } = this.state;
         return (
-            <div className="jumbotron bg-transparent">
+            <div className="jumbotron sign">
                 <form className="container text-center sign-in" onSubmit={this.handleSubmit}>
+                    <div className="form-group">
+                        <div className="form-row request">
+                            Please Sign In
+                        </div>
+                    </div>
                     <div className="form-group">
                         <div className="form-row">
                             <div className="form-group col-md-12">
@@ -58,11 +63,20 @@ class SignIn extends Component {
                             </div>
                         </div>
                     </div>
-                    <input type="submit" className="btn btn-primary btn-lg sign-up" value="Sign In"/>
-                    <button className="btn btn-secondary btn-lg sign-up" onClick={signInWithGoogle}>Sign In With Google</button>
-                    <Link to="/signup">
-                        <button className="btn btn-outline-light btn-sm">Click here to Register!</button>
-                    </Link>
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <input type="submit" className="btn btn-primary btn-lg sign-up" value="Sign In"/>
+                        </div>
+                        <div className="form-group col-md-6">
+                            <label className="forgot">Forgot Password</label>
+                        </div>
+                    </div>
+                    <hr className="line-break"/>
+                    <div className="account">Dont have an account?
+                        <Link to="/signup">
+                             <span className="register text-decoration-none"> Register Now</span>
+                        </Link>
+                    </div>
                 </form>
             </div>
         );

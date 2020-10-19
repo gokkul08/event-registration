@@ -101,7 +101,6 @@ class Step3 extends Component {
                                         name="arrivalDate"
                                         value={arrivalDate.length > 0 ? arrivalDate : 'Date'}
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
                                 <div className="form-group col-md-3">
@@ -113,7 +112,6 @@ class Step3 extends Component {
                                         name="arrivalTime"
                                         value={arrivalTime.length > 0 ? arrivalTime : 'Date'}
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
                                 <div className="form-group col-md-3">
@@ -125,7 +123,6 @@ class Step3 extends Component {
                                         name="departureDate"
                                         value={departureDate.length > 0 ? departureDate : 'Date'}
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
                                 <div className="form-group col-md-3">
@@ -137,7 +134,6 @@ class Step3 extends Component {
                                         name="departureTime"
                                         value={departureTime.length > 0 ? departureTime : 'Date'}
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
                             </div>
@@ -153,7 +149,6 @@ class Step3 extends Component {
                                         name="arrivalAirport"
                                         value={arrivalAirport}
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
                                 <div className="form-group col-md-3">
@@ -165,7 +160,6 @@ class Step3 extends Component {
                                         name="arrivalFlight"
                                         value={arrivalFlight}
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
                                 <div className="form-group col-md-3">
@@ -177,7 +171,6 @@ class Step3 extends Component {
                                         name="departureAirport"
                                         value={departureAirport}
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
                                 <div className="form-group col-md-3">
@@ -189,7 +182,6 @@ class Step3 extends Component {
                                         name="departureFlight"
                                         value={departureFlight}
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
                             </div>
@@ -205,7 +197,6 @@ class Step3 extends Component {
                                         name="arrivalAirline"
                                         value={arrivalAirline}
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
                                 <div className="form-group col-md-3">
@@ -217,7 +208,6 @@ class Step3 extends Component {
                                         name="origin"
                                         value={origin}
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
                                 <div className="form-group col-md-3">
@@ -229,7 +219,6 @@ class Step3 extends Component {
                                         name="departureAirline"
                                         value={departureAirline}
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
                                 <div className="form-group col-md-3">
@@ -241,7 +230,6 @@ class Step3 extends Component {
                                         name="destination"
                                         value={destination}
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
                             </div>

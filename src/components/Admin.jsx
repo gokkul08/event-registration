@@ -7,12 +7,13 @@ import { ResponsesContext } from '../providers/ResponsesProvider';
 import { Route } from 'react-router-dom';
 import arrowForward from '../images/arrow_forward.png'
 import arrowBack from '../images/arrow_back.png';
+import arrowDown from '../images/arrow_down.png';
 import close from '../images/close.png'
 import XLSX from "xlsx";
 
 const Admin = (props) => {
     const responses = useContext(ResponsesContext);
-    const [state, setFormState] = useState({
+    const initialFormState = {
         firstName: "",
         lastName: "",
         company: "",
@@ -51,18 +52,14 @@ const Admin = (props) => {
         destination: "",
         arrivalInfo: "",
         departureInfo: "",
-    });
+    };
+
+    const [state, setFormState] = useState(initialFormState);
 
     const [step, setStep] = useState(1);
-
-    const userExists = responses.some(response => response.id === auth.currentUser.uid);
-    const storedUserResponse = responses.find(response => response.id === auth.currentUser.uid);
-
-    useEffect(() => {
-        if (userExists) {
-            setFormState({...state, ...storedUserResponse});
-        }
-    }, [userExists]);
+    const [edit, setEdit] = useState(false);
+    const initialEditValue = '';
+    const [editValue, setEditValue] = useState(initialEditValue);
 
     const handleChange = event => {
         const {name, value} = event.target;
@@ -74,110 +71,31 @@ const Admin = (props) => {
 
     const handleSubmit = history => event => {
         event.preventDefault();
-        const { uid, displayName, email } = auth.currentUser;
 
-        const {
-            firstName,
-            lastName,
-            company,
-            title,
-            officePhone,
-            mobilePhone,
-            emailAddress,
-            addressLine1,
-            addressLine2,
-            city,
-            stateUS,
-            zipCode,
-            executiveAsstName,
-            executiveAsstEmail,
-            executiveAsstOfficePhone,
-            executiveAsstMobilePhone,
-            emergencyContactName,
-            emergencyEmail,
-            emergencyContactNumber,
-            specialDiet,
-            specialNeeds,
-            jacketSize,
-            originAndDestination,
-            commercialOrPrivate,
-            arrivalDate,
-            departureDate,
-            arrivalTime,
-            departureTime,
-            arrivalAirport,
-            departureAirport,
-            arrivalFlight,
-            departureFlight,
-            arrivalAirline,
-            departureAirline,
-            origin,
-            destination,
-            arrivalInfo,
-            departureInfo,
-        } = state;
+        const response = responses.find(response => response.user.email === editValue);
 
-        const response = {
-            id: uid,
-            createdAt: new Date(),
-            firstName,
-            lastName,
-            company,
-            title,
-            officePhone,
-            mobilePhone,
-            emailAddress,
-            addressLine1,
-            addressLine2,
-            city,
-            stateUS,
-            zipCode,
-            executiveAsstName,
-            executiveAsstEmail,
-            executiveAsstOfficePhone,
-            executiveAsstMobilePhone,
-            emergencyContactName,
-            emergencyEmail,
-            emergencyContactNumber,
-            specialDiet,
-            specialNeeds,
-            jacketSize,
-            originAndDestination,
-            commercialOrPrivate,
-            arrivalDate,
-            departureDate,
-            arrivalTime,
-            departureTime,
-            arrivalAirport,
-            departureAirport,
-            arrivalFlight,
-            departureFlight,
-            arrivalAirline,
-            departureAirline,
-            origin,
-            destination,
-            arrivalInfo,
-            departureInfo,
-            user: {
-                uid,
-                displayName,
-                email,
-            }
-        };
-
-        firestore.collection('responses').doc(response.id).set(response);
+        firestore.collection('responses').doc(response.id).update(state);
         history.history.push({
-            pathname: '/thankyou',
-            search: `?confirm=${email}`
+            pathname: '/thankyouadmin',
+            search: `?confirm=${editValue}`
         });
     };
 
     const handleUserChange = (event) => {
+        setEdit(true);
+        console.log(edit);
         const {value} = event.target;
-        console.log(value);
         const storedUserResponse = responses.find(response => response.user.email === value);
         console.log(storedUserResponse);
         setFormState({...state, ...storedUserResponse});
+        setEditValue(value);
+    };
+
+    const cancelEdit = () => {
+      setEdit(false);
+      setFormState(initialFormState);
+      setEditValue(initialEditValue);
+      setStep(1);
     };
 
     const exportData = (responses) => {
@@ -241,12 +159,12 @@ const Admin = (props) => {
             <span className="step">{step} / 3</span>
                 <div className="form-group">
                     <div className="form-row">
-                        <div className="form-group col-md-5">
+                        <div className="form-group col-md-4">
                             <div className="welcome admin">Welcome Admin</div>
                         </div>
-                        <div className="form-group col-md-7">
-                            <select id="editResponse" className="form-control admin-top" onChange={handleUserChange} name="editResponse" defaultValue={'Edit User'}>
-                                <option value="Edit User" disabled>Edit User</option>
+                        <div className="form-group col-md-5">
+                            <select id="editResponse" className="form-control admin-top" onChange={handleUserChange} name="editResponse" value={editValue}>
+                                <option value='' disabled>Edit User</option>
                                 {
                                     responses.map(response =>
                                         <option key={response.id} value={response.user.email}>{response.user.email}</option>
@@ -255,32 +173,50 @@ const Admin = (props) => {
                         </div>
                     </div>
                 </div>
-            <Route render={(history) => (
-                <form onSubmit={handleSubmit(history)} className="admin-form">
-                    <Step1
-                        currentStep={step}
-                        handleChange={handleChange}
-                        value={state}
-                    />
-                    <Step2
-                        currentStep={step}
-                        handleChange={handleChange}
-                        value={state}
-                    />
-                    <Step3
-                        currentStep={step}
-                        handleChange={handleChange}
-                        value={state}
-                    />
-                    {nextButton()}
-                    {previousButton()}
-                </form>
-            )} />
+            {
+                edit &&
+                <Route render={(history) => (
+                    <form onSubmit={handleSubmit(history)} className="admin-form">
+                        <Step1
+                            currentStep={step}
+                            handleChange={handleChange}
+                            value={state}
+                        />
+                        <Step2
+                            currentStep={step}
+                            handleChange={handleChange}
+                            value={state}
+                        />
+                        <Step3
+                            currentStep={step}
+                            handleChange={handleChange}
+                            value={state}
+                        />
+                        {nextButton()}
+                        {previousButton()}
+                    </form>
+                )} />
+            }
+            {
+                !edit &&
+                    <hr className="breaker setter" />
+            }
             <div className="btn sign-out"
                  onClick={signOut}>
                 <img src={close} alt="close"/>&nbsp;SIGN OUT
             </div>
-            <button className="btn btn-warning download button-style" onClick={() => exportData(responses)}>DOWNLOAD</button>
+            {
+                !edit &&
+                <button className="btn btn-warning download button-style" type="button" onClick={() => exportData(responses)}>
+                    DOWNLOAD&nbsp;<img src={arrowDown} alt="download" />
+                </button>
+            }
+            {
+                edit &&
+                <button className="btn btn-warning download button-style" type="button" onClick={cancelEdit}>
+                    CANCEL
+                </button>
+            }
         </div>
     );
 };

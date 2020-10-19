@@ -45,6 +45,7 @@ class Step1 extends Component {
                                 id="firstName"
                                 placeholder="First Name *"
                                 name="firstName"
+                                required
                                 value={firstName}
                                 onChange={handleChange}
                             />
@@ -56,6 +57,7 @@ class Step1 extends Component {
                                 id="lastName"
                                 placeholder="Last Name *"
                                 name="lastName"
+                                required
                                 value={lastName}
                                 onChange={handleChange}
                             />
@@ -69,6 +71,7 @@ class Step1 extends Component {
                                 id="company"
                                 placeholder="Company"
                                 name="company"
+                                required
                                 value={company}
                                 onChange={handleChange}
                             />
@@ -80,6 +83,7 @@ class Step1 extends Component {
                                 id="title"
                                 placeholder="Title"
                                 name="title"
+                                required
                                 value={title}
                                 onChange={handleChange}
                             />
@@ -95,6 +99,7 @@ class Step1 extends Component {
                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                                 required
                                 name="officePhone"
+                                required
                                 value={officePhone}
                                 onChange={handleChange}
                             />
@@ -108,6 +113,7 @@ class Step1 extends Component {
                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                                 required
                                 name="mobilePhone"
+                                required
                                 value={mobilePhone}
                                 onChange={handleChange}
                             />
@@ -119,6 +125,7 @@ class Step1 extends Component {
                                 type="email"
                                 placeholder="Email *"
                                 name="emailAddress"
+                                required
                                 value={emailAddress}
                                 onChange={handleChange}
                             />

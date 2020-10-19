@@ -40,11 +40,11 @@ const ThankYou = (props) => {
                 <br /><br />
                 <div className="form-group">
                     <div className="form-row thank-you">
-                        Thank you for registering for the IAC Executive Retreat. We will be sending more information about the agenda and activities soon.
+                        Thank you for registering for the IAC Annual Planning Meeting. We will be sending more information about the agenda and activities soon
                     </div>
                     <br/>
                     <div className="form-row thank-you">
-                        If you have any questions or concerns please contact Emily Somers in the IAC Events Department at Emily.somers@iac.com or (212) 314-7347.
+                        If you have any questions or concerns please contact Marites Gonzales in the IAC Events Department at APM2020@iac.com
                     </div>
                 </div>
                 <div className="bottom">

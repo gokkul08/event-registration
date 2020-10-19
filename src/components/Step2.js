@@ -37,7 +37,7 @@ class Step2 extends Component {
                             <div className="lead">Emergency Contact Information</div>
                         </div>
                         <div className="form-group col-md-1">
-                            <div className="optional">*optional</div>
+                            <div className="required">*required</div>
                         </div>
                     </div>
                     <div className="form-row">
@@ -48,6 +48,7 @@ class Step2 extends Component {
                                 id="asstName"
                                 placeholder="Name *"
                                 name="executiveAsstName"
+                                required
                                 value={executiveAsstName}
                                 onChange={handleChange}
                             />
@@ -59,6 +60,7 @@ class Step2 extends Component {
                                 id="emerName"
                                 placeholder="Name"
                                 name="emergencyContactName"
+                                required
                                 value={emergencyContactName}
                                 onChange={handleChange}
                             />
@@ -72,6 +74,7 @@ class Step2 extends Component {
                                 id="asstEmail"
                                 placeholder="Email"
                                 name="executiveAsstEmail"
+                                required
                                 value={executiveAsstEmail}
                                 onChange={handleChange}
                             />
@@ -83,6 +86,7 @@ class Step2 extends Component {
                                 id="emergencyEmail"
                                 placeholder="Email"
                                 name="emergencyEmail"
+                                required
                                 value={emergencyEmail}
                                 onChange={handleChange}
                             />
@@ -173,18 +177,17 @@ class Step2 extends Component {
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label htmlFor="inputState" className="light-label">Jacket Size (for giveaway)</label>
+                            <label htmlFor="inputState" className="light-label">Jacket Size</label>
                             <select id="inputState" className="form-control" onChange={handleChange} value={jacketSize} name="jacketSize">
-                                <option value="Women's - Extra Small">Women's - Extra Small</option>
-                                <option value="Women's - Small">Women's - Small</option>
-                                <option value="Women's - Medium">Women's - Medium</option>
-                                <option value="Women's - Large">Women's - Large</option>
-                                <option value="Women's - Extra Large">Women's - Extra Large</option>
-                                <option value="Men's - Extra Small">Men's - Extra Small</option>
-                                <option value="Men's - Small">Men's - Small</option>
-                                <option value="Men's - Medium">Men's - Medium</option>
-                                <option value="Men's - Large">Men's - Large</option>
-                                <option value="Men's - Extra Large">Men's - Extra Large</option>
+                                <option value="Womens - Small">Womens - Small</option>
+                                <option value="Womens - Medium">Womens - Medium</option>
+                                <option value="Womens - Large">Womens - Large</option>
+                                <option value="Womens - XL">Womens - XL</option>
+                                <option value="Mens - Small">Mens - Small</option>
+                                <option value="Mens - Medium">Mens - Medium</option>
+                                <option value="Mens - Large">Mens - Large</option>
+                                <option value="Mens - XL">Mens - XL</option>
+                                <option value="Mens - XXL">Mens - XXL</option>
                             </select>
                         </div>
                     </div>

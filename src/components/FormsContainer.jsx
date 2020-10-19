@@ -217,7 +217,7 @@ const FormsContainer = (props) => {
             <span className="step">{step} / 3</span>
             <div className="welcome">Welcome {displayName}</div>
             <Route render={(history) => (
-                <form onSubmit={handleSubmit(history)} className="admin-form">
+                <form onSubmit={handleSubmit(history)}>
                     <Step1
                         currentStep={step}
                         handleChange={handleChange}

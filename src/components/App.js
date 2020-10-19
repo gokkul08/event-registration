@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/App.less';
 import Authentication from "./Authentication";
 import ThankYou from "./ThankYou";
-import Admin from "./Admin";
+import ThankYouAdmin from "./ThankYouAdmin";
 import ForgotPassword from "./ForgotPassword";
 import { Switch, Route } from "react-router-dom";
 import logo from "../images/logo.png";
@@ -20,7 +20,7 @@ function App() {
               <Route exact path="/signup" component={SignUp} />
               <Route exact path="/thankyou" component={ThankYou} />
               <Route exact path="/forgotpassword" component={ForgotPassword} />
-              <Route exact path="/admin" component={Admin} />
+              <Route exact path="/thankyouadmin" component={ThankYouAdmin} />
           </Switch>
       </div>
     </div>

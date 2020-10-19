@@ -165,18 +165,8 @@ class Step1 extends Component {
                             />
                         </div>
                         <div className="form-group col-md-3">
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="state"
-                                placeholder="State"
-                                name="stateUS"
-                                value={stateUS}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="form-group col-md-3">
-                            <select id="zip" className="form-control" onChange={handleChange} value={zipCode} name="zipCode">
+                            <select id="state" className="form-control" onChange={handleChange} value={stateUS} name="stateUS" defaultValue={'STATE'}>
+                                <option value="State" disabled>State</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>
@@ -229,6 +219,17 @@ class Step1 extends Component {
                                 <option value="WI">Wisconsin</option>
                                 <option value="WY">Wyoming</option>
                             </select>
+                        </div>
+                        <div className="form-group col-md-3">
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="zip"
+                                placeholder="Zip"
+                                name="zipCode"
+                                value={zipCode}
+                                onChange={handleChange}
+                            />
                         </div>
                     </div>
                     <hr className="breaker"/>

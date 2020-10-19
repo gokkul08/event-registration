@@ -40,7 +40,7 @@ class SignIn extends Component {
                 <form className="container text-center sign-in" onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <div className="form-row request">
-                            Please Sign In
+                            Please sign in:
                         </div>
                     </div>
                     <div className="form-group">
@@ -72,16 +72,16 @@ class SignIn extends Component {
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <input type="submit" className="btn btn-primary btn-lg sign-up" value="Sign In"/>
+                            <input type="submit" className="btn btn-primary btn-lg sign-up" value="SIGN IN"/>
                         </div>
                         <div className="form-group col-md-6">
                             <Link to="/forgotpassword">
-                                <label className="forgot" onClick={this.handlePasswordReset}>Forgot Password</label>
+                                <label className="forgot" onClick={this.handlePasswordReset}>Forgot Password?</label>
                             </Link>
                         </div>
                     </div>
                     <hr className="line-break"/>
-                    <div className="account">Dont have an account?
+                    <div className="account">Don't have an account?
                         <Link to="/signup">
                              <span className="register text-decoration-none"> Register Now</span>
                         </Link>

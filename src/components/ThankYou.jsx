@@ -7,7 +7,6 @@ import close from "../images/close.png";
 const ThankYou = (props) => {
     const responses = useContext(ResponsesContext);
     const storedUserResponse = responses.find(response => response.id === auth.currentUser.uid);
-    console.log(storedUserResponse);
     // if(storedUserResponse && storedUserResponse.user.uid === auth.currentUser.uid) {
     //     auth.currentUser.sendEmailVerification().then(() => {
     //         // Verification Sent

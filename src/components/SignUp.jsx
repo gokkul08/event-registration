@@ -36,7 +36,7 @@ class SignUp extends Component {
                     <form className="container text-center sign-in" onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <div className="form-row request">
-                                Please Register
+                                Please register:
                             </div>
                         </div>
                         <div className="form-group">
@@ -78,13 +78,13 @@ class SignUp extends Component {
                             </div>
                             <div className="form-row">
                                 <div className="form-group col-md-6">
-                                    <input type="submit" className="btn btn-primary btn-lg sign-up" value="Register"/>
+                                    <input type="submit" className="btn btn-primary btn-lg sign-up" value="REGISTER"/>
                                 </div>
                             </div>
                             <hr className="line-break"/>
                             <div className="account">Already have an account?
                                 <Link to="/">
-                                    <span className="register text-decoration-none"> Sign In</span>
+                                    <span className="register text-decoration-none"> sign in</span>
                                 </Link>
                             </div>
                         </div>

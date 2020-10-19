@@ -32,7 +32,7 @@ class ForgotPassword extends Component {
                     <form className="container text-center sign-in" onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <div className="form-row request">
-                                Reset your password
+                                Reset your password:
                             </div>
                         </div>
                         <div className="form-group">

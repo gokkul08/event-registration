@@ -166,7 +166,10 @@ const FormsContainer = (props) => {
         };
 
         firestore.collection('responses').doc(response.id).set(response);
-        history.history.push('/thankyou');
+        history.history.push({
+            pathname: '/thankyou',
+            search: `?confirm=${email}`
+        });
     };
 
     const _next = () => {

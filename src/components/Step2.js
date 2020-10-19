@@ -28,13 +28,13 @@ class Step2 extends Component {
                 <div className="form-group">
                     <div className="form-row">
                         <div className="form-group col-md-5">
-                            <div className="lead">Executive Assistant's Name</div>
+                            <div className="lead">Executive Assistant Information</div>
                         </div>
                         <div className="form-group col-md-1">
                             <div className="required">*required</div>
                         </div>
                         <div className="form-group col-md-5">
-                            <div className="lead">Emergency Contact Name</div>
+                            <div className="lead">Emergency Contact Information</div>
                         </div>
                         <div className="form-group col-md-1">
                             <div className="optional">*optional</div>
@@ -141,7 +141,7 @@ class Step2 extends Component {
                             <div className="optional">*optional</div>
                         </div>
                         <div className="form-group col-md-5">
-                            <div className="light-label">ADA/Special Requirements</div>
+                            <div className="light-label">ADA / Special Requirements</div>
                         </div>
                         <div className="form-group col-md-1">
                             <div className="optional">*optional</div>

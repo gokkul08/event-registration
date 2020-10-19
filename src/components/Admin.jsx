@@ -8,10 +8,10 @@ import { Route } from 'react-router-dom';
 import arrowForward from '../images/arrow_forward.png'
 import arrowBack from '../images/arrow_back.png';
 import close from '../images/close.png'
+import XLSX from "xlsx";
 
-const FormsContainer = (props) => {
+const Admin = (props) => {
     const responses = useContext(ResponsesContext);
-    const {displayName} = props;
     const [state, setFormState] = useState({
         firstName: "",
         lastName: "",
@@ -172,6 +172,30 @@ const FormsContainer = (props) => {
         });
     };
 
+    const handleUserChange = (event) => {
+        const {value} = event.target;
+        console.log(value);
+        const storedUserResponse = responses.find(response => response.user.email === value);
+        console.log(storedUserResponse);
+        setFormState({...state, ...storedUserResponse});
+    };
+
+    const exportData = (responses) => {
+        let responseData = [["First Name", "Last Name", "Company", "Title", "Office Phone", "Mobile Phone", "Email Address", "Address Line 1", "Address Line 2", "City", "State", "Zip Code", "Executive Assistant's Name", "Executive Assistant's Email", "EA's Office Phone", "EA's Mobile Phone", "Emergency Contact Name", "Emergency Contact Email", "Emergency Contact Phone", "Special Diet or Food Allergies", "ADA/Special Needs", "Jacket Size", "Origin/Destination-NYC", "Are you flying Commercial/Private", "Arrival Date", "Departure Date","Arrival Time", "Departure Time", "Arrival Airport", "Departure Airport", "Arrival Flight#", "Departure Flight#", "Arrival Airline", "Departure Airline", "Origin City", "Destination City", "Arrival Info", "Departure Info"]];
+        if (responses && responses.length > 0) {
+            responses.forEach(response => {
+                const { firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, specialDiet, specialNeeds, jacketSize, originAndDestination, commercialOrPrivate, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo   } = response;
+                let responseArray = [firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, specialDiet, specialNeeds, jacketSize, originAndDestination, commercialOrPrivate, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo];
+                console.log(responseArray);
+                responseData.push(responseArray);
+            });
+            const wb = XLSX.utils.book_new();
+            const wsAll = XLSX.utils.aoa_to_sheet(responseData);
+            XLSX.utils.book_append_sheet(wb, wsAll, "User");
+            XLSX.writeFile(wb, "registration-details.xlsx");
+        }
+    };
+
     const _next = () => {
         let currentStep = step;
         currentStep = currentStep >= 2 ? 3 : currentStep + 1;
@@ -215,7 +239,22 @@ const FormsContainer = (props) => {
     return (
         <div className="jumbotron">
             <span className="step">{step} / 3</span>
-            <div className="welcome">Welcome {displayName}</div>
+                <div className="form-group">
+                    <div className="form-row">
+                        <div className="form-group col-md-5">
+                            <div className="welcome admin">Welcome Admin</div>
+                        </div>
+                        <div className="form-group col-md-7">
+                            <select id="editResponse" className="form-control admin-top" onChange={handleUserChange} name="editResponse" defaultValue={'Edit User'}>
+                                <option value="Edit User" disabled>Edit User</option>
+                                {
+                                    responses.map(response =>
+                                        <option key={response.id} value={response.user.email}>{response.user.email}</option>
+                                    )}
+                            </select>
+                        </div>
+                    </div>
+                </div>
             <Route render={(history) => (
                 <form onSubmit={handleSubmit(history)} className="admin-form">
                     <Step1
@@ -241,8 +280,9 @@ const FormsContainer = (props) => {
                  onClick={signOut}>
                 <img src={close} alt="close"/>&nbsp;SIGN OUT
             </div>
+            <button className="btn btn-warning download button-style" onClick={() => exportData(responses)}>DOWNLOAD</button>
         </div>
     );
 };
 
-export default FormsContainer;
+export default Admin;

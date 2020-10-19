@@ -9,6 +9,7 @@ class Step2 extends Component {
             executiveAsstOfficePhone,
             executiveAsstMobilePhone,
             emergencyContactName,
+            emergencyEmail,
             emergencyContactNumber,
             specialDiet,
             specialNeeds,
@@ -24,43 +25,76 @@ class Step2 extends Component {
         };
 
         return (
-            <div>
-                <p className="lead">Miscellaneous Information:</p>
                 <div className="form-group">
                     <div className="form-row">
+                        <div className="form-group col-md-5">
+                            <div className="lead">Executive Assistant's Name</div>
+                        </div>
+                        <div className="form-group col-md-1">
+                            <div className="required">*required</div>
+                        </div>
+                        <div className="form-group col-md-5">
+                            <div className="lead">Emergency Contact Name</div>
+                        </div>
+                        <div className="form-group col-md-1">
+                            <div className="optional">*optional</div>
+                        </div>
+                    </div>
+                    <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label htmlFor="asstName">Executive Assistant's Name</label>
                             <input
                                 type="text"
                                 className="form-control"
                                 id="asstName"
-                                placeholder="Required"
+                                placeholder="Name *"
                                 name="executiveAsstName"
                                 value={executiveAsstName}
                                 onChange={handleChange}
                             />
                         </div>
                         <div className="form-group col-md-6">
-                            <label htmlFor="asstEmail">Executive Assistant's Email</label>
                             <input
-                                type="email"
+                                type="text"
                                 className="form-control"
-                                id="asstEmail"
-                                placeholder="Required"
-                                name="executiveAsstEmail"
-                                value={executiveAsstEmail}
+                                id="emerName"
+                                placeholder="Name"
+                                name="emergencyContactName"
+                                value={emergencyContactName}
                                 onChange={handleChange}
                             />
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label htmlFor="eophone">EA's Office Phone</label>
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="asstEmail"
+                                placeholder="Email"
+                                name="executiveAsstEmail"
+                                value={executiveAsstEmail}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="form-group col-md-6">
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="emergencyEmail"
+                                placeholder="Email"
+                                name="emergencyEmail"
+                                value={emergencyEmail}
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="form-group col-md-3">
                             <input
                                 type="tel"
                                 className="form-control"
                                 id="eophone"
-                                placeholder="(111)-222-3333"
+                                placeholder="Office Phone"
                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                                 required
                                 name="executiveAsstOfficePhone"
@@ -68,13 +102,12 @@ class Step2 extends Component {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="form-group col-md-6">
-                            <label htmlFor="emphone">EA's Mobile Phone</label>
+                        <div className="form-group col-md-3">
                             <input
                                 type="tel"
                                 className="form-control"
                                 id="emphone"
-                                placeholder="(111)-222-3333"
+                                placeholder="Mobile Phone *"
                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                                 required
                                 name="executiveAsstMobilePhone"
@@ -82,41 +115,12 @@ class Step2 extends Component {
                                 onChange={handleChange}
                             />
                         </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group col-md-6">
-                            <label htmlFor="emerName">Emergency Contact Name</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="emerName"
-                                placeholder="Required"
-                                name="emergencyContactName"
-                                value={emergencyContactName}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="form-group col-md-6">
-                            <label htmlFor="diet">Special Diet or Food Allergies</label>
-                            <textarea
-                                className="form-control"
-                                id="diet"
-                                rows="3"
-                                placeholder="Optional"
-                                name="specialDiet"
-                                value={specialDiet}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group col-md-6">
-                            <label htmlFor="emerphone">Emergency Contact Phone</label>
+                        <div className="form-group col-md-3">
                             <input
                                 type="tel"
                                 className="form-control"
                                 id="emerphone"
-                                placeholder="(111)-222-3333"
+                                placeholder="Phone"
                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                                 required
                                 name="emergencyContactNumber"
@@ -124,12 +128,42 @@ class Step2 extends Component {
                                 onChange={handleChange}
                             />
                         </div>
+                    </div>
+                    <hr className="breaker"/>
+                    <div className="form-row">
+                        <div className="lead">Preferences</div>
+                    </div>
+                    <div className="form-row">
+                        <div className="form-group col-md-5">
+                            <div className="light-label">Special Diet or Food Allergies</div>
+                        </div>
+                        <div className="form-group col-md-1">
+                            <div className="optional">*optional</div>
+                        </div>
+                        <div className="form-group col-md-5">
+                            <div className="light-label">ADA/Special Requirements</div>
+                        </div>
+                        <div className="form-group col-md-1">
+                            <div className="optional">*optional</div>
+                        </div>
+                    </div>
+                    <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label htmlFor="needs">ADA/Special Needs</label>
+                            <textarea
+                                className="form-control"
+                                id="diet"
+                                rows="2"
+                                placeholder="Optional"
+                                name="specialDiet"
+                                value={specialDiet}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="form-group col-md-6">
                             <textarea
                                 className="form-control"
                                 id="needs"
-                                rows="3"
+                                rows="2"
                                 placeholder="Optional"
                                 name="specialNeeds"
                                 value={specialNeeds}
@@ -139,7 +173,7 @@ class Step2 extends Component {
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label htmlFor="inputState">Jacket Size (for giveaway)</label>
+                            <label htmlFor="inputState" className="light-label">Jacket Size (for giveaway)</label>
                             <select id="inputState" className="form-control" onChange={handleChange} value={jacketSize} name="jacketSize">
                                 <option value="Women's - Extra Small">Women's - Extra Small</option>
                                 <option value="Women's - Small">Women's - Small</option>
@@ -154,8 +188,8 @@ class Step2 extends Component {
                             </select>
                         </div>
                     </div>
+                    <hr className="breaker"/>
                 </div>
-            </div>
         )
     }
 }

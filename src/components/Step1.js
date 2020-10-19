@@ -28,28 +28,33 @@ class Step1 extends Component {
 
         return (
             <div>
-                <p className="lead">Attendee Information:</p>
                 <div className="form-group">
                     <div className="form-row">
+                        <div className="form-group col-md-11">
+                            <div className="lead">Attendee Information</div>
+                        </div>
+                        <div className="form-group col-md-1">
+                            <div className="required">*required</div>
+                        </div>
+                    </div>
+                    <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label htmlFor="firstName">First Name</label>
                             <input
                                 type="text"
                                 className="form-control"
                                 id="firstName"
-                                placeholder="First Name"
+                                placeholder="First Name *"
                                 name="firstName"
                                 value={firstName}
                                 onChange={handleChange}
                             />
                         </div>
                         <div className="form-group col-md-6">
-                            <label htmlFor="lastName">Last Name</label>
                             <input
                                 type="text"
                                 className="form-control"
                                 id="lastName"
-                                placeholder="Last Name"
+                                placeholder="Last Name *"
                                 name="lastName"
                                 value={lastName}
                                 onChange={handleChange}
@@ -58,7 +63,6 @@ class Step1 extends Component {
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label htmlFor="company">Company</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -70,7 +74,6 @@ class Step1 extends Component {
                             />
                         </div>
                         <div className="form-group col-md-6">
-                            <label htmlFor="title">Title</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -83,13 +86,12 @@ class Step1 extends Component {
                         </div>
                     </div>
                     <div className="form-row">
-                        <div className="col">
-                            <label htmlFor="ophone">Office Phone</label>
+                        <div className="form-group col-md-4">
                             <input
                                 type="tel"
                                 className="form-control"
                                 id="ophone"
-                                placeholder="(111)-222-3333"
+                                placeholder="Office Phone"
                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                                 required
                                 name="officePhone"
@@ -97,13 +99,12 @@ class Step1 extends Component {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="col">
-                            <label htmlFor="mphone">Mobile Phone</label>
+                        <div className="form-group col-md-4">
                             <input
                                 type="tel"
                                 className="form-control"
                                 id="mphone"
-                                placeholder="(111)-222-3333"
+                                placeholder="Mobile Phone *"
                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                                 required
                                 name="mobilePhone"
@@ -111,22 +112,24 @@ class Step1 extends Component {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="form-group col-md-6">
-                            <label htmlFor="email">Email address</label>
+                        <div className="form-group col-md-4">
                             <input
                                 className="form-control"
                                 id="email"
                                 type="email"
-                                placeholder="Email"
+                                placeholder="Email *"
                                 name="emailAddress"
                                 value={emailAddress}
                                 onChange={handleChange}
                             />
                         </div>
                     </div>
+                    <hr className="breaker"/>
                     <div className="form-row">
-                        <div className="form-group col-md-6">
-                            <label htmlFor="address1">Address Line 1</label>
+                        <p className="lead">Address</p>
+                    </div>
+                    <div className="form-row">
+                        <div className="form-group col-md-12">
                             <input
                                 type="text"
                                 className="form-control"
@@ -137,22 +140,7 @@ class Step1 extends Component {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="form-group col-md-6">
-                            <label htmlFor="city">City</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="city"
-                                placeholder="City"
-                                name="city"
-                                value={city}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group col-md-6">
-                            <label htmlFor="address2">Address Line 2</label>
+                        <div className="form-group col-md-12">
                             <input
                                 type="text"
                                 className="form-control"
@@ -163,8 +151,20 @@ class Step1 extends Component {
                                 onChange={handleChange}
                             />
                         </div>
+                    </div>
+                    <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label htmlFor="state">State</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="city"
+                                placeholder="City"
+                                name="city"
+                                value={city}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="form-group col-md-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -175,22 +175,63 @@ class Step1 extends Component {
                                 onChange={handleChange}
                             />
                         </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group col-md-6">
-                            <label htmlFor="Zip">Zip Code</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="zip"
-                                placeholder="Zip Code"
-                                pattern="[0-9]*"
-                                name="zipCode"
-                                value={zipCode}
-                                onChange={handleChange}
-                            />
+                        <div className="form-group col-md-3">
+                            <select id="zip" className="form-control" onChange={handleChange} value={zipCode} name="zipCode">
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
                         </div>
                     </div>
+                    <hr className="breaker"/>
                 </div>
             </div>
         )

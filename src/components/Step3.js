@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import arrowForward from "../images/arrow_forward.png";
 
 class Step3 extends Component {
     render() {
@@ -6,8 +7,10 @@ class Step3 extends Component {
         const {
             originAndDestination,
             commercialOrPrivate,
-            arrivalDateTime,
-            departureDateTime,
+            arrivalDate,
+            departureDate,
+            arrivalTime,
+            departureTime,
             arrivalAirport,
             departureAirport,
             arrivalFlight,
@@ -30,59 +33,109 @@ class Step3 extends Component {
 
         return(
             <div>
-                <div>
-                    <p className="lead">Travel Information:</p>
                     <div className="form-group">
                         <div className="form-row">
+                            <div className="lead">Travel Information</div>
+                        </div>
+                        <div className="form-row">
                             <div className="form-group col-md-6">
-                                <label htmlFor="inputState">Is your Origin and Return Destination in the New York City Area?</label>
+                                <div className="light-label">Is your Origin and Return Destination in the NYC Area?</div>
+                            </div>
+                            <div className="form-group col-md-6">
+                                <div className="light-label">Are you flying Commercial or Private?</div>
+                            </div>
+                        </div>
+                        <div className="form-row">
+                            <div className="form-group col-md-6">
                                 <select id="inputState" className="form-control" onChange={handleChange} value={originAndDestination} name="originAndDestination">
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
                                 </select>
                             </div>
-                            { originAndDestination==='Yes' &&
-                                <div className="form-group col-md-6">
-                                    <div className="alert alert-primary" role="alert">
-                                        <b>Note:</b> If you are leaving from the New York City Area, please do not book travel until you hear from someone in the IAC Events Department.
+                            <div className="form-group col-md-6">
+                                <select id="inputState" className="form-control" onChange={handleChange}
+                                        value={commercialOrPrivate} name="commercialOrPrivate">
+                                    <option value="Commercial">Commercial</option>
+                                    <option value="Private">Private</option>
+                                </select>
+                            </div>
+                        </div>
+                        { originAndDestination==='Yes' &&
+                            <div className="form-row">
+                                <div className="form-group col-md-12">
+                                    <div className="alert alert-warning alert-note" role="alert">
+                                        <b>*Note:</b> If you are leaving from the New York City Area, please do not book travel until you hear from someone in the IAC Events Department.
                                     </div>
                                 </div>
-                            }
-                        </div>
-                        { originAndDestination==='No' &&
-                            <div className="form-row">
-                                <div className="form-group col-md-6">
-                                    <label htmlFor="inputState">Are you flying Commercial or Private?</label>
-                                    <select id="inputState" className="form-control" onChange={handleChange}
-                                            value={commercialOrPrivate} name="commercialOrPrivate">
-                                        <option value="Commercial">Commercial</option>
-                                        <option value="Private">Private</option>
-                                    </select>
-                                </div>
                             </div>
+                        }
+                        {
+                            originAndDestination === 'No' &&
+                            <hr className="breaker"/>
+                        }
+                        {
+                            originAndDestination==='No' &&
+                             <div className="form-row">
+                                 <div className="form-group col-md-5">
+                                     <div className="lead">Arrival Information</div>
+                                 </div>
+                                 <div className="form-group col-md-1">
+                                     <div className="optional">*optional</div>
+                                 </div>
+                                 <div className="form-group col-md-5">
+                                     <div className="lead">Departure Information</div>
+                                 </div>
+                                 <div className="form-group col-md-1">
+                                     <div className="optional">*optional</div>
+                                 </div>
+                             </div>
                         }
                         { originAndDestination==='No' &&
                             <div className="form-row">
-                                <div className="form-group col-md-6">
-                                    <label htmlFor="arrival">Arrival Date & Time</label>
+                                <div className="form-group col-md-3">
                                     <input
-                                        type="text"
+                                        type="date"
                                         className="form-control"
                                         id="arrival"
-                                        name="arrivalDateTime"
-                                        value={arrivalDateTime}
+                                        placeholder="Date"
+                                        name="arrivalDate"
+                                        value={arrivalDate.length > 0 ? arrivalDate : 'Date'}
                                         onChange={handleChange}
                                         required
                                     />
                                 </div>
-                                <div className="form-group col-md-6">
-                                    <label htmlFor="adot">Departure Date & Time</label>
+                                <div className="form-group col-md-3">
                                     <input
-                                        type="text"
+                                        type="time"
+                                        className="form-control"
+                                        id="arrival"
+                                        placeholder="Time"
+                                        name="arrivalTime"
+                                        value={arrivalTime.length > 0 ? arrivalTime : 'Date'}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div className="form-group col-md-3">
+                                    <input
+                                        type="date"
                                         className="form-control"
                                         id="departure"
-                                        name="departureDateTime"
-                                        value={departureDateTime}
+                                        placeholder="Date"
+                                        name="departureDate"
+                                        value={departureDate.length > 0 ? departureDate : 'Date'}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div className="form-group col-md-3">
+                                    <input
+                                        type="time"
+                                        className="form-control"
+                                        id="departure"
+                                        placeholder="Time"
+                                        name="departureTime"
+                                        value={departureTime.length > 0 ? departureTime : 'Date'}
                                         onChange={handleChange}
                                         required
                                     />
@@ -91,48 +144,48 @@ class Step3 extends Component {
                         }
                         { originAndDestination==='No' &&
                             <div className="form-row">
-                                <div className="col">
-                                    <label htmlFor="arrivalAirport">Arrival Airport</label>
+                                <div className="form-group col-md-3">
                                     <input
                                         type="text"
                                         className="form-control"
                                         id="arrivalAirport"
+                                        placeholder="Airport"
                                         name="arrivalAirport"
                                         value={arrivalAirport}
                                         onChange={handleChange}
                                         required
                                     />
                                 </div>
-                                <div className="col">
-                                    <label htmlFor="arrivalFlight">Arrival Flight#</label>
+                                <div className="form-group col-md-3">
                                     <input
                                         type="number"
                                         className="form-control"
                                         id="arrivalFlight"
+                                        placeholder="Flight No."
                                         name="arrivalFlight"
                                         value={arrivalFlight}
                                         onChange={handleChange}
                                         required
                                     />
                                 </div>
-                                <div className="col">
-                                    <label htmlFor="departureAirport">Departure Airport</label>
+                                <div className="form-group col-md-3">
                                     <input
                                         type="text"
                                         className="form-control"
                                         id="departureAirport"
+                                        placeholder="Airport"
                                         name="departureAirport"
                                         value={departureAirport}
                                         onChange={handleChange}
                                         required
                                     />
                                 </div>
-                                <div className="col">
-                                    <label htmlFor="departureFlight">Departure Flight#</label>
+                                <div className="form-group col-md-3">
                                     <input
                                         type="number"
                                         className="form-control"
                                         id="departureFlight"
+                                        placeholder="Flight No."
                                         name="departureFlight"
                                         value={departureFlight}
                                         onChange={handleChange}
@@ -143,52 +196,48 @@ class Step3 extends Component {
                         }
                         { originAndDestination==='No' &&
                             <div className="form-row">
-                                <div className="form-group col-md-6">
-                                    <label htmlFor="arrivalAirline">Arrival Airline</label>
+                                <div className="form-group col-md-3">
                                     <input
                                         type="text"
                                         className="form-control"
                                         id="arrivalAirline"
+                                        placeholder="Arrival Airline"
                                         name="arrivalAirline"
                                         value={arrivalAirline}
                                         onChange={handleChange}
                                         required
                                     />
                                 </div>
-                                <div className="form-group col-md-6">
-                                    <label htmlFor="departureAirline">Departure Airline</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="departureAirline"
-                                        name="departureAirline"
-                                        value={departureAirline}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-                            </div>
-                        }
-                        { originAndDestination==='No' &&
-                            <div className="form-row">
-                                <div className="form-group col-md-6">
-                                    <label htmlFor="origin">Origin City of Arrival Flight:</label>
+                                <div className="form-group col-md-3">
                                     <input
                                         type="text"
                                         className="form-control"
                                         id="origin"
+                                        placeholder="Origin City"
                                         name="origin"
                                         value={origin}
                                         onChange={handleChange}
                                         required
                                     />
                                 </div>
-                                <div className="form-group col-md-6">
-                                    <label htmlFor="destination">Destination City of Departure Flight:</label>
+                                <div className="form-group col-md-3">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="departureAirline"
+                                        placeholder="Departure Airline"
+                                        name="departureAirline"
+                                        value={departureAirline}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div className="form-group col-md-3">
                                     <input
                                         type="text"
                                         className="form-control"
                                         id="destination"
+                                        placeholder="Destination City"
                                         name="destination"
                                         value={destination}
                                         onChange={handleChange}
@@ -200,7 +249,7 @@ class Step3 extends Component {
                         { originAndDestination==='No' &&
                             <div className="form-row">
                                 <div className="form-group col-md-6">
-                                    <label htmlFor="arrivalInfo">Arrival Connection Info</label>
+                                    <label htmlFor="arrivalInfo" className="light-label">Arrival Connection Info</label>
                                     <textarea
                                         type="text"
                                         className="form-control"
@@ -213,7 +262,7 @@ class Step3 extends Component {
                                     />
                                 </div>
                                 <div className="form-group col-md-6">
-                                    <label htmlFor="departureInfo">Departure Connection Info</label>
+                                    <label htmlFor="departureInfo" className="light-label">Departure Connection Info</label>
                                     <textarea
                                         type="text"
                                         className="form-control"
@@ -227,9 +276,12 @@ class Step3 extends Component {
                                 </div>
                             </div>
                         }
+                        <hr className="breaker" />
                     </div>
-                </div>
-                <button className="btn btn-success float-right">Submit</button>
+                <button
+                    className="btn btn-warning float-right next button-style">
+                    Submit&nbsp;<img src={arrowForward} alt="forward-arrow"/>
+                </button>
             </div>
         )
     }

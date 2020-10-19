@@ -5,6 +5,9 @@ import Step3 from "./Step3";
 import { firestore, auth, signOut } from "../firebase";
 import { ResponsesContext } from '../providers/ResponsesProvider';
 import { Route } from 'react-router-dom';
+import arrowForward from '../images/arrow_forward.png'
+import arrowBack from '../images/arrow_back.png';
+import close from '../images/close.png'
 
 const FormsContainer = (props) => {
     const responses = useContext(ResponsesContext);
@@ -20,21 +23,24 @@ const FormsContainer = (props) => {
         addressLine1: "",
         addressLine2: "",
         city: "",
-        stateUS: "",
+        stateUS: "State",
         zipCode: "",
         executiveAsstName: "",
         executiveAsstEmail: "",
         executiveAsstOfficePhone: "",
         executiveAsstMobilePhone: "",
         emergencyContactName: "",
+        emergencyEmail: "",
         emergencyContactNumber: "",
         specialDiet: "",
         specialNeeds: "",
         jacketSize: "Women's - Extra Small",
         originAndDestination: "Yes",
         commercialOrPrivate: "Commercial",
-        arrivalDateTime: "",
-        departureDateTime: "",
+        arrivalDate: "",
+        departureDate: "",
+        arrivalTime: "",
+        departureTime: "",
         arrivalAirport: "",
         departureAirport: "",
         arrivalFlight: "",
@@ -88,14 +94,17 @@ const FormsContainer = (props) => {
             executiveAsstOfficePhone,
             executiveAsstMobilePhone,
             emergencyContactName,
+            emergencyEmail,
             emergencyContactNumber,
             specialDiet,
             specialNeeds,
             jacketSize,
             originAndDestination,
             commercialOrPrivate,
-            arrivalDateTime,
-            departureDateTime,
+            arrivalDate,
+            departureDate,
+            arrivalTime,
+            departureTime,
             arrivalAirport,
             departureAirport,
             arrivalFlight,
@@ -128,14 +137,17 @@ const FormsContainer = (props) => {
             executiveAsstOfficePhone,
             executiveAsstMobilePhone,
             emergencyContactName,
+            emergencyEmail,
             emergencyContactNumber,
             specialDiet,
             specialNeeds,
             jacketSize,
             originAndDestination,
             commercialOrPrivate,
-            arrivalDateTime,
-            departureDateTime,
+            arrivalDate,
+            departureDate,
+            arrivalTime,
+            departureTime,
             arrivalAirport,
             departureAirport,
             arrivalFlight,
@@ -174,9 +186,9 @@ const FormsContainer = (props) => {
         if (currentStep !== 1) {
             return (
                 <button
-                    className="btn btn-secondary float-right previous"
+                    className="btn btn-secondary float-right previous button-style"
                     type="button" onClick={_prev}>
-                    Previous
+                    <img src={arrowBack} alt="backward-arrow" />&nbsp;Previous
                 </button>
             )
         }
@@ -188,9 +200,9 @@ const FormsContainer = (props) => {
         if (currentStep < 3) {
             return (
                 <button
-                    className="btn btn-primary float-right"
+                    className="btn btn-warning float-right next button-style"
                     type="button" onClick={_next}>
-                    Next
+                    Next&nbsp;<img src={arrowForward} alt="forward-arrow" />
                 </button>
             )
         }
@@ -199,7 +211,8 @@ const FormsContainer = (props) => {
 
     return (
         <div className="jumbotron">
-            <div className="text-center welcome">Welcome {displayName}</div>
+            <span className="step">{step} / 3</span>
+            <div className="welcome">Welcome {displayName}</div>
             <Route render={(history) => (
                 <form onSubmit={handleSubmit(history)}>
                     <Step1
@@ -221,7 +234,10 @@ const FormsContainer = (props) => {
                     {previousButton()}
                 </form>
             )} />
-            <button className="btn btn-danger" onClick={signOut}>Sign Out</button>
+            <div className="btn sign-out"
+                 onClick={signOut}>
+                <img src={close} alt="close"/>&nbsp;SIGN OUT
+            </div>
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { auth, createUserProfileDocument } from '../firebase';
+import Welcome from "./Welcome";
 import { Link } from 'react-router-dom';
 
 class SignIn extends Component {
@@ -12,7 +13,7 @@ class SignIn extends Component {
 
     handleSubmit = async event => {
         event.preventDefault();
-        const { email, password, forgotPassword } = this.state;
+        const { email, password } = this.state;
 
         try {
             const { user } = await auth.signInWithEmailAndPassword(email, password);
@@ -26,9 +27,15 @@ class SignIn extends Component {
         this.setState({ email: '', password: '' });
     };
 
+    handlePasswordReset = () => {
+      console.log(this.state);
+    };
+
     render() {
         const { email, password, forgotPassword } = this.state;
         return (
+            <div>
+            <Welcome/>
             <div className="jumbotron sign">
                 <form className="container text-center sign-in" onSubmit={this.handleSubmit}>
                     <div className="form-group">
@@ -59,7 +66,7 @@ class SignIn extends Component {
                                     value={password}
                                     onChange={this.handleChange}
                                 />
-                                {forgotPassword && <label className="forgot text-danger">Forgot Password - Click here!</label>}
+                                {forgotPassword && <label className="forgot text-danger">Wrong Password!</label>}
                             </div>
                         </div>
                     </div>
@@ -68,7 +75,9 @@ class SignIn extends Component {
                             <input type="submit" className="btn btn-primary btn-lg sign-up" value="Sign In"/>
                         </div>
                         <div className="form-group col-md-6">
-                            <label className="forgot">Forgot Password</label>
+                            <Link to="/forgotpassword">
+                                <label className="forgot" onClick={this.handlePasswordReset}>Forgot Password</label>
+                            </Link>
                         </div>
                     </div>
                     <hr className="line-break"/>
@@ -78,6 +87,7 @@ class SignIn extends Component {
                         </Link>
                     </div>
                 </form>
+            </div>
             </div>
         );
     }

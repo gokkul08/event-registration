@@ -304,3 +304,91 @@ body {
 .admin-form {
   margin-top: -70px;
 }
+
+@media only screen
+and (min-device-width : 375px)
+and (max-device-height : 812px)
+and (-webkit-device-pixel-ratio : 3) {
+ body {
+   background-size: auto;
+
+   .App-container {
+     .jumbotron {
+       margin: 21% 0 0 0;
+       height: 740px;
+       .welcome {
+         top: -25px;
+         margin-bottom: -15px;
+       }
+       .step {
+         top: 7%;
+         right: 2%;
+       }
+       &.sign {
+         margin: 100% 0 0 0;
+         width: auto;
+         height: 450px;
+       }
+       .container {
+         &.text-center {
+           text-align: initial !important;
+           margin-left: -15px;
+           margin-top: 20px;
+         }
+
+         .sign-up {
+           width: 145px;
+         }
+
+         .forgot {
+           margin-left: 5px;
+           font-size: 12px;
+         }
+
+         .account {
+           margin-left: 15px;
+         }
+       }
+       .break {
+         flex-wrap: nowrap;
+       }
+       .colm-1 {
+         width: 54%;
+       }
+       .colm-2 {
+         width: 46%;
+       }
+       .required {
+         margin-left: 70px;
+       }
+       .form-group {
+         line-height: .75;
+         margin-bottom: .5rem;
+       }
+       .breaker {
+         margin-top: .25rem;
+         margin-bottom: 1rem;
+       }
+     }
+     .App-header {
+       .logo {
+         left: 22px;
+         top: 22px;
+       }
+     }
+     .headline {
+       font-size: 35px;
+       top: 120px;
+       margin-left: 20px;
+       .line1, .line2 {
+         display: inline;
+       }
+
+       .line2 {
+         margin-left: 10px;
+       }
+     }
+   }
+ }
+}
+

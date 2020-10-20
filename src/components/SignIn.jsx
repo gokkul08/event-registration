@@ -70,7 +70,7 @@ class SignIn extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="form-row">
+                    <div className="form-row break">
                         <div className="form-group col-md-6">
                             <input type="submit" className="btn btn-primary btn-lg sign-up" value="SIGN IN"/>
                         </div>

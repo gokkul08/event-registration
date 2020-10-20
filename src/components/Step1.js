@@ -29,11 +29,11 @@ class Step1 extends Component {
         return (
             <div>
                 <div className="form-group">
-                    <div className="form-row">
-                        <div className="form-group col-md-11">
+                    <div className="form-row break">
+                        <div className="form-group col-md-11 colm-1">
                             <div className="lead">Attendee Information</div>
                         </div>
-                        <div className="form-group col-md-1">
+                        <div className="form-group col-md-1 colm-2">
                             <div className="required">*required</div>
                         </div>
                     </div>

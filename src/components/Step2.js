@@ -132,6 +132,9 @@ class Step2 extends Component {
                                 onChange={handleChange}
                             />
                         </div>
+                        <div className="form-group col-md-3">
+
+                        </div>
                     </div>
                     <hr className="breaker"/>
                     <div className="form-row">

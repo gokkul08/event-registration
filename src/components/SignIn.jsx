@@ -27,10 +27,6 @@ class SignIn extends Component {
         this.setState({ email: '', password: '' });
     };
 
-    handlePasswordReset = () => {
-      console.log(this.state);
-    };
-
     render() {
         const { email, password, forgotPassword } = this.state;
         return (
@@ -76,7 +72,7 @@ class SignIn extends Component {
                         </div>
                         <div className="form-group col-md-6">
                             <Link to="/forgotpassword">
-                                <label className="forgot" onClick={this.handlePasswordReset}>Forgot Password?</label>
+                                <label className="forgot">Forgot Password?</label>
                             </Link>
                         </div>
                     </div>

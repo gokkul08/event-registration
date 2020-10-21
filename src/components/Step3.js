@@ -37,14 +37,6 @@ class Step3 extends Component {
                         <div className="form-row bottom-margin">
                             <div className="lead">Travel Information</div>
                         </div>
-                        {/*<div className="form-row">*/}
-                        {/*    <div className="form-group col-md-6">*/}
-                        {/*        <div className="light-label">Is your Origin and Return Destination in the NYC Area?</div>*/}
-                        {/*    </div>*/}
-                        {/*    <div className="form-group col-md-6">*/}
-                        {/*        <div className="light-label">Are you flying Commercial or Private?</div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
                         <div className="form-row">
                             <div className="form-group col-md-7">
                                 <span className="light-label">Is your Origin and Return Destination in the NYC Area?</span>
@@ -74,23 +66,6 @@ class Step3 extends Component {
                         {
                             originAndDestination === 'No' &&
                             <hr className="breaker"/>
-                        }
-                        {
-                            // originAndDestination==='No' &&
-                            //  <div className="form-row">
-                            //      <div className="form-group col-md-5">
-                            //          <div className="lead">Arrival Information</div>
-                            //      </div>
-                            //      <div className="form-group col-md-1">
-                            //          <div className="optional">*optional</div>
-                            //      </div>
-                            //      <div className="form-group col-md-5">
-                            //          <div className="lead">Departure Information</div>
-                            //      </div>
-                            //      <div className="form-group col-md-1">
-                            //          <div className="optional">*optional</div>
-                            //      </div>
-                            //  </div>
                         }
                         { originAndDestination==='No' &&
                             <div className="form-row">

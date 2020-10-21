@@ -62,7 +62,8 @@ const FormsContainer = (props) => {
         if (userExists) {
             setFormState({...state, ...storedUserResponse});
         }
-    }, [userExists, state, storedUserResponse]);
+        // eslint-disable-next-line
+    }, [userExists]);
 
     const handleChange = event => {
         const {name, value} = event.target;

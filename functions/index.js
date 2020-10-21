@@ -45,7 +45,6 @@ let transporter = nodemailer.createTransport({
 exports.sendMail = functions.firestore
     .document("responses/{responseId}")
     .onWrite(async (snapshot, context) => {
-        console.log(context);
        const { responseId } = context.params;
        const responseRef = firestore.doc(`responses/${responseId}`);
        const snap = await responseRef.get("user");

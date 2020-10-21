@@ -29,7 +29,7 @@ class Step1 extends Component {
         return (
             <div>
                 <div className="form-group">
-                    <div className="form-row break bottom-margin">
+                    <div className="form-row break bottom-margin adjust">
                             <div className="lead">
                                 Attendee Information
                                 <span className="required">*required</span>
@@ -168,7 +168,7 @@ class Step1 extends Component {
                             />
                         </div>
                         <div className="form-group col-md-3">
-                            <select id="state" className="form-control" onChange={handleChange} value={stateUS} name="stateUS" defaultValue={'STATE'}>
+                            <select id="state" className="form-control" onChange={handleChange} value={stateUS} name="stateUS">
                                 <option value="State" disabled>State</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>

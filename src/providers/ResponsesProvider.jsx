@@ -23,7 +23,6 @@ class ResponsesProvider extends Component {
     render() {
         const { responses } = this.state;
         const { children } = this.props;
-        console.log(responses);
 
         return (
             <ResponsesContext.Provider value={responses}>{children}</ResponsesContext.Provider>

@@ -26,22 +26,26 @@ class Step2 extends Component {
 
         return (
                 <div className="form-group">
+                    {/*<div className="form-row">*/}
+                    {/*    <div className="form-group col-md-5">*/}
+                    {/*        <div className="lead">Executive Assistant Information</div>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="form-group col-md-1">*/}
+                    {/*        <div className="required">*required</div>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="form-group col-md-5">*/}
+                    {/*        <div className="lead">Emergency Contact Information</div>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="form-group col-md-1">*/}
+                    {/*        <div className="required">*required</div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                     <div className="form-row">
-                        <div className="form-group col-md-5">
-                            <div className="lead">Executive Assistant Information</div>
-                        </div>
-                        <div className="form-group col-md-1">
-                            <div className="required">*required</div>
-                        </div>
-                        <div className="form-group col-md-5">
-                            <div className="lead">Emergency Contact Information</div>
-                        </div>
-                        <div className="form-group col-md-1">
-                            <div className="required">*required</div>
-                        </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group col-md-6">
+                        <div className="form-group col-md-6 margin-bottom-95">
+                            <label className="lead">
+                                Executive Assistant Information
+                                <span className="required-break">*required</span>
+                            </label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -53,7 +57,11 @@ class Step2 extends Component {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="form-group col-md-6">
+                        <div className="form-group col-md-6 margin-bottom-80">
+                            <label className="lead">
+                                Emergency Contact Information
+                                <span className="required-break">*required</span>
+                            </label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -66,8 +74,8 @@ class Step2 extends Component {
                             />
                         </div>
                     </div>
-                    <div className="form-row">
-                        <div className="form-group col-md-6">
+                    <div className="form-row break">
+                        <div className="form-group col-md-6 absolute exe-email">
                             <input
                                 type="email"
                                 className="form-control"
@@ -79,7 +87,7 @@ class Step2 extends Component {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="form-group col-md-6">
+                        <div className="form-group col-md-6 absolute eme-email">
                             <input
                                 type="email"
                                 className="form-control"
@@ -92,8 +100,8 @@ class Step2 extends Component {
                             />
                         </div>
                     </div>
-                    <div className="form-row">
-                        <div className="form-group col-md-3">
+                    <div className="form-row break">
+                        <div className="form-group col-md-3 absolute exe-op">
                             <input
                                 type="tel"
                                 className="form-control"
@@ -106,7 +114,7 @@ class Step2 extends Component {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="form-group col-md-3">
+                        <div className="form-group col-md-3 absolute exe-mp">
                             <input
                                 type="tel"
                                 className="form-control"
@@ -119,7 +127,7 @@ class Step2 extends Component {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="form-group col-md-3">
+                        <div className="form-group col-md-3 absolute eme-mp">
                             <input
                                 type="tel"
                                 className="form-control"
@@ -138,24 +146,28 @@ class Step2 extends Component {
                     </div>
                     <hr className="breaker"/>
                     <div className="form-row">
-                        <div className="lead">Preferences</div>
+                        <div className="lead bottom-margin">Preferences</div>
                     </div>
-                    <div className="form-row">
-                        <div className="form-group col-md-5">
-                            <div className="light-label">Special Diet or Food Allergies</div>
-                        </div>
-                        <div className="form-group col-md-1">
-                            <div className="optional">*optional</div>
-                        </div>
-                        <div className="form-group col-md-5">
-                            <div className="light-label">ADA / Special Requirements</div>
-                        </div>
-                        <div className="form-group col-md-1">
-                            <div className="optional">*optional</div>
-                        </div>
-                    </div>
+                    {/*<div className="form-row">*/}
+                    {/*    <div className="form-group col-md-5">*/}
+                    {/*        <div className="light-label">Special Diet or Food Allergies</div>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="form-group col-md-1">*/}
+                    {/*        <div className="optional">*optional</div>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="form-group col-md-5">*/}
+                    {/*        <div className="light-label">ADA / Special Requirements</div>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="form-group col-md-1">*/}
+                    {/*        <div className="optional">*optional</div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                     <div className="form-row">
                         <div className="form-group col-md-6">
+                            <label className="light-label">
+                                Special Diet or Food Allergies
+                                <span className="optional">*optional</span>
+                            </label>
                             <textarea
                                 className="form-control"
                                 id="diet"
@@ -167,6 +179,10 @@ class Step2 extends Component {
                             />
                         </div>
                         <div className="form-group col-md-6">
+                            <label className="light-label">
+                                ADA / Special Requirements
+                                <span className="optional">*optional</span>
+                            </label>
                             <textarea
                                 className="form-control"
                                 id="needs"

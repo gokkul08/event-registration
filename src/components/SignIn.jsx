@@ -66,7 +66,7 @@ class SignIn extends Component {
                                     value={password}
                                     onChange={this.handleChange}
                                 />
-                                {forgotPassword && <label className="forgot text-danger">Wrong Password!</label>}
+                                {forgotPassword && <span><i className="material-icons">error_outline</i><label className="forgot password">Email/Password incorrect. Please try again</label></span>}
                             </div>
                         </div>
                     </div>

@@ -1,8 +1,7 @@
 body {
   margin: 0;
-  background-image: url(../images/background.jpg);
-  background-repeat: no-repeat;
-  background-size: 100%;
+  background: url(../images/background.jpg) no-repeat center center fixed;
+  background-size: cover;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -67,6 +66,7 @@ body {
       background-color: #00234c;
       opacity: .9;
     }
+
     margin: 4% 20% 25% 20%;
     height: 525px;
 
@@ -80,8 +80,11 @@ body {
       margin-left: 15px;
     }
 
-    .sign-in {
-
+    .reset {
+      color: #ffffff;
+      font-family: 'Montserrat', serif;
+      font-weight: normal;
+      font-size: 16px;
     }
 
     .sign-up {
@@ -91,10 +94,12 @@ body {
       background-color: #ffec53;
       font-size: 16px;
       color: black;
+
       &:hover {
         background-color: #fce427;
       }
     }
+
     .welcome {
       position: relative;
       top: -50px;
@@ -115,13 +120,30 @@ body {
       margin-left: 47%;
     }
 
+    .material-icons {
+      color: rgb(255,66,0);
+      position: relative;
+      top: 4px;
+      left: -50px;
+    }
+
     .forgot {
       margin-top: 10px;
       margin-left: -45px;
       font-family: 'Poppins', sans-serif;
       color: #ffffff;
+
       &:hover {
         cursor: pointer;
+      }
+
+      &.password {
+        color: rgb(255,66,0);
+        margin-left: -50px;
+      }
+
+      &.cancel {
+        margin-left: -105px;
       }
     }
 
@@ -136,15 +158,18 @@ body {
       font-family: 'Montserrat', serif;
       font-size: 21px;
       color: #ffffff;
+
       a {
         text-decoration: none !important;
       }
+
       .register {
         font-weight: bold;
         font-size: 21px;
         color: #ffec53;
         text-decoration: none !important;
         border-bottom: #ffec53 0.125em solid;
+
         &:hover {
           text-decoration: none !important;
         }
@@ -157,6 +182,7 @@ body {
       font-weight: 500;
       font-size: 16px;
       color: #002b5e;
+
       img {
         width: 30px;
         height: 30px;
@@ -171,6 +197,7 @@ body {
   margin-right: 10px;
   margin-top: -2px;
 }
+
 .form-control {
   font-family: "Poppins", sans-serif;
   font-size: 12px;
@@ -184,14 +211,17 @@ body {
     padding: 5px;
     margin-bottom: 2px;
   }
+
   color: #002b5e;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 16px;
   padding: 0.25rem 2.50rem;
-  &:hover {
-    border: 1px solid #002b5e;
+  border: none;
+
+  &:hover, :active, :visited, :focus, :not(:disabled):not(.disabled):active {
+    border: none;
   }
 }
 
@@ -199,6 +229,7 @@ body {
   margin-right: 5px;
   background-color: #f2f2f2 !important;
   border-color: #f2f2f2 !important;
+
   &:hover, :active, :visited, :focus, :not(:disabled):not(.disabled):active {
     background-color: #e4e2e2 !important;
     border-color: #e4e2e2 !important;
@@ -208,6 +239,7 @@ body {
 .next {
   background-color: #ffec53 !important;
   border-color: #ffec53 !important;
+
   &:hover, :active, :visited, :focus, :not(:disabled):not(.disabled):active {
     background-color: #fce427 !important;
     border-color: #fce427 !important;
@@ -217,9 +249,10 @@ body {
 .download {
   background-color: #f2f2f2 !important;
   border-color: #f2f2f2 !important;
+
   &:hover, :active, :visited, :focus, :not(:disabled):not(.disabled):active {
     background-color: #e4e2e2 !important;
-    border-color:  #e4e2e2 !important;
+    border-color: #e4e2e2 !important;
   }
 }
 
@@ -234,6 +267,7 @@ body {
   font-weight: 500;
   font-size: 16px;
   color: #002b5e;
+
   img {
     width: 30px;
     height: 30px;
@@ -246,6 +280,9 @@ body {
   font-weight: bold;
   font-size: 14px;
   color: #003c84;
+  &.break-width {
+    width: 115%;
+  }
 }
 
 .light-label {
@@ -260,16 +297,27 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
   color: #df6900;
-  margin-left: -10px;
+  margin-left: 5px;
   margin-top: 5px;
+  font-weight: normal;
+}
+
+.required-break {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  color: #df6900;
+  margin-left: 5px;
+  margin-top: 5px;
+  font-weight: normal;
 }
 
 .optional {
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
   color: #999999;
-  margin-left: -10px;
+  margin-left: 5px;
   margin-top: 5px;
+  font-weight: normal;
 }
 
 .breaker {
@@ -299,96 +347,218 @@ body {
 
 .bottom {
   position: relative;
-  top: 60%;
+  top: 57%;
 }
+
 .admin-form {
   margin-top: -70px;
 }
 
 @media only screen
-and (min-device-width : 375px)
-and (max-device-height : 812px)
-and (-webkit-device-pixel-ratio : 3) {
- body {
-   background-size: auto;
+and (max-device-width: 450px) {
+  body {
+    background-size: auto;
+    overflow-y:visible;
+    .App-container {
+      .jumbotron {
+        margin: 21% 0 0 0;
+        height: 825px;
 
-   .App-container {
-     .jumbotron {
-       margin: 21% 0 0 0;
-       height: 740px;
-       .welcome {
-         top: -25px;
-         margin-bottom: -15px;
-       }
-       .step {
-         top: 7%;
-         right: 2%;
-       }
-       &.sign {
-         margin: 100% 0 0 0;
-         width: auto;
-         height: 450px;
-       }
-       .container {
-         &.text-center {
-           text-align: initial !important;
-           margin-left: -15px;
-           margin-top: 20px;
-         }
+        .button-style {
+          padding: 0.25rem 2rem;
+        }
 
-         .sign-up {
-           width: 145px;
-         }
+        .welcome {
+          top: -25px;
+          margin-bottom: -15px;
+        }
 
-         .forgot {
-           margin-left: 5px;
-           font-size: 12px;
-         }
+        .step {
+          top: 7%;
+          right: 2%;
+          position: absolute;
+        }
 
-         .account {
-           margin-left: 15px;
-         }
-       }
-       .break {
-         flex-wrap: nowrap;
-       }
-       .colm-1 {
-         width: 54%;
-       }
-       .colm-2 {
-         width: 46%;
-       }
-       .required {
-         margin-left: 70px;
-       }
-       .form-group {
-         line-height: .75;
-         margin-bottom: .5rem;
-       }
-       .breaker {
-         margin-top: .25rem;
-         margin-bottom: 1rem;
-       }
-     }
-     .App-header {
-       .logo {
-         left: 22px;
-         top: 22px;
-       }
-     }
-     .headline {
-       font-size: 35px;
-       top: 120px;
-       margin-left: 20px;
-       .line1, .line2 {
-         display: inline;
-       }
+        &.sign {
+          margin: 100% 0 0 0;
+          width: auto;
+          height: 450px;
+        }
 
-       .line2 {
-         margin-left: 10px;
-       }
-     }
-   }
- }
+        .container {
+          &.text-center {
+            text-align: initial !important;
+            margin-left: -15px;
+            margin-top: 20px;
+          }
+
+          .sign-up {
+            width: 145px;
+          }
+
+          .forgot {
+            margin-left: 5px;
+            font-size: 12px;
+          }
+
+          .account {
+            margin-left: 15px;
+          }
+        }
+
+        .break {
+          flex-wrap: nowrap;
+        }
+
+        .bottom-margin {
+          margin-bottom: 15px;
+        }
+
+        .required {
+          margin-left: 96px;
+          font-weight: normal;
+        }
+
+        .optional {
+          margin-left: 70px;
+          font-weight: normal;
+        }
+
+        .required-break {
+          margin-left: 18px;
+          font-family: 'Poppins', sans-serif;
+          font-weight: normal;
+          font-size: 12px;
+          color: #df6900;
+        }
+
+        .select {
+          margin-top: 5px;
+        }
+
+        .form-group {
+          line-height: .75;
+          margin-bottom: .5rem;
+
+          .alert-note {
+            line-height: 1;
+          }
+
+          &.mobile {
+            line-height: 1.5;
+          }
+
+          &.margin-bottom-95 {
+            margin-bottom: 95px;
+          }
+
+          &.margin-bottom-80 {
+            margin-bottom: 80px;
+          }
+
+          &.margin-bottom-160 {
+            margin-bottom: 160px;
+          }
+
+          &.absolute {
+            position: absolute;
+          }
+
+          &.exe-email {
+            top: 189px;
+            width: 87%;
+          }
+
+          &.eme-email {
+            top: 334px;
+            width: 87%;
+          }
+
+          &.exe-op {
+            top: 227px;
+            width: 45%;
+          }
+
+          &.exe-mp {
+            top: 227px;
+            width: 44%;
+            left: 50%;
+          }
+
+          &.eme-mp {
+            top: 374px;
+            width: 87%;
+          }
+
+          &.arrival {
+            top: 393px;
+            width: 43%;
+          }
+
+          &.flight {
+            left: 50%;
+          }
+
+          &.airline {
+            top: 432px;
+            width: 43%;
+          }
+
+          &.info {
+            width: 86%;
+            top: 466px;
+          }
+
+          .optional-break {
+            position: absolute;
+            top: -63px;
+            left: 192px;
+          }
+        }
+
+        .breaker {
+          margin-top: .25rem;
+          margin-bottom: 1rem;
+        }
+
+        .sign-out {
+          position: absolute;
+          top: 0;
+          color: #ffffff;
+          right: -30px;
+          img {
+            display: none;
+          }
+          &.move-top {
+            top: -801px;
+          }
+          &:hover, :active, :visited, :focus, :not(:disabled):not(.disabled):active {
+            border: none;
+          }
+        }
+      }
+
+      .App-header {
+        .logo {
+          left: 22px;
+          top: 22px;
+        }
+      }
+
+      .headline {
+        font-size: 35px;
+        top: 120px;
+        margin-left: 20px;
+
+        .line1, .line2 {
+          display: inline;
+        }
+
+        .line2 {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
 }
 

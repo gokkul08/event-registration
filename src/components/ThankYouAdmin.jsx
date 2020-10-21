@@ -38,7 +38,7 @@ const ThankYouAdmin = (props) => {
             <div className="jumbotron">
                 <div className="welcome">Thank you</div>
                 <br /><br />
-                <div className="form-group">
+                <div className="form-group mobile">
                     <div className="form-row thank-you">
                         Thank you for updating the data for {updatedUser}
                     </div>
@@ -49,7 +49,7 @@ const ThankYouAdmin = (props) => {
                 </div>
                 <div className="bottom">
                     <hr className="breaker" />
-                    <div className="btn sign-out float-left"
+                    <div className="btn sign-out float-left move-top"
                          onClick={handleSignOut}>
                         <img src={close} alt="sign out"/>&nbsp;SIGN OUT
                     </div>

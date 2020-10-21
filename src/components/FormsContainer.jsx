@@ -62,7 +62,7 @@ const FormsContainer = (props) => {
         if (userExists) {
             setFormState({...state, ...storedUserResponse});
         }
-    }, [userExists]);
+    }, [userExists, state, storedUserResponse]);
 
     const handleChange = event => {
         const {name, value} = event.target;

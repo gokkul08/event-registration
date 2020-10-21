@@ -1,8 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
-import { firestore, auth, signOut } from "../firebase";
+import { firestore, signOut } from "../firebase";
 import { ResponsesContext } from '../providers/ResponsesProvider';
 import { Route } from 'react-router-dom';
 import arrowForward from '../images/arrow_forward.png'

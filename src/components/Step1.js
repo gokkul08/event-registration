@@ -29,13 +29,11 @@ class Step1 extends Component {
         return (
             <div>
                 <div className="form-group">
-                    <div className="form-row break">
-                        <div className="form-group col-md-11 colm-1">
-                            <div className="lead">Attendee Information</div>
-                        </div>
-                        <div className="form-group col-md-1 colm-2">
-                            <div className="required">*required</div>
-                        </div>
+                    <div className="form-row break bottom-margin">
+                            <div className="lead">
+                                Attendee Information
+                                <span className="required">*required</span>
+                            </div>
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
@@ -99,7 +97,6 @@ class Step1 extends Component {
                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                                 required
                                 name="officePhone"
-                                required
                                 value={officePhone}
                                 onChange={handleChange}
                             />
@@ -113,7 +110,6 @@ class Step1 extends Component {
                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                                 required
                                 name="mobilePhone"
-                                required
                                 value={mobilePhone}
                                 onChange={handleChange}
                             />

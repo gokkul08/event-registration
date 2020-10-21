@@ -34,26 +34,28 @@ class Step3 extends Component {
         return(
             <div>
                     <div className="form-group">
-                        <div className="form-row">
+                        <div className="form-row bottom-margin">
                             <div className="lead">Travel Information</div>
                         </div>
+                        {/*<div className="form-row">*/}
+                        {/*    <div className="form-group col-md-6">*/}
+                        {/*        <div className="light-label">Is your Origin and Return Destination in the NYC Area?</div>*/}
+                        {/*    </div>*/}
+                        {/*    <div className="form-group col-md-6">*/}
+                        {/*        <div className="light-label">Are you flying Commercial or Private?</div>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                         <div className="form-row">
-                            <div className="form-group col-md-6">
-                                <div className="light-label">Is your Origin and Return Destination in the NYC Area?</div>
-                            </div>
-                            <div className="form-group col-md-6">
-                                <div className="light-label">Are you flying Commercial or Private?</div>
-                            </div>
-                        </div>
-                        <div className="form-row">
-                            <div className="form-group col-md-6">
-                                <select id="inputState" className="form-control" onChange={handleChange} value={originAndDestination} name="originAndDestination">
+                            <div className="form-group col-md-7">
+                                <span className="light-label">Is your Origin and Return Destination in the NYC Area?</span>
+                                <select id="inputState" className="form-control select" onChange={handleChange} value={originAndDestination} name="originAndDestination">
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
                                 </select>
                             </div>
-                            <div className="form-group col-md-6">
-                                <select id="inputState" className="form-control" onChange={handleChange}
+                            <div className="form-group col-md-5">
+                                <span className="light-label">Are you flying Commercial or Private?</span>
+                                <select id="inputState" className="form-control select" onChange={handleChange}
                                         value={commercialOrPrivate} name="commercialOrPrivate">
                                     <option value="Commercial">Commercial</option>
                                     <option value="Private">Private</option>
@@ -74,25 +76,28 @@ class Step3 extends Component {
                             <hr className="breaker"/>
                         }
                         {
-                            originAndDestination==='No' &&
-                             <div className="form-row">
-                                 <div className="form-group col-md-5">
-                                     <div className="lead">Arrival Information</div>
-                                 </div>
-                                 <div className="form-group col-md-1">
-                                     <div className="optional">*optional</div>
-                                 </div>
-                                 <div className="form-group col-md-5">
-                                     <div className="lead">Departure Information</div>
-                                 </div>
-                                 <div className="form-group col-md-1">
-                                     <div className="optional">*optional</div>
-                                 </div>
-                             </div>
+                            // originAndDestination==='No' &&
+                            //  <div className="form-row">
+                            //      <div className="form-group col-md-5">
+                            //          <div className="lead">Arrival Information</div>
+                            //      </div>
+                            //      <div className="form-group col-md-1">
+                            //          <div className="optional">*optional</div>
+                            //      </div>
+                            //      <div className="form-group col-md-5">
+                            //          <div className="lead">Departure Information</div>
+                            //      </div>
+                            //      <div className="form-group col-md-1">
+                            //          <div className="optional">*optional</div>
+                            //      </div>
+                            //  </div>
                         }
                         { originAndDestination==='No' &&
                             <div className="form-row">
                                 <div className="form-group col-md-3">
+                                    <label className="lead">
+                                        Arrival Information
+                                    </label>
                                     <input
                                         type="date"
                                         className="form-control"
@@ -103,7 +108,10 @@ class Step3 extends Component {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                <div className="form-group col-md-3">
+                                <div className="form-group col-md-3 margin-bottom-160">
+                                    <label className="optional optional-break">
+                                        *optional
+                                    </label>
                                     <input
                                         type="time"
                                         className="form-control"
@@ -115,6 +123,9 @@ class Step3 extends Component {
                                     />
                                 </div>
                                 <div className="form-group col-md-3">
+                                    <label className="lead break-width">
+                                        Departure Information
+                                    </label>
                                     <input
                                         type="date"
                                         className="form-control"
@@ -126,6 +137,9 @@ class Step3 extends Component {
                                     />
                                 </div>
                                 <div className="form-group col-md-3">
+                                    <label className="optional optional-break">
+                                        *optional
+                                    </label>
                                     <input
                                         type="time"
                                         className="form-control"
@@ -139,8 +153,8 @@ class Step3 extends Component {
                             </div>
                         }
                         { originAndDestination==='No' &&
-                            <div className="form-row">
-                                <div className="form-group col-md-3">
+                            <div className="form-row break">
+                                <div className="form-group col-md-3 absolute arrival">
                                     <input
                                         type="text"
                                         className="form-control"
@@ -151,7 +165,7 @@ class Step3 extends Component {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                <div className="form-group col-md-3">
+                                <div className="form-group col-md-3 absolute arrival flight">
                                     <input
                                         type="number"
                                         className="form-control"
@@ -187,8 +201,8 @@ class Step3 extends Component {
                             </div>
                         }
                         { originAndDestination==='No' &&
-                            <div className="form-row">
-                                <div className="form-group col-md-3">
+                            <div className="form-row break">
+                                <div className="form-group col-md-3 absolute airline">
                                     <input
                                         type="text"
                                         className="form-control"
@@ -199,7 +213,7 @@ class Step3 extends Component {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                <div className="form-group col-md-3">
+                                <div className="form-group col-md-3 absolute airline flight">
                                     <input
                                         type="text"
                                         className="form-control"
@@ -236,7 +250,7 @@ class Step3 extends Component {
                         }
                         { originAndDestination==='No' &&
                             <div className="form-row">
-                                <div className="form-group col-md-6">
+                                <div className="form-group col-md-6 absolute info">
                                     <label htmlFor="arrivalInfo" className="light-label">Arrival Connection Info</label>
                                     <textarea
                                         type="text"

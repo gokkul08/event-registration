@@ -84,7 +84,7 @@ class SignUp extends Component {
                             <hr className="line-break"/>
                             <div className="account">Already have an account?
                                 <Link to="/">
-                                    <span className="register text-decoration-none"> sign in</span>
+                                    <span className="register text-decoration-none"> SIGN IN</span>
                                 </Link>
                             </div>
                         </div>

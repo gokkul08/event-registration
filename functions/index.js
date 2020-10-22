@@ -44,7 +44,7 @@ let transporter = nodemailer.createTransport({
 
 exports.sendMail = functions.firestore
     .document("responses/{responseId}")
-    .onWrite(async (snapshot, context) => {
+    .onCreate(async (snapshot, context) => {
        const { responseId } = context.params;
        const responseRef = firestore.doc(`responses/${responseId}`);
        const snap = await responseRef.get("user");
@@ -54,7 +54,7 @@ exports.sendMail = functions.firestore
             from: 'IAC Events - <iacapmevents@gmail.com>',
             to: userMail,
             subject: 'IAC Annual Planning Meeting Registration Confirmation',
-            html: `<div>Thank you for registering for the IAC Annual Planning Meeting. We will reach out with the next steps.</div>`
+            html: `<div>Thank you for registering for the IAC Annual Planning Meeting. Please reach out to <a href="mailto: APM2020@iac.com">APM2020@iac.com</a> with any questions.</div>`
         };
 
         return transporter.sendMail(mailOptions, (error, info) => {

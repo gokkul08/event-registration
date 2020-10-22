@@ -5,8 +5,8 @@ class Step3 extends Component {
     render() {
         const { currentStep, value } = this.props;
         const {
-            originAndDestination,
             commercialOrPrivate,
+            privateAirport,
             arrivalDate,
             departureDate,
             arrivalTime,
@@ -38,40 +38,39 @@ class Step3 extends Component {
                             <div className="lead">Travel Information</div>
                         </div>
                         <div className="form-row">
-                            <div className="form-group col-md-7">
-                                <span className="light-label">Is your Origin and Return Destination in the NYC Area?</span>
-                                <select id="inputState" className="form-control select" onChange={handleChange} value={originAndDestination} name="originAndDestination">
-                                    <option value="No">No</option>
-                                    <option value="Yes">Yes</option>
-                                </select>
-                            </div>
-                            <div className="form-group col-md-5">
+                            <div className="form-group col-md-6">
                                 <span className="light-label">Are you flying Commercial or Private?</span>
                                 <select id="inputState" className="form-control select" onChange={handleChange}
                                         value={commercialOrPrivate} name="commercialOrPrivate">
+                                    <option value="Choose option" disabled>Choose option</option>
                                     <option value="Commercial">Commercial</option>
                                     <option value="Private">Private</option>
                                 </select>
                             </div>
                         </div>
-                        { originAndDestination==='Yes' &&
+                        { commercialOrPrivate==='Private' &&
                             <div className="form-row">
                                 <div className="form-group col-md-12">
-                                    <div className="alert alert-warning alert-note" role="alert">
-                                        <b>*Note:</b> If you are leaving from the New York City Area, please do not book travel until you hear from someone in the IAC Events Department.
-                                    </div>
+                                    <span className="light-label">Which airport is closest to you?</span>
+                                    <select id="airport" className="form-control select" onChange={handleChange}
+                                            value={privateAirport} name="privateAirport">
+                                        <option value="Choose airport" disabled>Choose airport</option>
+                                        <option value="Teterboro-112 Charles Lindberg Drive, Teterboro, NJ 08608">Teterboro—112 Charles Lindberg Drive, Teterboro, NJ 08608</option>
+                                        <option value="Denver—Rocky Mountain Metro 9107 Rocky Road, Broomfield, CO 80021">Denver—Rocky Mountain Metro 9107 Rocky Road, Broomfield, CO 80021</option>
+                                        <option value="Oakland–Metropolitan Oakland international, 8735 Earhart Road, Airport station, Oakland CA 94621">Oakland–Metropolitan Oakland international, 8735 Earhart Road, Airport station, Oakland CA 94621</option>
+                                    </select>
                                 </div>
                             </div>
                         }
                         {
-                            originAndDestination === 'No' &&
+                            commercialOrPrivate === 'Commercial' &&
                             <hr className="breaker"/>
                         }
-                        { originAndDestination==='No' &&
+                        { commercialOrPrivate==='Commercial' &&
                             <div className="form-row">
                                 <div className="form-group col-md-3">
-                                    <label className="lead">
-                                        Arrival Information
+                                    <label className="lead break-width">
+                                        Inbound Flight Arrival Time
                                     </label>
                                     <input
                                         type="date"
@@ -99,7 +98,7 @@ class Step3 extends Component {
                                 </div>
                                 <div className="form-group col-md-3">
                                     <label className="lead break-width">
-                                        Departure Information
+                                        Outbound Flight Departure Time
                                     </label>
                                     <input
                                         type="date"
@@ -127,7 +126,7 @@ class Step3 extends Component {
                                 </div>
                             </div>
                         }
-                        { originAndDestination==='No' &&
+                        { commercialOrPrivate==='Commercial' &&
                             <div className="form-row break">
                                 <div className="form-group col-md-3 absolute arrival">
                                     <input
@@ -175,7 +174,7 @@ class Step3 extends Component {
                                 </div>
                             </div>
                         }
-                        { originAndDestination==='No' &&
+                        { commercialOrPrivate==='Commercial' &&
                             <div className="form-row break">
                                 <div className="form-group col-md-3 absolute airline">
                                     <input
@@ -223,7 +222,7 @@ class Step3 extends Component {
                                 </div>
                             </div>
                         }
-                        { originAndDestination==='No' &&
+                        { commercialOrPrivate==='Commercial' &&
                             <div className="form-row">
                                 <div className="form-group col-md-6 absolute info">
                                     <label htmlFor="arrivalInfo" className="light-label">Arrival Connection Info</label>

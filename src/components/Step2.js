@@ -170,6 +170,7 @@ class Step2 extends Component {
                         <div className="form-group col-md-6">
                             <label htmlFor="inputState" className="light-label">Jacket Size</label>
                             <select id="inputState" className="form-control" onChange={handleChange} value={jacketSize} name="jacketSize">
+                                <option value="Choose size" disabled>Choose size</option>
                                 <option value="Womens - Small">Womens - Small</option>
                                 <option value="Womens - Medium">Womens - Medium</option>
                                 <option value="Womens - Large">Womens - Large</option>

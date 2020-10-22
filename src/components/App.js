@@ -4,6 +4,7 @@ import Authentication from "./Authentication";
 import ThankYou from "./ThankYou";
 import ThankYouAdmin from "./ThankYouAdmin";
 import ForgotPassword from "./ForgotPassword";
+import FAQ from "./FAQ";
 import { Switch, Route } from "react-router-dom";
 import logo from "../images/logo.png";
 import SignUp from "./SignUp";
@@ -21,6 +22,7 @@ function App() {
               <Route exact path="/thankyou" component={ThankYou} />
               <Route exact path="/forgotpassword" component={ForgotPassword} />
               <Route exact path="/thankyouadmin" component={ThankYouAdmin} />
+              <Route exact path="/faq" component={FAQ} />
           </Switch>
       </div>
     </div>

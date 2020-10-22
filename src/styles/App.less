@@ -33,6 +33,48 @@ body {
   .jumbotron {
     background-color: #ffffff;
 
+    &.faq {
+      margin: 4% 11% 25% 11%;
+      height: 555px;
+      overflow: auto;
+
+      .accordion {
+          .title:not(:first-child) {
+            border-top: 0.5px solid rgb(213, 213, 213);
+          }
+          .title {
+            font-family: 'Montserrat', serif;
+            color: rgb(0, 60, 132);
+            font-weight: bold;
+            font-size: 16px;
+            padding: 1em 0;
+          }
+        .indent {
+          font-family: 'Montserrat', serif;
+          line-height: 1.4;
+          font-weight: 400;
+          font-size: 14px;
+        }
+        .accordion {
+          margin: 0;
+          padding-left: 45px;
+          .title {
+            font-size: 14px;
+            border-top: 0.5px solid rgb(213, 213, 213);
+          }
+        }
+      }
+    }
+
+    .attendee {
+      margin-top: -40px;
+      font-family: 'Montserrat', serif;
+      font-weight: 300;
+      color: rgb(10,10,10);
+      line-height: 1.2;
+      font-size: 32px;
+    }
+
     .step {
       font-family: 'Montserrat', serif;
       font-weight: 300;
@@ -269,7 +311,7 @@ body {
   font-size: 14px;
   color: #003c84;
   &.break-width {
-    width: 115%;
+    width: 160%;
   }
 }
 
@@ -303,7 +345,7 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
   color: #999999;
-  margin-left: 5px;
+  margin-left: 85px;
   margin-top: 5px;
   font-weight: normal;
 }
@@ -335,7 +377,7 @@ body {
 
 .bottom {
   position: relative;
-  top: 57%;
+  top: 55%;
 }
 
 .admin-form {
@@ -345,12 +387,16 @@ body {
 @media only screen
 and (max-device-width: 450px) {
   body {
-    background-size: auto;
     overflow-y:visible;
     .App-container {
       .jumbotron {
         margin: 21% 0 0 0;
         height: 825px;
+
+        &.faq {
+          margin: 21% 0 0 0;
+          height: 825px;
+        }
 
         .button-style {
           padding: 0.25rem 2rem;
@@ -487,7 +533,7 @@ and (max-device-width: 450px) {
           }
 
           &.arrival {
-            top: 393px;
+            top: 309px;
             width: 43%;
           }
 
@@ -496,13 +542,13 @@ and (max-device-width: 450px) {
           }
 
           &.airline {
-            top: 432px;
+            top: 344px;
             width: 43%;
           }
 
           &.info {
             width: 86%;
-            top: 466px;
+            top: 376px;
           }
 
           .optional-break {
@@ -531,6 +577,11 @@ and (max-device-width: 450px) {
           &:hover, :active, :visited, :focus, :not(:disabled):not(.disabled):active {
             border: none;
           }
+        }
+
+        .attendee {
+          margin-top: -18px;
+          font-size: 26px;
         }
       }
 

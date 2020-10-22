@@ -4,7 +4,7 @@ body {
   background-size: cover;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .App-container {
@@ -398,6 +398,33 @@ body {
 }
 
 @media only screen
+and (max-width: 992px) {
+  body {
+    overflow-y: visible;
+
+    .App-container {
+      .jumbotron {
+        margin: 21% 0 0 0;
+        height: 825px;
+
+        &.\33 {
+          height: 1160px;
+        }
+
+        &.faq {
+          margin: 21% 0 0 0;
+          height: 825px;
+        }
+
+        .step {
+          top: -8%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen
 and (max-device-width: 450px) {
   body {
     overflow-y:visible;
@@ -424,9 +451,10 @@ and (max-device-width: 450px) {
         }
 
         .step {
-          top: 7%;
-          right: 2%;
+          top: 9%;
+          right: 0%;
           position: absolute;
+          left: initial;
         }
 
         .material-icons {
@@ -625,4 +653,3 @@ and (max-device-width: 450px) {
     }
   }
 }
-

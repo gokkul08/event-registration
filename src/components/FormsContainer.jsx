@@ -214,7 +214,7 @@ const FormsContainer = (props) => {
     };
 
     return (
-        <div className="jumbotron">
+        <div className={`jumbotron ${step}`}>
             <span className="step">{step} / 3</span>
             <div className="welcome">Welcome {displayName}</div>
             <Route render={(history) => (

@@ -47,7 +47,7 @@ const ThankYouAdmin = (props) => {
                     </div>
                     <br />
                     <div className="form-row thank-you">
-                        Click&nbsp;<a href="./faq" target="_blank" rel="noopener noreferrer">here</a>&nbsp;for frequenty asked questions and COVID related information
+                        Click&nbsp;<a href="./faq" target="_blank" rel="noopener noreferrer">here</a>&nbsp;for frequently asked questions and COVID related information.
                     </div>
                 </div>
                 <div className="bottom">

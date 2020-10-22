@@ -38,6 +38,13 @@ class Step3 extends Component {
                             <div className="lead">Travel Information</div>
                         </div>
                         <div className="form-row">
+                            <div className="form-group col-md-12">
+                                <div className="alert alert-warning alert-note" role="alert">
+                                    <b>*Note:</b> IAC will be arranging private flight accommodation from New York, Denver and San Francisco.  If you are able to get yourself to one of those locations, please choose Private
+                                </div>
+                            </div>
+                        </div>
+                        <div className="form-row">
                             <div className="form-group col-md-6">
                                 <span className="light-label">Are you flying Commercial or Private?</span>
                                 <select id="inputState" className="form-control select" onChange={handleChange}

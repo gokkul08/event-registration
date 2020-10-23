@@ -51,7 +51,7 @@ class ForgotPassword extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="form-row">
+                                <div className="form-row break">
                                     <div className="form-group col-md-6">
                                         <input type="submit" className="btn btn-primary btn-lg sign-up"
                                                value="Reset Password"/>
@@ -89,17 +89,6 @@ class ForgotPassword extends Component {
                             </div>
                         </div>
                         }
-                        {/*{emailSent &&*/}
-                        {/*<div>*/}
-                        {/*    <hr className="line-break"/>*/}
-                        {/*    <div className="account">Verification email sent. Verify and &nbsp;*/}
-                        {/*        <Link to="/">*/}
-                        {/*            <span className="register text-decoration-none">Sign In</span>*/}
-                        {/*        </Link>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-                        {/*}*/}
-
                     </form>
                 </div>
             </div>

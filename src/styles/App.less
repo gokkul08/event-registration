@@ -32,16 +32,8 @@ body {
 
   .jumbotron {
     background-color: #ffffff;
-    &.\33 {
-      height: 555px;
-    }
 
     &.faq {
-      margin: 4% 19% 25% 25%;
-      height: 555px;
-      max-width: 1024px;
-      overflow: auto;
-
       .accordion {
           .title:not(:first-child) {
             border-top: 0.5px solid rgb(213, 213, 213);
@@ -50,14 +42,14 @@ body {
             font-family: 'Montserrat', serif;
             color: rgb(0, 60, 132);
             font-weight: bold;
-            font-size: 16px;
+            font-size: 26px;
             padding: 1em 0;
           }
         .indent {
           font-family: 'Montserrat', serif;
           line-height: 1.4;
           font-weight: 400;
-          font-size: 14px;
+          font-size: 21px;
         }
         .accordion {
           margin: 0;
@@ -66,7 +58,9 @@ body {
             margin-left: 22px;
           }
           .title {
-            font-size: 14px;
+            font-family: 'Montserrat', serif;
+            font-size: 21px;
+            font-weight: bold;
             border-top: 0.5px solid rgb(213, 213, 213);
           }
         }
@@ -79,7 +73,7 @@ body {
       font-weight: 300;
       color: rgb(10,10,10);
       line-height: 1.2;
-      font-size: 32px;
+      font-size: 48px;
     }
 
     .step {
@@ -87,7 +81,7 @@ body {
       font-weight: 300;
       color: #ffffff;
       position: relative;
-      top: -19%;
+      top: -80px;
       left: 100%;
     }
 
@@ -100,14 +94,16 @@ body {
       opacity: .9;
     }
 
-    margin: 4% 19% 25% 21%;
-    height: 525px;
+    height: 80%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 100px;
     max-width: 1024px;
 
     .request {
       font-family: 'Montserrat', serif;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 24px;
       color: #ffffff;
       margin-top: -25px;
       margin-bottom: 25px;
@@ -141,17 +137,12 @@ body {
       margin-left: 10px;
       font-family: 'Montserrat', serif;
       font-weight: 300;
-      font-size: 20px;
+      font-size: 36px;
       color: #000000;
 
       &.admin {
         margin-left: 0;
       }
-    }
-
-    .successMark {
-      width: 50px;
-      margin-left: 47%;
     }
 
     .material-icons {
@@ -214,7 +205,7 @@ body {
       padding: 0.25rem 2.50rem;
       font-family: "Poppins", sans-serif;
       font-weight: 500;
-      font-size: 16px;
+      font-size: 20px;
       color: #002b5e;
 
       img {
@@ -238,7 +229,7 @@ body {
 
 .form-control {
   font-family: "Poppins", sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   border-color: #787878;
 }
 
@@ -254,7 +245,7 @@ body {
   cursor: pointer;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 20px;
   padding: 0.25rem 2.50rem;
   border: none;
 
@@ -316,49 +307,43 @@ body {
 .lead {
   font-family: 'Montserrat', serif;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 18px;
   color: #003c84;
-  &.break-width {
-    width: 160%;
-  }
-  &.semantic {
-    margin-bottom: 1rem;
+  span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    margin-left: 5px;
+    font-weight: normal;
+    &.required {
+      color: #df6900;
+    }
+    &.optional {
+      color: #999999;
+    }
   }
 }
 
 .light-label {
   font-family: 'Montserrat', serif;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 15px;
   margin-top: 5px;
-}
-
-
-.required {
-  font-family: 'Poppins', sans-serif;
-  font-size: 12px;
-  color: #df6900;
-  margin-left: 5px;
-  margin-top: 5px;
-  font-weight: normal;
+  span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    margin-left: 5px;
+    font-weight: normal;
+    &.required {
+      color: #df6900;
+    }
+    &.optional {
+      color: #999999;
+    }
+  }
 }
 
 .required-break {
-  font-family: 'Poppins', sans-serif;
-  font-size: 12px;
   color: #df6900;
-  margin-left: 5px;
-  margin-top: 5px;
-  font-weight: normal;
-}
-
-.optional {
-  font-family: 'Poppins', sans-serif;
-  font-size: 12px;
-  color: #999999;
-  margin-left: 85px;
-  margin-top: 5px;
-  font-weight: normal;
 }
 
 .breaker {
@@ -376,7 +361,7 @@ body {
   font-family: 'Montserrat', serif;
   font-weight: 500;
   color: #003c84;
-  font-size: 12px;
+  font-size: 16px;
   margin-top: 5px;
   margin-bottom: -5px;
 }
@@ -384,8 +369,8 @@ body {
 .thank-you {
   font-family: 'Montserrat', serif;
   color: #003c84;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .bottom {
@@ -398,28 +383,10 @@ body {
 }
 
 @media only screen
-and (max-width: 992px) {
-  body {
-    overflow-y: visible;
-
-    .App-container {
-      .jumbotron {
-        margin: 21% 0 0 0;
-        height: 825px;
-
-        &.\33 {
-          height: 1160px;
-        }
-
-        &.faq {
-          margin: 21% 0 0 0;
-          height: 825px;
-        }
-
-        .step {
-          top: -8%;
-        }
-      }
+and (min-width: 1580px) {
+  .App-container {
+    .jumbotron {
+      margin-left: 25%;
     }
   }
 }
@@ -431,18 +398,31 @@ and (max-device-width: 450px) {
     .App-container {
       .jumbotron {
         margin: 21% 0 0 0;
-        height: 825px;
+        width: 100%;
+        height: 850px;
+
+        &.\31 {
+          height: 950px;
+        }
+
+        &.\32 {
+          height: 1200px;
+        }
+
         &.\33 {
-          height: 825px;
+          height: 1575px;
         }
 
         &.faq {
-          margin: 21% 0 0 0;
-          height: 825px;
+          height: 100%;
+        }
+
+        .attendee {
+          margin-top: -15px;
         }
 
         .button-style {
-          padding: 0.25rem 2rem;
+          padding: 0.25rem 1.5rem;
         }
 
         .welcome {
@@ -451,14 +431,10 @@ and (max-device-width: 450px) {
         }
 
         .step {
-          top: 9%;
-          right: 0%;
+          top: 7%;
+          right: 0;
           position: absolute;
           left: initial;
-        }
-
-        .material-icons {
-          left: -5px;
         }
 
         &.sign {
@@ -480,8 +456,8 @@ and (max-device-width: 450px) {
 
           .forgot {
             margin-left: 5px;
-            font-size: 12px;
-            margin-top: 5px;
+            font-size: 14px;
+            margin-top: 10px;
             &.password {
               margin-left: 0;
             }
@@ -490,122 +466,10 @@ and (max-device-width: 450px) {
           .account {
             margin-left: 15px;
           }
-        }
 
-        .break {
-          flex-wrap: nowrap;
-        }
-
-        .bottom-margin {
-          margin-bottom: 15px;
-        }
-
-        .required {
-          margin-left: 96px;
-          font-weight: normal;
-        }
-
-        .optional {
-          margin-left: 70px;
-          font-weight: normal;
-        }
-
-        .required-break {
-          margin-left: 18px;
-          font-family: 'Poppins', sans-serif;
-          font-weight: normal;
-          font-size: 12px;
-          color: #df6900;
-        }
-
-        .select {
-          margin-top: 5px;
-        }
-
-        .form-group {
-          line-height: .75;
-          margin-bottom: .5rem;
-
-          .alert-note {
-            line-height: 1;
-            margin-bottom: 0;
+          .form-control {
+            font-size: 20px;
           }
-
-          &.mobile {
-            line-height: 1.5;
-          }
-
-          &.margin-bottom-95 {
-            margin-bottom: 95px;
-          }
-
-          &.margin-bottom-80 {
-            margin-bottom: 80px;
-          }
-
-          &.margin-bottom-160 {
-            margin-bottom: 160px;
-          }
-
-          &.absolute {
-            position: absolute;
-          }
-
-          &.exe-email {
-            top: 182px;
-            width: 87%;
-          }
-
-          &.eme-email {
-            top: 323px;
-            width: 87%;
-          }
-
-          &.exe-op {
-            top: 223px;
-            width: 45%;
-          }
-
-          &.exe-mp {
-            top: 223px;
-            width: 44%;
-            left: 50%;
-          }
-
-          &.eme-mp {
-            top: 360px;
-            width: 87%;
-          }
-
-          &.arrival {
-            top: 397px;
-            width: 43%;
-          }
-
-          &.flight {
-            left: 50%;
-          }
-
-          &.airline {
-            top: 435px;
-            width: 43%;
-          }
-
-          &.info {
-            width: 86%;
-            top: 469px;
-          }
-
-          .optional-break {
-            position: absolute;
-            top: -63px;
-            left: 192px;
-          }
-        }
-
-        .breaker {
-          margin-top: .25rem;
-          margin-bottom: 1rem;
         }
 
         .sign-out {
@@ -624,9 +488,8 @@ and (max-device-width: 450px) {
           }
         }
 
-        .attendee {
-          margin-top: -18px;
-          font-size: 26px;
+        .break {
+          flex-wrap: nowrap;
         }
       }
 
@@ -638,8 +501,10 @@ and (max-device-width: 450px) {
       }
 
       .headline {
-        font-size: 35px;
-        top: 120px;
+        font-size: 36px;
+        top: 180px;
+        font-weight: 800;
+        line-height: 1.2;
         margin-left: 20px;
 
         .line1, .line2 {

@@ -34,7 +34,7 @@ class Step3 extends Component {
         return(
             <div>
                     <div className="form-group">
-                        <div className="form-row bottom-margin">
+                        <div className="form-row">
                             <div className="lead">Travel Information</div>
                         </div>
                         <div className="form-row">
@@ -75,187 +75,211 @@ class Step3 extends Component {
                         }
                         { commercialOrPrivate==='Commercial' &&
                             <div className="form-row">
-                                <div className="form-group col-md-3">
-                                    <label className="lead break-width">
-                                        Inbound Flight Arrival Time
-                                    </label>
-                                    <input
-                                        type="date"
-                                        className="form-control"
-                                        id="arrival"
-                                        placeholder="Date"
-                                        name="arrivalDate"
-                                        value={arrivalDate.length > 0 ? arrivalDate : 'Date'}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group col-md-3 margin-bottom-160">
-                                    <label className="optional optional-break">
-                                        *optional
-                                    </label>
-                                    <input
-                                        type="time"
-                                        className="form-control"
-                                        id="arrival"
-                                        placeholder="Time"
-                                        name="arrivalTime"
-                                        value={arrivalTime.length > 0 ? arrivalTime : 'Date'}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group col-md-3">
-                                    <label className="lead break-width">
-                                        Outbound Flight Departure Time
-                                    </label>
-                                    <input
-                                        type="date"
-                                        className="form-control"
-                                        id="departure"
-                                        placeholder="Date"
-                                        name="departureDate"
-                                        value={departureDate.length > 0 ? departureDate : 'Date'}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group col-md-3">
-                                    <label className="optional optional-break">
-                                        *optional
-                                    </label>
-                                    <input
-                                        type="time"
-                                        className="form-control"
-                                        id="departure"
-                                        placeholder="Time"
-                                        name="departureTime"
-                                        value={departureTime.length > 0 ? departureTime : 'Date'}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </div>
-                        }
-                        { commercialOrPrivate==='Commercial' &&
-                            <div className="form-row break">
-                                <div className="form-group col-md-3 absolute arrival">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="arrivalAirport"
-                                        placeholder="Airport"
-                                        name="arrivalAirport"
-                                        value={arrivalAirport}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group col-md-3 absolute arrival flight">
-                                    <input
-                                        type="number"
-                                        className="form-control"
-                                        id="arrivalFlight"
-                                        placeholder="Flight No."
-                                        name="arrivalFlight"
-                                        value={arrivalFlight}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group col-md-3">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="departureAirport"
-                                        placeholder="Airport"
-                                        name="departureAirport"
-                                        value={departureAirport}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group col-md-3">
-                                    <input
-                                        type="number"
-                                        className="form-control"
-                                        id="departureFlight"
-                                        placeholder="Flight No."
-                                        name="departureFlight"
-                                        value={departureFlight}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </div>
-                        }
-                        { commercialOrPrivate==='Commercial' &&
-                            <div className="form-row break">
-                                <div className="form-group col-md-3 absolute airline">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="arrivalAirline"
-                                        placeholder="Arrival Airline"
-                                        name="arrivalAirline"
-                                        value={arrivalAirline}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group col-md-3 absolute airline flight">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="origin"
-                                        placeholder="Origin City"
-                                        name="origin"
-                                        value={origin}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group col-md-3">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="departureAirline"
-                                        placeholder="Departure Airline"
-                                        name="departureAirline"
-                                        value={departureAirline}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group col-md-3">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="destination"
-                                        placeholder="Destination City"
-                                        name="destination"
-                                        value={destination}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </div>
-                        }
-                        { commercialOrPrivate==='Commercial' &&
-                            <div className="form-row">
-                                <div className="form-group col-md-6 absolute info">
-                                    <label htmlFor="arrivalInfo" className="light-label">Arrival Connection Info</label>
-                                    <textarea
-                                        type="text"
-                                        className="form-control"
-                                        id="arrivalInfo"
-                                        placeholder="Optional"
-                                        rows="2"
-                                        name="arrivalInfo"
-                                        value={arrivalInfo}
-                                        onChange={handleChange}
-                                    />
+                                <div className="form-group col-md-6">
+                                    <div className="form-row">
+                                        <div className="form-group col-md-12">
+                                            <label className="lead">
+                                                Inbound Flight Arrival Time
+                                                <span className="optional">
+                                                    *optional
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-6">
+                                            <input
+                                                type="date"
+                                                className="form-control"
+                                                id="arrival"
+                                                placeholder="Date"
+                                                name="arrivalDate"
+                                                value={arrivalDate.length > 0 ? arrivalDate : 'Date'}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                        <div className="form-group col-md-6">
+                                            <input
+                                                type="time"
+                                                className="form-control"
+                                                id="arrival"
+                                                placeholder="Time"
+                                                name="arrivalTime"
+                                                value={arrivalTime.length > 0 ? arrivalTime : 'Date'}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-6">
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="arrivalAirport"
+                                                placeholder="Airport"
+                                                name="arrivalAirport"
+                                                value={arrivalAirport}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                        <div className="form-group col-md-6">
+                                            <input
+                                                type="number"
+                                                className="form-control"
+                                                id="arrivalFlight"
+                                                placeholder="Flight No."
+                                                name="arrivalFlight"
+                                                value={arrivalFlight}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-6">
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="arrivalAirline"
+                                                placeholder="Arrival Airline"
+                                                name="arrivalAirline"
+                                                value={arrivalAirline}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                        <div className="form-group col-md-6">
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="origin"
+                                                placeholder="Origin City"
+                                                name="origin"
+                                                value={origin}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-12">
+                                            <label htmlFor="arrivalInfo" className="light-label">Arrival Connection Info</label>
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-12">
+                                            <textarea
+                                                type="text"
+                                                className="form-control"
+                                                id="arrivalInfo"
+                                                placeholder="Optional"
+                                                rows="2"
+                                                name="arrivalInfo"
+                                                value={arrivalInfo}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="form-group col-md-6">
-                                    <label htmlFor="departureInfo" className="light-label">Departure Connection Info</label>
-                                    <textarea
-                                        type="text"
-                                        className="form-control"
-                                        id="departureInfo"
-                                        placeholder="Optional"
-                                        rows="2"
-                                        name="departureInfo"
-                                        value={departureInfo}
-                                        onChange={handleChange}
-                                    />
+                                    <div className="form-row">
+                                        <div className="form-group col-md-12">
+                                            <label className="lead">
+                                                Outbound Flight Departure Time
+                                                <span className="optional">
+                                                    *optional
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-6">
+                                            <input
+                                                type="date"
+                                                className="form-control"
+                                                id="departure"
+                                                placeholder="Date"
+                                                name="departureDate"
+                                                value={departureDate.length > 0 ? departureDate : 'Date'}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                        <div className="form-group col-md-6">
+                                            <input
+                                                type="time"
+                                                className="form-control"
+                                                id="departure"
+                                                placeholder="Time"
+                                                name="departureTime"
+                                                value={departureTime.length > 0 ? departureTime : 'Date'}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-6">
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="departureAirport"
+                                                placeholder="Airport"
+                                                name="departureAirport"
+                                                value={departureAirport}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                        <div className="form-group col-md-6">
+                                            <input
+                                                type="number"
+                                                className="form-control"
+                                                id="departureFlight"
+                                                placeholder="Flight No."
+                                                name="departureFlight"
+                                                value={departureFlight}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-6">
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="departureAirline"
+                                                placeholder="Departure Airline"
+                                                name="departureAirline"
+                                                value={departureAirline}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                        <div className="form-group col-md-6">
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="destination"
+                                                placeholder="Destination City"
+                                                name="destination"
+                                                value={destination}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-12">
+                                            <label htmlFor="departureInfo" className="light-label">Departure Connection Info</label>
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-12">
+                                            <textarea
+                                                type="text"
+                                                className="form-control"
+                                                id="departureInfo"
+                                                placeholder="Optional"
+                                                rows="2"
+                                                name="departureInfo"
+                                                value={departureInfo}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         }

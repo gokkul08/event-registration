@@ -29,7 +29,7 @@ class Step1 extends Component {
         return (
             <div>
                 <div className="form-group">
-                    <div className="form-row break bottom-margin adjust">
+                    <div className="form-row">
                             <div className="lead">
                                 Attendee Information
                                 <span className="required">*required</span>
@@ -129,7 +129,7 @@ class Step1 extends Component {
                     </div>
                     <hr className="breaker"/>
                     <div className="form-row">
-                        <p className="lead semantic">Preferred address for Shipping</p>
+                        <p className="lead">Preferred address for Shipping</p>
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-12">

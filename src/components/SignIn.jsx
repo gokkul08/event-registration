@@ -30,60 +30,68 @@ class SignIn extends Component {
     render() {
         const { email, password, forgotPassword } = this.state;
         return (
-            <div>
-            <Welcome/>
-            <div className="jumbotron sign">
-                <form className="container text-center sign-in" onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <div className="form-row request">
-                            Please sign in:
+            <div className="form-group">
+                <div className="form-row">
+                    <div className="form-group col-md-10">
+                        <Welcome/>
+                    </div>
+                </div>
+                <div className="form-row">
+                    <div className="form-group col-md-6">
+                        <div className="jumbotron sign">
+                            <form className="container text-center sign-in" onSubmit={this.handleSubmit}>
+                                <div className="form-group">
+                                    <div className="form-row request">
+                                        Please sign in:
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <div className="form-row">
+                                        <div className="form-group col-md-12">
+                                            <input
+                                                type="email"
+                                                className="form-control"
+                                                name="email"
+                                                placeholder="Email"
+                                                value={email}
+                                                onChange={this.handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-12">
+                                            <input
+                                                type="password"
+                                                className="form-control"
+                                                name="password"
+                                                placeholder="Password"
+                                                value={password}
+                                                onChange={this.handleChange}
+                                            />
+                                            {forgotPassword && <span><i className="material-icons">error_outline</i><label className="forgot password">Email/Password incorrect. Please try again</label></span>}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="form-row break">
+                                    <div className="form-group col-md-6">
+                                        <input type="submit" className="btn btn-primary btn-lg sign-up" value="SIGN IN"/>
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                        <Link to="/forgotpassword">
+                                            <label className="forgot">Forgot Password?</label>
+                                        </Link>
+                                    </div>
+                                </div>
+                                <hr className="line-break"/>
+                                <div className="account">Don't have an account?
+                                    <Link to="/signup">
+                                        <span className="register text-decoration-none"> Register Now</span>
+                                    </Link>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div className="form-group">
-                        <div className="form-row">
-                            <div className="form-group col-md-12">
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    name="email"
-                                    placeholder="Email"
-                                    value={email}
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                        </div>
-                        <div className="form-row">
-                            <div className="form-group col-md-12">
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    name="password"
-                                    placeholder="Password"
-                                    value={password}
-                                    onChange={this.handleChange}
-                                />
-                                {forgotPassword && <span><i className="material-icons">error_outline</i><label className="forgot password">Email/Password incorrect. Please try again</label></span>}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="form-row break">
-                        <div className="form-group col-md-6">
-                            <input type="submit" className="btn btn-primary btn-lg sign-up" value="SIGN IN"/>
-                        </div>
-                        <div className="form-group col-md-6">
-                            <Link to="/forgotpassword">
-                                <label className="forgot">Forgot Password?</label>
-                            </Link>
-                        </div>
-                    </div>
-                    <hr className="line-break"/>
-                    <div className="account">Don't have an account?
-                        <Link to="/signup">
-                             <span className="register text-decoration-none"> Register Now</span>
-                        </Link>
-                    </div>
-                </form>
-            </div>
+                </div>
             </div>
         );
     }

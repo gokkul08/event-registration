@@ -32,7 +32,7 @@ class SignIn extends Component {
         return (
             <div className="form-group">
                 <div className="form-row">
-                    <div className="form-group col-md-10">
+                    <div className="form-group col-md-12">
                         <Welcome/>
                     </div>
                 </div>
@@ -83,9 +83,9 @@ class SignIn extends Component {
                                     </div>
                                 </div>
                                 <hr className="line-break"/>
-                                <div className="account">Don't have an account?
+                                <div className="account">Don't have an account?&nbsp;
                                     <Link to="/signup">
-                                        <span className="register text-decoration-none"> Register Now</span>
+                                        <span className="register text-decoration-none">Register Now</span>
                                     </Link>
                                 </div>
                             </form>

@@ -17,6 +17,7 @@ body {
     margin-left: 60px;
     margin-top: 90px;
     line-height: initial;
+    cursor: default;
   }
 
   .App-header {
@@ -31,8 +32,15 @@ body {
 
   .jumbotron {
     background-color: #ffffff;
+    height: 80%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    max-width: 1024px;
 
     &.faq {
+      max-width: 1280px;
       .accordion {
           .title:not(:first-child) {
             border-top: 0.5px solid rgb(213, 213, 213);
@@ -52,15 +60,26 @@ body {
         }
         .accordion {
           margin: 0;
-          padding-left: 45px;
+          padding-left: 65px;
           .indent {
             margin-left: 22px;
+          }
+          i {
+            text-indent: 0;
           }
           .title {
             font-family: 'Montserrat', serif;
             font-size: 21px;
             font-weight: bold;
             border-top: 0.5px solid rgb(213, 213, 213);
+            text-indent: -1.3em;
+            padding-left: 22px;
+          }
+
+          .content {
+            .indent {
+              cursor: default;
+            }
           }
         }
       }
@@ -82,23 +101,17 @@ body {
       position: relative;
       top: -80px;
       left: 100%;
+      cursor: default;
     }
 
     &.sign {
       height: 90%;
-      width: 100%;
-      max-width: 535px;
+      width: 535px;
       margin-left: 60px;
       margin-top: 0;
       background-color: #00234c;
       opacity: .9;
     }
-
-    height: 80%;
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 100px;
-    max-width: 1024px;
 
     .request {
       font-family: 'Montserrat', serif;
@@ -108,6 +121,7 @@ body {
       margin-top: -25px;
       margin-bottom: 25px;
       margin-left: 15px;
+      cursor: default;
     }
 
     .reset {
@@ -140,6 +154,7 @@ body {
       font-weight: 300;
       font-size: 36px;
       color: #000000;
+      cursor: default;
 
       &.admin {
         margin-left: 0;
@@ -184,6 +199,7 @@ body {
       font-family: 'Montserrat', serif;
       font-size: 21px;
       color: #ffffff;
+      cursor: default;
 
       a {
         text-decoration: none !important;
@@ -232,6 +248,19 @@ body {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   border-color: #787878;
+  &.select {
+    margin-top: 10px;
+  }
+}
+
+.is-invalid {
+  &.select-error {
+    background-image: none;
+  }
+}
+
+.invalid-feedback {
+  font-size: 100%;
 }
 
 .sign-out {
@@ -310,13 +339,15 @@ body {
   font-weight: bold;
   font-size: 18px;
   color: #003c84;
+  margin-bottom: 10px !important;
+  cursor: default;
   span {
     font-family: 'Poppins', sans-serif;
     font-size: 12px;
     margin-left: 5px;
     font-weight: normal;
     &.required {
-      color: #df6900;
+      color: #dc3545;
     }
     &.optional {
       color: #999999;
@@ -335,7 +366,7 @@ body {
     margin-left: 5px;
     font-weight: normal;
     &.required {
-      color: #df6900;
+      color: #dc3545;
     }
     &.optional {
       color: #999999;
@@ -344,14 +375,14 @@ body {
 }
 
 .required-break {
-  color: #df6900;
+  color: #dc3545;
 }
 
 .breaker {
   border-style: dotted;
   border-color: #a3a3a3;
   margin-top: .5rem;
-  margin-bottom: .5rem;
+  margin-bottom: 1.5rem;
 
   &.setter {
     margin-top: 20.5rem;
@@ -364,7 +395,7 @@ body {
   color: #003c84;
   font-size: 16px;
   margin-top: 5px;
-  margin-bottom: -5px;
+  margin-bottom: 5px;
 }
 
 .thank-you {
@@ -384,10 +415,13 @@ body {
 }
 
 @media only screen
-and (min-width: 1580px) {
+and (max-width: 575px) {
   .App-container {
     .jumbotron {
-      margin-left: 25%;
+      .step {
+        top: -53px;
+        left: 96%;
+      }
     }
   }
 }
@@ -416,6 +450,11 @@ and (max-device-width: 450px) {
 
         &.faq {
           height: 100%;
+          .accordion {
+            .accordion {
+              padding-left: 45px;
+            }
+          }
         }
 
         .attendee {

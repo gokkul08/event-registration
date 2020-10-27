@@ -3,7 +3,7 @@ import arrowForward from "../images/arrow_forward.png";
 
 class Step3 extends Component {
     render() {
-        const { currentStep, value } = this.props;
+        const { currentStep, hasError, value } = this.props;
         const {
             commercialOrPrivate,
             privateAirport,
@@ -47,25 +47,37 @@ class Step3 extends Component {
                         <div className="form-row">
                             <div className="form-group col-md-6">
                                 <span className="light-label">Are you flying Commercial or Private?</span>
-                                <select id="inputState" className="form-control select" onChange={handleChange}
+                                <select id="inputState" className={hasError("commercialOrPrivate") ? "form-control is-invalid select-error" : "form-control"} onChange={handleChange}
                                         value={commercialOrPrivate} name="commercialOrPrivate">
                                     <option value="Choose option" disabled>Choose option</option>
                                     <option value="Commercial">Commercial</option>
                                     <option value="Private">Private</option>
                                 </select>
+                                {
+                                    hasError("commercialOrPrivate") &&
+                                    <div className="invalid-feedback">
+                                        Please select an option
+                                    </div>
+                                }
                             </div>
                         </div>
                         { commercialOrPrivate==='Private' &&
                             <div className="form-row">
                                 <div className="form-group col-md-12">
                                     <span className="light-label">Which airport is closest to you?</span>
-                                    <select id="airport" className="form-control select" onChange={handleChange}
+                                    <select id="airport" className={hasError("privateAirport") ? "form-control is-invalid select-error" : "form-control"} onChange={handleChange}
                                             value={privateAirport} name="privateAirport">
                                         <option value="Choose airport" disabled>Choose airport</option>
                                         <option value="Teterboro-112 Charles Lindberg Drive, Teterboro, NJ 08608">Teterboro—112 Charles Lindberg Drive, Teterboro, NJ 08608</option>
                                         <option value="Denver—Rocky Mountain Metro 9107 Rocky Road, Broomfield, CO 80021">Denver—Rocky Mountain Metro 9107 Rocky Road, Broomfield, CO 80021</option>
                                         <option value="Oakland–Metropolitan Oakland international, 8735 Earhart Road, Airport station, Oakland CA 94621">Oakland–Metropolitan Oakland international, 8735 Earhart Road, Airport station, Oakland CA 94621</option>
                                     </select>
+                                    {
+                                        hasError("privateAirport") &&
+                                        <div className="invalid-feedback">
+                                            Please choose an airport
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         }

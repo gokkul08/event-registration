@@ -88,9 +88,9 @@ class SignUp extends Component {
                                         </div>
                                     </div>
                                     <hr className="line-break"/>
-                                    <div className="account">Already have an account?
+                                    <div className="account">Already have an account?&nbsp;
                                         <Link to="/">
-                                            <span className="register text-decoration-none"> SIGN IN</span>
+                                            <span className="register text-decoration-none">SIGN IN</span>
                                         </Link>
                                     </div>
                                 </div>

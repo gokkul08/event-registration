@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class Step2 extends Component {
     render() {
-        const { currentStep, value } = this.props;
+        const { currentStep, hasError,  value } = this.props;
         const {
             executiveAsstName,
             executiveAsstEmail,
@@ -40,28 +40,40 @@ class Step2 extends Component {
                                 <div className="form-group col-md-12">
                                     <input
                                         type="text"
-                                        className="form-control"
+                                        className={hasError("executiveAsstName") ? "form-control is-invalid" : "form-control"}
                                         id="asstName"
                                         placeholder="Name *"
                                         name="executiveAsstName"
-                                        required
                                         value={executiveAsstName}
                                         onChange={handleChange}
+                                        required
                                     />
+                                    {
+                                        hasError("executiveAsstName") &&
+                                        <div className="invalid-feedback">
+                                            Please enter assistant name
+                                        </div>
+                                    }
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-group col-md-12">
                                 <input
                                     type="email"
-                                    className="form-control"
+                                    className={hasError("executiveAsstEmail") ? "form-control is-invalid" : "form-control"}
                                     id="asstEmail"
-                                    placeholder="Email"
+                                    placeholder="Email *"
                                     name="executiveAsstEmail"
-                                    required
                                     value={executiveAsstEmail}
                                     onChange={handleChange}
+                                    required
                                 />
+                                    {
+                                        hasError("executiveAsstEmail") &&
+                                        <div className="invalid-feedback">
+                                            Please enter valid email
+                                        </div>
+                                    }
                                 </div>
                             </div>
                             <div className="form-row">
@@ -72,7 +84,6 @@ class Step2 extends Component {
                                         id="eophone"
                                         placeholder="Office Phone"
                                         pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                                        required
                                         name="executiveAsstOfficePhone"
                                         value={executiveAsstOfficePhone}
                                         onChange={handleChange}
@@ -81,15 +92,21 @@ class Step2 extends Component {
                                 <div className="form-group col-md-12">
                                     <input
                                         type="tel"
-                                        className="form-control"
+                                        className={hasError("executiveAsstMobilePhone") ? "form-control is-invalid" : "form-control"}
                                         id="emphone"
                                         placeholder="Mobile Phone *"
                                         pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                                        required
                                         name="executiveAsstMobilePhone"
                                         value={executiveAsstMobilePhone}
                                         onChange={handleChange}
+                                        required
                                     />
+                                    {
+                                        hasError("executiveAsstMobilePhone") &&
+                                        <div className="invalid-feedback">
+                                            Please enter valid 9 digits
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -106,43 +123,61 @@ class Step2 extends Component {
                                 <div className="form-group col-md-12">
                                     <input
                                         type="text"
-                                        className="form-control"
+                                        className={hasError("emergencyContactName") ? "form-control is-invalid" : "form-control"}
                                         id="emerName"
-                                        placeholder="Name"
+                                        placeholder="Name *"
                                         name="emergencyContactName"
-                                        required
                                         value={emergencyContactName}
                                         onChange={handleChange}
+                                        required
                                     />
+                                    {
+                                        hasError("emergencyContactName") &&
+                                        <div className="invalid-feedback">
+                                            Please enter your emergency name
+                                        </div>
+                                    }
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-group col-md-12">
                                     <input
                                         type="email"
-                                        className="form-control"
+                                        className={hasError("emergencyEmail") ? "form-control is-invalid" : "form-control"}
                                         id="emergencyEmail"
-                                        placeholder="Email"
+                                        placeholder="Email *"
                                         name="emergencyEmail"
-                                        required
                                         value={emergencyEmail}
                                         onChange={handleChange}
+                                        required
                                     />
+                                    {
+                                        hasError("emergencyEmail") &&
+                                        <div className="invalid-feedback">
+                                            Please enter a valid email
+                                        </div>
+                                    }
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-group col-md-12">
                                     <input
                                         type="tel"
-                                        className="form-control"
+                                        className={hasError("emergencyContactNumber") ? "form-control is-invalid" : "form-control"}
                                         id="emerphone"
-                                        placeholder="Phone"
+                                        placeholder="Phone *"
                                         pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                                        required
                                         name="emergencyContactNumber"
                                         value={emergencyContactNumber}
                                         onChange={handleChange}
+                                        required
                                     />
+                                    {
+                                        hasError("emergencyContactNumber") &&
+                                        <div className="invalid-feedback">
+                                            Please enter valid 9 digits
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -186,7 +221,7 @@ class Step2 extends Component {
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <label htmlFor="inputState" className="light-label">Jacket Size</label>
-                            <select id="inputState" className="form-control" onChange={handleChange} value={jacketSize} name="jacketSize">
+                            <select id="inputState" className={hasError("jacketSize") ? "form-control is-invalid select select-error" : "form-control"} onChange={handleChange} value={jacketSize} name="jacketSize">
                                 <option value="Choose size" disabled>Choose size</option>
                                 <option value="Womens - Small">Womens - Small</option>
                                 <option value="Womens - Medium">Womens - Medium</option>
@@ -198,6 +233,12 @@ class Step2 extends Component {
                                 <option value="Mens - XL">Mens - XL</option>
                                 <option value="Mens - XXL">Mens - XXL</option>
                             </select>
+                            {
+                                hasError("jacketSize") &&
+                                <div className="invalid-feedback">
+                                    Please select a size
+                                </div>
+                            }
                         </div>
                     </div>
                     <hr className="breaker"/>

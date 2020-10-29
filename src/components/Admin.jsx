@@ -35,9 +35,9 @@ const Admin = (props) => {
         emergencyContactNumber: "",
         specialDiet: "",
         specialNeeds: "",
-        jacketSize: "Women's - Extra Small",
-        originAndDestination: "Yes",
-        commercialOrPrivate: "Commercial",
+        jacketSize: "Choose size",
+        commercialOrPrivate: "Choose option",
+        privateAirport: "Choose airport",
         arrivalDate: "",
         departureDate: "",
         arrivalTime: "",
@@ -55,30 +55,71 @@ const Admin = (props) => {
     };
 
     const [state, setFormState] = useState(initialFormState);
+    const [error, setError] = useState([]);
 
     const [step, setStep] = useState(1);
     const [edit, setEdit] = useState(false);
     const initialEditValue = '';
     const [editValue, setEditValue] = useState(initialEditValue);
 
+    const handlePhoneInput = (value, previousValue) => {
+        if (!value) return value;
+        const currentValue = value.replace(/[^\d]/g, '');
+        const cvLength = currentValue.length;
+
+        if (!previousValue || value.length > previousValue.length) {
+            if (cvLength < 4) return currentValue;
+            if (cvLength < 7) return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3)}`;
+            return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3, 6)}-${currentValue.slice(6, 10)}`;
+        }
+    };
+
     const handleChange = event => {
         const {name, value} = event.target;
-        setFormState(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+        if (name === 'officePhone' || name === 'mobilePhone' || name === 'executiveAsstOfficePhone' || name === 'executiveAsstMobilePhone' || name === 'emergencyContactNumber') {
+            setFormState(prevState => ({
+                ...prevState,
+                [name]: handlePhoneInput(value, prevState[name])
+            }));
+        } else {
+            setFormState(prevState => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
+    };
+
+    const hasError = key => {
+        return error.indexOf(key) !== -1;
     };
 
     const handleSubmit = history => event => {
         event.preventDefault();
 
-        const response = responses.find(response => response.user.email === editValue);
+        const { commercialOrPrivate, privateAirport } = state;
+        let submitErrors = [];
 
-        firestore.collection('responses').doc(response.id).update(state);
-        history.history.push({
-            pathname: '/thankyouadmin',
-            search: `?confirm=${editValue}`
-        });
+        // Flight Dropdown Validation
+        if(commercialOrPrivate === 'Choose option') {
+            submitErrors.push("commercialOrPrivate");
+        }
+
+        //Private Airport Validation
+        if(commercialOrPrivate === 'Private' && privateAirport === 'Choose airport') {
+            submitErrors.push("privateAirport");
+        }
+
+        setError(submitErrors);
+
+        if (submitErrors.length === 0) {
+            const response = responses.find(response => response.user.email === editValue);
+
+            firestore.collection('responses').doc(response.id).update(state);
+            history.history.push({
+                pathname: '/thankyouadmin',
+                search: `?confirm=${editValue}`
+            });
+        }
     };
 
     const handleUserChange = (event) => {
@@ -87,6 +128,7 @@ const Admin = (props) => {
         const storedUserResponse = responses.find(response => response.user.email === value);
         setFormState({...state, ...storedUserResponse});
         setEditValue(value);
+        setError([]);
     };
 
     const cancelEdit = () => {
@@ -112,9 +154,108 @@ const Admin = (props) => {
     };
 
     const _next = () => {
-        let currentStep = step;
-        currentStep = currentStep >= 2 ? 3 : currentStep + 1;
-        setStep(currentStep);
+        const {
+            firstName,
+            lastName,
+            mobilePhone,
+            emailAddress,
+            stateUS,
+            executiveAsstName,
+            executiveAsstEmail,
+            executiveAsstMobilePhone,
+            emergencyContactName,
+            emergencyEmail,
+            emergencyContactNumber,
+            jacketSize,
+        } = state;
+
+        let errors = [];
+        const expression = /\S+@\S+/;
+        const phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+
+        if(step === 1) {
+            // First Name
+            if (firstName === '') {
+                errors.push('firstName');
+            }
+
+            // Last Name
+            if (lastName === '') {
+                errors.push('lastName');
+            }
+
+            // Personal Email
+            let validEmail = expression.test(String(emailAddress).toLowerCase());
+
+            if (!validEmail) {
+                errors.push("emailAddress");
+            }
+
+            // Mobile Phone
+            let validMobile = mobilePhone.match(phoneno);
+
+            if (!validMobile) {
+                errors.push("mobilePhone");
+            }
+
+            // State Dropdown
+            if(stateUS === 'State') {
+                errors.push("stateUS");
+            }
+        }
+
+        if(step === 2) {
+            // Executive Assistant Name
+            if (executiveAsstName === '') {
+                errors.push('executiveAsstName');
+            }
+
+            // Executive Assistant Mobile
+            let validAssistantMobile = executiveAsstMobilePhone.match(phoneno);
+            if (!validAssistantMobile) {
+                errors.push("executiveAsstMobilePhone");
+            }
+
+            // Executive Assistant Email
+            let validAssistantEmail = expression.test(String(executiveAsstEmail).toLowerCase());
+
+            if (!validAssistantEmail) {
+                errors.push("executiveAsstEmail");
+            }
+
+            // Emergency Name
+            if (emergencyContactName === '') {
+                errors.push('emergencyContactName');
+            }
+
+            // Emergency Mobile
+            let validEmergencyMobile = emergencyContactNumber.match(phoneno);
+            if (!validEmergencyMobile) {
+                errors.push("emergencyContactNumber");
+            }
+
+            // Emergency Email
+            let validEmergencyEmail = expression.test(String(emergencyEmail).toLowerCase());
+
+            if (!validEmergencyEmail) {
+                errors.push("emergencyEmail");
+            }
+
+            // Giveaway Dropdown
+            if(jacketSize === 'Choose size') {
+                errors.push("jacketSize");
+            }
+        }
+
+        setError(errors);
+
+        if (errors.length > 0) {
+            setStep(step);
+        } else {
+            let currentStep = step;
+            currentStep = currentStep >= 2 ? 3 : currentStep + 1;
+            setStep(currentStep);
+        }
     };
 
     const _prev = () => {
@@ -152,7 +293,7 @@ const Admin = (props) => {
     };
 
     return (
-        <div className="jumbotron">
+        <div className={`jumbotron ${step}`}>
             <span className="step">{step} / 3</span>
                 <div className="form-group">
                     <div className="form-row">
@@ -160,7 +301,7 @@ const Admin = (props) => {
                             <div className="welcome admin">Welcome Admin</div>
                         </div>
                         <div className="form-group col-md-5">
-                            <select id="editResponse" className="form-control admin-top" onChange={handleUserChange} name="editResponse" value={editValue}>
+                            <select id="editResponse" className={`form-control admin-top ${step}`} onChange={handleUserChange} name="editResponse" value={editValue}>
                                 <option value='' disabled>Edit User</option>
                                 {
                                     responses.map(response =>
@@ -177,16 +318,19 @@ const Admin = (props) => {
                         <Step1
                             currentStep={step}
                             handleChange={handleChange}
+                            hasError={hasError}
                             value={state}
                         />
                         <Step2
                             currentStep={step}
                             handleChange={handleChange}
+                            hasError={hasError}
                             value={state}
                         />
                         <Step3
                             currentStep={step}
                             handleChange={handleChange}
+                            hasError={hasError}
                             value={state}
                         />
                         {nextButton()}
@@ -196,7 +340,7 @@ const Admin = (props) => {
             }
             {
                 !edit &&
-                    <hr className="breaker setter" />
+                    <hr className="breaker" />
             }
             <div className="btn sign-out"
                  onClick={signOut}>

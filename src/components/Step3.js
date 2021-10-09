@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import arrowForward from "../images/arrow_forward.png";
 
 class Step3 extends Component {
     render() {
@@ -40,7 +39,7 @@ class Step3 extends Component {
                         <div className="form-row">
                             <div className="form-group col-md-12">
                                 <div className="alert alert-warning alert-note" role="alert">
-                                    <b>*Note:</b> IAC will be arranging private flight accommodation from New York, Denver and San Francisco.  If you are able to get yourself to one of those locations, please choose Private
+                                    <b>*Note:</b> IAC will attempt to make private flight arrangements from New York, San Francisco, and possibly other cities (depending on interest and participant locations). Please let us know your planned departure city but note that private travel is not guaranteed at this time. We will follow up with confirmation/instructions when available.
                                 </div>
                             </div>
                         </div>
@@ -297,10 +296,6 @@ class Step3 extends Component {
                         }
                         <hr className="breaker" />
                     </div>
-                <button
-                    className="btn btn-warning float-right next button-style">
-                    Submit&nbsp;<img src={arrowForward} alt="forward-arrow"/>
-                </button>
             </div>
         )
     }

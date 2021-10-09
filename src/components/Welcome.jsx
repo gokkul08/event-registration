@@ -4,7 +4,7 @@ const Welcome = () => {
     return (
         <div className="headline">
             <div className="line1">
-                Welcome to the 2020
+                Welcome to the 2021
             </div>
             <div className="line2">
                 IAC Annual Planning Meeting

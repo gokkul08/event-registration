@@ -2,6 +2,7 @@ import React, {useState, useContext, useEffect} from 'react';
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
+import Step4 from "./Step4";
 import {firestore, auth, signOut} from "../firebase";
 import {ResponsesContext} from '../providers/ResponsesProvider';
 import {Route} from 'react-router-dom';
@@ -51,6 +52,11 @@ const FormsContainer = (props) => {
         destination: "",
         arrivalInfo: "",
         departureInfo: "",
+        massageOrFacial: "Choose option",
+        maleOrFemaleTherapist: "Choose option",
+        tennisPro: "Choose option",
+        golfPro: "Choose option",
+        golfGroup: "Choose option",
     });
 
     const [error, setError] = useState([]);
@@ -141,6 +147,11 @@ const FormsContainer = (props) => {
             destination,
             arrivalInfo,
             departureInfo,
+            massageOrFacial,
+            maleOrFemaleTherapist,
+            tennisPro,
+            golfPro,
+            golfGroup,
         } = state;
 
         let submitErrors = [];
@@ -199,6 +210,11 @@ const FormsContainer = (props) => {
                 destination,
                 arrivalInfo,
                 departureInfo,
+                massageOrFacial,
+                maleOrFemaleTherapist,
+                tennisPro,
+                golfPro,
+                golfGroup,
                 user: {
                     uid,
                     displayName,
@@ -314,7 +330,7 @@ const FormsContainer = (props) => {
             setStep(step);
         } else {
             let currentStep = step;
-            currentStep = currentStep >= 2 ? 3 : currentStep + 1;
+            currentStep = currentStep >= 3 ? 4 : currentStep + 1;
             setStep(currentStep);
         }
     };
@@ -341,7 +357,7 @@ const FormsContainer = (props) => {
 
     const nextButton = () => {
         let currentStep = step;
-        if (currentStep < 3) {
+        if (currentStep < 4) {
             return (
                 <button
                     className="btn btn-warning float-right next button-style"
@@ -355,7 +371,7 @@ const FormsContainer = (props) => {
 
     return (
         <div className={`jumbotron ${step}`}>
-            <span className="step">{step} / 3</span>
+            <span className="step">{step} / 4</span>
             <div className="welcome">Welcome {displayName}</div>
             <Route render={(history) => (
                 <form onSubmit={handleSubmit(history)}>
@@ -372,6 +388,12 @@ const FormsContainer = (props) => {
                         value={state}
                     />
                     <Step3
+                        currentStep={step}
+                        handleChange={handleChange}
+                        hasError={hasError}
+                        value={state}
+                    />
+                    <Step4
                         currentStep={step}
                         handleChange={handleChange}
                         hasError={hasError}

@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
+import Step4 from "./Step4";
 import { firestore, signOut } from "../firebase";
 import { ResponsesContext } from '../providers/ResponsesProvider';
 import { Route } from 'react-router-dom';
@@ -52,6 +53,11 @@ const Admin = (props) => {
         destination: "",
         arrivalInfo: "",
         departureInfo: "",
+        massageOrFacial: "Choose option",
+        maleOrFemaleTherapist: "Choose option",
+        tennisPro: "Yes/No",
+        golfPro: "Yes/No",
+        golfGroup: "Yes/No",
     };
 
     const [state, setFormState] = useState(initialFormState);
@@ -139,11 +145,11 @@ const Admin = (props) => {
     };
 
     const exportData = (responses) => {
-        let responseData = [["First Name", "Last Name", "Company", "Title", "Office Phone", "Mobile Phone", "Email Address", "Address Line 1", "Address Line 2", "City", "State", "Zip Code", "Executive Assistant's Name", "Executive Assistant's Email", "EA's Office Phone", "EA's Mobile Phone", "Emergency Contact Name", "Emergency Contact Email", "Emergency Contact Phone", "Special Diet or Food Allergies", "ADA/Special Needs", "Jacket Size", "Origin/Destination-NYC", "Are you flying Commercial/Private", "Arrival Date", "Departure Date","Arrival Time", "Departure Time", "Arrival Airport", "Departure Airport", "Arrival Flight#", "Departure Flight#", "Arrival Airline", "Departure Airline", "Origin City", "Destination City", "Arrival Info", "Departure Info"]];
+        let responseData = [["First Name", "Last Name", "Company", "Title", "Office Phone", "Mobile Phone", "Email Address", "Address Line 1", "Address Line 2", "City", "State", "Zip Code", "Executive Assistant's Name", "Executive Assistant's Email", "EA's Office Phone", "EA's Mobile Phone", "Emergency Contact Name", "Emergency Contact Email", "Emergency Contact Phone", "Special Diet or Food Allergies", "ADA/Special Needs", "Jacket Size", "Origin/Destination-NYC", "Are you flying Commercial/Private", "Arrival Date", "Departure Date","Arrival Time", "Departure Time", "Arrival Airport", "Departure Airport", "Arrival Flight#", "Departure Flight#", "Arrival Airline", "Departure Airline", "Origin City", "Destination City", "Arrival Info", "Departure Info", "Massage or Facial", "Therapist Gender", "Tennis Professional Session", "Golf Professional Session", "Group Golf Session"]];
         if (responses && responses.length > 0) {
             responses.forEach(response => {
-                const { firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, specialDiet, specialNeeds, jacketSize, originAndDestination, commercialOrPrivate, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo   } = response;
-                let responseArray = [firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, specialDiet, specialNeeds, jacketSize, originAndDestination, commercialOrPrivate, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo];
+                const { firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, specialDiet, specialNeeds, jacketSize, originAndDestination, commercialOrPrivate, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo, massageOrFacial, maleOrFemaleTherapist,tennisPro,golfPro,golfGroup } = response;
+                let responseArray = [firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, specialDiet, specialNeeds, jacketSize, originAndDestination, commercialOrPrivate, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo, massageOrFacial, maleOrFemaleTherapist,tennisPro,golfPro,golfGroup];
                 responseData.push(responseArray);
             });
             const wb = XLSX.utils.book_new();
@@ -253,7 +259,7 @@ const Admin = (props) => {
             setStep(step);
         } else {
             let currentStep = step;
-            currentStep = currentStep >= 2 ? 3 : currentStep + 1;
+            currentStep = currentStep >= 3 ? 4 : currentStep + 1;
             setStep(currentStep);
         }
     };
@@ -280,7 +286,7 @@ const Admin = (props) => {
 
     const nextButton = () => {
         let currentStep = step;
-        if (currentStep < 3) {
+        if (currentStep < 4) {
             return (
                 <button
                     className="btn btn-warning float-right next button-style"
@@ -294,7 +300,7 @@ const Admin = (props) => {
 
     return (
         <div className={`jumbotron ${step}`}>
-            <span className="step">{step} / 3</span>
+            <span className="step">{step} / 4</span>
                 <div className="form-group">
                     <div className="form-row">
                         <div className="form-group col-md-4">
@@ -333,6 +339,12 @@ const Admin = (props) => {
                             hasError={hasError}
                             value={state}
                         />
+                        <Step4
+                            currentStep={step}
+                            handleChange={handleChange}
+                            hasError={hasError}
+                            value={state}
+                    />
                         {nextButton()}
                         {previousButton()}
                     </form>

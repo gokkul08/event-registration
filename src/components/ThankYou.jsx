@@ -20,12 +20,9 @@ const ThankYou = (props) => {
                     </div>
                     <br/>
                     <div className="form-row thank-you">
-                        <span>If you have any questions or concerns please contact Marites Gonzales in the IAC Events Department at <a href="mailto: APM2020@iac.com">APM2020@iac.com</a></span>
+                        <span>If you have any questions or concerns please contact Marites Gonzales in the IAC Events Department at <a href="mailto: APM2021@iac.com">APM2021@iac.com</a></span>
                     </div>
                     <br />
-                    <div className="form-row thank-you">
-                        <span>Click&nbsp;<a href="./faq" target="_blank" rel="noopener noreferrer">here</a>&nbsp;for frequently asked questions and COVID related information.</span>
-                    </div>
                 </div>
                 <div className="bottom">
                     <hr className="breaker" />

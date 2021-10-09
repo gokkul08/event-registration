@@ -43,7 +43,7 @@ const ThankYouAdmin = (props) => {
                     </div>
                     <br/>
                     <div className="form-row thank-you">
-                        If you have any questions or concerns please contact Marites Gonzales in the IAC Events Department at <a href="mailto: APM2020@iac.com">APM2020@iac.com</a>
+                        If you have any questions or concerns please contact Marites Gonzales in the IAC Events Department at <a href="mailto: APM2021@iac.com">APM2021@iac.com</a>
                     </div>
                     <br />
                     <div className="form-row thank-you">

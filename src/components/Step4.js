@@ -23,6 +23,16 @@ class Step4 extends Component {
         return(
             <div>
                     <div className="form-group">
+                    <div className="form-row">
+                            <div className="lead">Activities</div>
+                        </div>
+                        <div className="form-row">
+                            <div className="form-group col-md-12">
+                                <div className="alert alert-warning alert-note" role="alert">
+                                    We have organized a variety of activities designed for you to connect with your colleagues and enjoy the beauty of the Sonoran Desert.  Activities will be available throughout the day on Tuesday 11/9 and Wednesday 11/10 for you to drop into as your schedule allows. You’ll receive more information on these activities upon arrival. Additionally, we are offering the following OPTIONAL activities that require prior registration. Please indicate your interest below.
+                                </div>
+                            </div>
+                        </div>
                         <div className="form-row">
                             <div className="lead">Massage</div>
                         </div>

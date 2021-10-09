@@ -6,7 +6,7 @@ import { UserContext } from "../providers/UserProvider";
 
 const Authentication = () => {
     const user = useContext(UserContext);
-    if (user && (user.email === 'iacapmevents@gmail.com' || user.email === 'APM2020@iac.com')) {
+    if (user && (user.email === 'iacapmevents@gmail.com' || user.email === 'APM2020@iac.com' || user.email === 'APM2021@iac.com')) {
         return <div><Admin /></div>
     }
     return <div>{user ? <FormsContainer {...user} /> : <SignIn />}</div>;

@@ -190,7 +190,7 @@ class Step2 extends Component {
                         <div className="form-group col-md-6">
                             <label className="light-label">
                                 Special Diet or Food Allergies
-                                <span className="optional">*optional</span>
+                                <span className="optional">(optional)</span>
                             </label>
                             <textarea
                                 className="form-control"
@@ -205,7 +205,7 @@ class Step2 extends Component {
                         <div className="form-group col-md-6">
                             <label className="light-label">
                                 ADA / Special Requirements
-                                <span className="optional">*optional</span>
+                                <span className="optional">(optional)</span>
                             </label>
                             <textarea
                                 className="form-control"
@@ -220,7 +220,7 @@ class Step2 extends Component {
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label htmlFor="inputState" className="light-label">Jacket Size</label>
+                            <label htmlFor="inputState" className="light-label">Jacket Size<span className="required-break">*required</span></label>
                             <select id="inputState" className={hasError("jacketSize") ? "form-control is-invalid select select-error" : "form-control"} onChange={handleChange} value={jacketSize} name="jacketSize">
                                 <option value="Choose size" disabled>Choose size</option>
                                 <option value="Womens - Small">Womens - Small</option>

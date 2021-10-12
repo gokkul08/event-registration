@@ -5,7 +5,8 @@ class Step3 extends Component {
         const { currentStep, hasError, value } = this.props;
         const {
             commercialOrPrivate,
-            privateAirport,
+            privateAirportDeparture,
+            privateAirportReturn,
             arrivalDate,
             departureDate,
             arrivalTime,
@@ -63,18 +64,47 @@ class Step3 extends Component {
                         { commercialOrPrivate==='Private' &&
                             <div className="form-row">
                                 <div className="form-group col-md-12">
-                                    <span className="light-label">Which airport is closest to you?</span>
-                                    <select id="airport" className={hasError("privateAirport") ? "form-control is-invalid select-error" : "form-control"} onChange={handleChange}
+                                    <span className="light-label">Which airport is closest to you for departure?</span>
+                                    <input
+                                        type="text"
+                                        className={hasError("privateAirportDeparture") ? "form-control is-invalid" : "form-control"}
+                                        id="privateAirportDeparture"
+                                        placeholder="Departing Airport * (ex: Teterboro)"
+                                        name="privateAirportDeparture"
+                                        value={privateAirportDeparture}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                    {/* <select id="airport" className={hasError("privateAirport") ? "form-control is-invalid select-error" : "form-control"} onChange={handleChange}
                                             value={privateAirport} name="privateAirport">
                                         <option value="Choose airport" disabled>Choose airport</option>
                                         <option value="Teterboro-112 Charles Lindberg Drive, Teterboro, NJ 08608">Teterboro—112 Charles Lindberg Drive, Teterboro, NJ 08608</option>
                                         <option value="Denver—Rocky Mountain Metro 9107 Rocky Road, Broomfield, CO 80021">Denver—Rocky Mountain Metro 9107 Rocky Road, Broomfield, CO 80021</option>
                                         <option value="Oakland–Metropolitan Oakland international, 8735 Earhart Road, Airport station, Oakland CA 94621">Oakland–Metropolitan Oakland international, 8735 Earhart Road, Airport station, Oakland CA 94621</option>
-                                    </select>
+                                    </select> */}
                                     {
-                                        hasError("privateAirport") &&
+                                        hasError("privateAirportDeparture") &&
                                         <div className="invalid-feedback">
-                                            Please choose an airport
+                                            Please enter an airport for departure
+                                        </div>
+                                    }
+                                </div>
+                                <div className="form-group col-md-12">
+                                    <span className="light-label">Which airport do you want to return to?</span>
+                                    <input
+                                        type="text"
+                                        className={hasError("privateAirportReturn") ? "form-control is-invalid" : "form-control"}
+                                        id="privateAirportReturn"
+                                        placeholder="Returning Airport * (ex: Teterboro)"
+                                        name="privateAirportReturn"
+                                        value={privateAirportReturn}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                    {
+                                        hasError("privateAirportReturn") &&
+                                        <div className="invalid-feedback">
+                                            Please enter an airport for your return
                                         </div>
                                     }
                                 </div>

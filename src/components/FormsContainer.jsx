@@ -37,7 +37,8 @@ const FormsContainer = (props) => {
         specialNeeds: "",
         jacketSize: "Choose size",
         commercialOrPrivate: "Choose option",
-        privateAirport: "Choose airport",
+        privateAirportDeparture: "",
+        privateAirportReturn: "",
         arrivalDate: "",
         departureDate: "",
         arrivalTime: "",
@@ -132,7 +133,8 @@ const FormsContainer = (props) => {
             specialNeeds,
             jacketSize,
             commercialOrPrivate,
-            privateAirport,
+            privateAirportDeparture,
+            privateAirportReturn,
             arrivalDate,
             departureDate,
             arrivalTime,
@@ -162,8 +164,15 @@ const FormsContainer = (props) => {
         }
 
         //Private Airport Validation
-        if(commercialOrPrivate === 'Private' && privateAirport === 'Choose airport') {
-            submitErrors.push("privateAirport");
+        if(commercialOrPrivate === 'Private') {
+            // test departure 
+            if (privateAirportDeparture === '') {
+                submitErrors.push("privateAirportDeparture");
+            }
+            // test return 
+            if (privateAirportReturn === '') {
+                submitErrors.push("privateAirportReturn");
+            }
         }
 
         setError(submitErrors);
@@ -195,7 +204,8 @@ const FormsContainer = (props) => {
                 specialNeeds,
                 jacketSize,
                 commercialOrPrivate,
-                privateAirport,
+                privateAirportDeparture,
+                privateAirportReturn,
                 arrivalDate,
                 departureDate,
                 arrivalTime,
@@ -244,6 +254,9 @@ const FormsContainer = (props) => {
             emergencyEmail,
             emergencyContactNumber,
             jacketSize,
+            commercialOrPrivate,
+            privateAirportDeparture,
+            privateAirportReturn
         } = state;
 
         let errors = [];
@@ -321,6 +334,25 @@ const FormsContainer = (props) => {
             // Giveaway Dropdown
             if(jacketSize === 'Choose size') {
                 errors.push("jacketSize");
+            }
+        }
+
+        if (step === 3) {
+            // Commercial or Private?
+            if (commercialOrPrivate === "Choose option") {
+                errors.push("commercialOrPrivate");
+            }
+            
+            // if we are private check for departure and return info 
+            if (commercialOrPrivate === 'Private') {
+                // test departure 
+                if (privateAirportDeparture === '') {
+                    errors.push("privateAirportDeparture");
+                }
+                // test return 
+                if (privateAirportReturn === '') {
+                    errors.push("privateAirportReturn");
+                }
             }
         }
 

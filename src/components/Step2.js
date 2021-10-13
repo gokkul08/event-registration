@@ -290,7 +290,7 @@ class Step2 extends Component {
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-12">
-                            <div className="alert alert-warning alert-note" role="alert">
+                            <div className="alert alert-warning alert-note-disclaimer" role="alert">
                                 <i>Allergy Disclaimer: We make every effort to identify ingredients that may cause allergic reactions for those individuals with food allergies. 
                                     Effort is made to instruct our food production partners on the severity of food allergies. Because of the number of meals served and the number of items used each day, 
                                     along with food product changes from food vendors, it cannot be guaranteed that every allergen in the food served will be identified and labeled. 

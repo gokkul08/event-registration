@@ -6,6 +6,7 @@ class Step3 extends Component {
         const {
             commercialOrPrivate,
             privateAirportDeparture,
+            otherPrivateAirportDeparture,
             privateAirportReturn,
             arrivalDate,
             departureDate,
@@ -41,9 +42,9 @@ class Step3 extends Component {
                         <div className="form-row">
                             <div className="form-group col-md-12">
                                 <div className="alert alert-warning alert-note" role="alert">
-                                    <b>*Note: We are assessing private flight arrangements and will likely have private departures from NYC (Teterboro) and Oakland. 
+                                    <b>*Note: We are assessing private flight arrangements and will likely have private departures, depending on participant location.  
                                         Please indicate below if you can get to Teterboro or Oakland on the morning of Monday, November 8th for a flight to Arizona. 
-                                        If not, please choose commercial and enter your flight details. Please plan to arrive at the hotel for a 6:30pm welcome reception on Monday 11/8.
+                                        If not, please enter your departure city and we will contact you if private accommodation is feasible. Please plan to arrive at the hotel for a 6:30pm welcome reception on Monday 11/8.
                                         <br/><br/>PLEASE NOTE:</b> <br/>
                                         Before you book your commercial flight, please confirm with the IAC Events Team at <a href="mailto: APM2021@iac.com">APM2021@iac.com</a>
                                         <br/><br/><b><u>Private</u></b><br/>
@@ -95,6 +96,7 @@ class Step3 extends Component {
                                         <option value="Choose airport" disabled>Choose airport</option>
                                         <option value="Teterboro">Teterboro-- Jet Aviation: 112 Charles Lindberg Dr., Teterboro, NJ 07608</option>
                                         <option value="Oakland">Oakland-–Metropolitan Oakland International KaiserAir: 8735 Earhart Rd., Oakland, CA 94621</option>
+                                        <option value="Other">Other</option>
                                     </select>
                                     {
                                         hasError("privateAirportDeparture") &&
@@ -103,6 +105,27 @@ class Step3 extends Component {
                                         </div>
                                     }
                                 </div>
+                                { privateAirportDeparture === 'Other' && 
+                                    <div className="form-group col-md-12">
+                                        <label className="light-label">Please specify which private airport is closest to you for departure<span className="required-break">*required</span></label>
+                                        <input
+                                            type="text"
+                                            className={hasError("otherPrivateAirportDeparture") ? "form-control is-invalid" : "form-control"}
+                                            id="otherPrivateAirportDeparture"
+                                            placeholder=""
+                                            name="otherPrivateAirportDeparture"
+                                            value={otherPrivateAirportDeparture}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                        {
+                                            hasError("otherPrivateAirportDeparture") &&
+                                            <div className="invalid-feedback">
+                                                Please specify 
+                                            </div>
+                                        }
+                                    </div>
+                                }
                                 <div className="form-group col-md-12">
                                     <span className="light-label">Is your return city the same as your departure city? If No or Other, please specify:</span>
                                     <select id="inputReturn" className="form-control" onChange={handleChange} value={returnCitySelect} name="returnCitySelect">

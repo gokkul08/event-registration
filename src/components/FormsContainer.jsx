@@ -40,6 +40,7 @@ const FormsContainer = (props) => {
         jacketSize: "Choose size",
         commercialOrPrivate: "Choose option",
         privateAirportDeparture: "Choose airport",
+        otherPrivateAirportDeparture: "",
         returnCitySelect: "Yes",
         privateAirportReturn: "",
         arrivalDate: "",
@@ -139,6 +140,7 @@ const FormsContainer = (props) => {
             jacketSize,
             commercialOrPrivate,
             privateAirportDeparture,
+            otherPrivateAirportDeparture,
             returnCitySelect,
             privateAirportReturn,
             arrivalDate,
@@ -213,6 +215,7 @@ const FormsContainer = (props) => {
                 jacketSize,
                 commercialOrPrivate,
                 privateAirportDeparture,
+                otherPrivateAirportDeparture,
                 returnCitySelect,
                 privateAirportReturn,
                 arrivalDate,
@@ -270,6 +273,7 @@ const FormsContainer = (props) => {
             jacketSize,
             commercialOrPrivate,
             privateAirportDeparture,
+            otherPrivateAirportDeparture,
             returnCitySelect,
             privateAirportReturn,
         } = state;
@@ -392,6 +396,13 @@ const FormsContainer = (props) => {
                     // test return 
                     if (privateAirportReturn === '') {
                         errors.push("privateAirportReturn");
+                    }
+                }
+
+                // test for private "other"
+                if (privateAirportDeparture === 'Other') {
+                    if (otherPrivateAirportDeparture === '') {
+                        errors.push("otherPrivateAirportDeparture");
                     }
                 }
             }

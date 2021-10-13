@@ -33,11 +33,14 @@ const FormsContainer = (props) => {
         emergencyContactName: "",
         emergencyEmail: "",
         emergencyContactNumber: "",
-        specialDiet: "",
+        dietaryRestrictions: "None",
+        allergies: "None",
+        allergyOther: "",
         specialNeeds: "",
         jacketSize: "Choose size",
         commercialOrPrivate: "Choose option",
-        privateAirportDeparture: "",
+        privateAirportDeparture: "Choose airport",
+        returnCitySelect: "Yes",
         privateAirportReturn: "",
         arrivalDate: "",
         departureDate: "",
@@ -57,7 +60,7 @@ const FormsContainer = (props) => {
         maleOrFemaleTherapist: "Choose option",
         tennisPro: "Choose option",
         golfPro: "Choose option",
-        golfGroup: "Choose option",
+        // golfGroup: "Choose option",
     });
 
     const [error, setError] = useState([]);
@@ -129,11 +132,14 @@ const FormsContainer = (props) => {
             emergencyContactName,
             emergencyEmail,
             emergencyContactNumber,
-            specialDiet,
+            dietaryRestrictions,
+            allergies,
+            allergyOther,
             specialNeeds,
             jacketSize,
             commercialOrPrivate,
             privateAirportDeparture,
+            returnCitySelect,
             privateAirportReturn,
             arrivalDate,
             departureDate,
@@ -153,7 +159,7 @@ const FormsContainer = (props) => {
             maleOrFemaleTherapist,
             tennisPro,
             golfPro,
-            golfGroup,
+            // golfGroup,
         } = state;
 
         let submitErrors = [];
@@ -200,11 +206,14 @@ const FormsContainer = (props) => {
                 emergencyContactName,
                 emergencyEmail,
                 emergencyContactNumber,
-                specialDiet,
+                dietaryRestrictions,
+                allergies,
+                allergyOther,
                 specialNeeds,
                 jacketSize,
                 commercialOrPrivate,
                 privateAirportDeparture,
+                returnCitySelect,
                 privateAirportReturn,
                 arrivalDate,
                 departureDate,
@@ -224,7 +233,7 @@ const FormsContainer = (props) => {
                 maleOrFemaleTherapist,
                 tennisPro,
                 golfPro,
-                golfGroup,
+                // golfGroup,
                 user: {
                     uid,
                     displayName,
@@ -244,6 +253,8 @@ const FormsContainer = (props) => {
         const {
             firstName,
             lastName,
+            company,
+            title,
             mobilePhone,
             emailAddress,
             stateUS,
@@ -253,10 +264,14 @@ const FormsContainer = (props) => {
             emergencyContactName,
             emergencyEmail,
             emergencyContactNumber,
+            allergies,
+            allergyOther,
+            specialNeeds,
             jacketSize,
             commercialOrPrivate,
             privateAirportDeparture,
-            privateAirportReturn
+            returnCitySelect,
+            privateAirportReturn,
         } = state;
 
         let errors = [];
@@ -272,6 +287,16 @@ const FormsContainer = (props) => {
             // Last Name
             if (lastName === '') {
                 errors.push('lastName');
+            }
+
+            // Company 
+            if (company === '') {
+                errors.push('company')
+            }
+
+            // Title
+            if (title === '') {
+                errors.push('title')
             }
 
             // Personal Email
@@ -331,6 +356,19 @@ const FormsContainer = (props) => {
                 errors.push("emergencyEmail");
             }
 
+            // Test Allergy
+            if (allergies === 'Other') {
+                // Test if allergy is specified
+                if (allergyOther === '') {
+                    errors.push('allergyOther');
+                }
+            }
+
+            // Test special needs
+            if (specialNeeds === '') {
+                errors.push('specialNeeds');
+            }
+
             // Giveaway Dropdown
             if(jacketSize === 'Choose size') {
                 errors.push("jacketSize");
@@ -346,12 +384,15 @@ const FormsContainer = (props) => {
             // if we are private check for departure and return info 
             if (commercialOrPrivate === 'Private') {
                 // test departure 
-                if (privateAirportDeparture === '') {
+                if (privateAirportDeparture === 'Choose airport') {
                     errors.push("privateAirportDeparture");
                 }
-                // test return 
-                if (privateAirportReturn === '') {
-                    errors.push("privateAirportReturn");
+
+                if (returnCitySelect === 'No or Other') {
+                    // test return 
+                    if (privateAirportReturn === '') {
+                        errors.push("privateAirportReturn");
+                    }
                 }
             }
         }

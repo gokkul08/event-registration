@@ -77,24 +77,38 @@ class Step1 extends Component {
                         <div className="form-group col-md-6">
                             <input
                                 type="text"
-                                className="form-control"
+                                className={hasError("company") ? "form-control is-invalid" : "form-control"}
                                 id="company"
-                                placeholder="Company"
+                                placeholder="Company *"
                                 name="company"
                                 value={company}
                                 onChange={handleChange}
+                                required
                             />
+                            {
+                                hasError("company") &&
+                                <div className="invalid-feedback">
+                                    Please enter your company name
+                                </div>
+                            }
                         </div>
                         <div className="form-group col-md-6">
                             <input
                                 type="text"
-                                className="form-control"
+                                className={hasError("title") ? "form-control is-invalid" : "form-control"}
                                 id="title"
-                                placeholder="Title"
+                                placeholder="Title *"
                                 name="title"
                                 value={title}
                                 onChange={handleChange}
+                                required
                             />
+                            {
+                                hasError("title") &&
+                                <div className="invalid-feedback">
+                                    Please enter your title
+                                </div>
+                            }
                         </div>
                     </div>
                     <div className="form-row">
@@ -151,7 +165,7 @@ class Step1 extends Component {
                     </div>
                     <hr className="breaker"/>
                     <div className="form-row">
-                        <p className="lead">Preferred address for Shipping</p>
+                        <p className="lead">Preferred Shipping Address</p>
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-12">

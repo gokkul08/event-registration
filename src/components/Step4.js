@@ -9,7 +9,7 @@ class Step4 extends Component {
             maleOrFemaleTherapist,
             tennisPro,
             golfPro,
-            golfGroup,
+            // golfGroup,
         } = value;
 
         if (currentStep !== 4) {
@@ -29,16 +29,20 @@ class Step4 extends Component {
                         <div className="form-row">
                             <div className="form-group col-md-12">
                                 <div className="alert alert-warning alert-note" role="alert">
-                                    We have organized a variety of activities designed for you to connect with your colleagues and enjoy the beauty of the Sonoran Desert.  Activities will be available throughout the day on Tuesday 11/9 and Wednesday 11/10 for you to drop into as your schedule allows. You’ll receive more information on these activities upon arrival. Additionally, we are offering the following OPTIONAL activities that require prior registration. Please indicate your interest below.
+                                    We have organized a variety of activities designed for you to connect with your colleagues and enjoy the beauty of the Sonoran Desert.  
+                                    Activities will be available throughout the day on Tuesday 11/9 and Wednesday 11/10 for you to drop into as your schedule allows. 
+                                    You’ll receive more information on these activities upon arrival. Additionally, we are offering the following OPTIONAL activities that require prior registration. Please indicate your interest below.
+                                    <br/><br/>
+                                    We will do our best to accommodate your preferences as your schedule and availability permits. Please contact <a href="mailto: Activities@iac.com">Activities@iac.com</a> with any activity related questions.
                                 </div>
                             </div>
                         </div>
                         <div className="form-row">
-                            <div className="lead">Massage</div>
+                            <div className="lead">Spa Services <span className="light-lead">(Please note, you will be asked to complete a health questionnaire upon arrival at the spa.)</span></div>
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-12">
-                                <span className="light-label">Experience a 50-minute relaxing massage treatment or a 50 minute Ritz-Carlton award-winning holistic spa facial</span>
+                                <span className="light-label">Experience a 50 minute relaxing massage or 50 minute holistic facial at Ritz-Carlton’s award winning spa</span>
                                 <select id="massageOrFacial" className={hasError("massageOrFacial") ? "form-control is-invalid select-error" : "form-control"} onChange={handleChange}
                                         value={massageOrFacial} name="massageOrFacial">
                                     <option value="Choose option" disabled>Choose option</option>
@@ -80,13 +84,13 @@ class Step4 extends Component {
                         <div className="form-row">
                             <div className="form-group col-md-12">
                                 <div className="alert alert-info alert-note" role="alert">
-                                    <b>Spend an hour with a tennis Pro at the Tennis Club at Dove Mountain for a private, 1-on-1 clinic</b>
+                                    <b>Spend an hour with a Tennis Pro at the Tennis Club at Dove Mountain for a private, 1-on-1 clinic</b>
                                 </div>
                             </div>
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-12">
-                                <span className="light-label">Are you interested in participating in a tennis clinic with a tennis pro?</span>
+                                <span className="light-label">Are you interested in participating in a tennis clinic with a Tennis Pro?</span>
                                 <select id="tennisPro" className={hasError("tennisPro") ? "form-control is-invalid select-error" : "form-control"} onChange={handleChange}
                                         value={tennisPro} name="tennisPro">
                                     <option value="Choose option" disabled>Choose option</option>
@@ -108,13 +112,13 @@ class Step4 extends Component {
                         <div className="form-row">
                             <div className="form-group col-md-12">
                                 <div className="alert alert-info alert-note" role="alert">
-                                    <b>Spend an hour with a golf Pro at the famous Golf Club at Dove Mountain for a private, 1-on-1 clinic</b>
+                                    <b>Spend an hour with a Golf Pro at the renowned Golf Club at Dove Mountain for a private, 1-on-1 clinic</b>
                                 </div>
                             </div>
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-12">
-                                <span className="light-label">Are you interested in participating in a golf clinic with a golf pro?</span>
+                                <span className="light-label">Are you interested in participating in a golf clinic with a Golf Pro?</span>
                                 <select id="golfPro" className={hasError("golfPro") ? "form-control is-invalid select-error" : "form-control"} onChange={handleChange}
                                         value={golfPro} name="golfPro">
                                     <option value="Choose option" disabled>Choose option</option>
@@ -129,7 +133,7 @@ class Step4 extends Component {
                                 }
                             </div>
                         </div>
-                        <div className="form-row">
+                        {/* <div className="form-row">
                             <div className="form-group col-md-12">
                                 <span className="light-label">If there are enough participating, would you be interested in joining a group round of golf?</span>
                                 <select id="golfGroup" className={hasError("golfGroup") ? "form-control is-invalid select-error" : "form-control"} onChange={handleChange}
@@ -145,7 +149,7 @@ class Step4 extends Component {
                                     </div>
                                 }
                             </div>
-                        </div>
+                        </div> */}
                         <hr className="breaker" />
                     </div>
                 <button

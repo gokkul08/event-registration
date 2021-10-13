@@ -21,6 +21,7 @@ class Step3 extends Component {
             destination,
             arrivalInfo,
             departureInfo,
+            returnCitySelect,
         } = value;
 
         if (currentStep !== 3) {
@@ -40,7 +41,21 @@ class Step3 extends Component {
                         <div className="form-row">
                             <div className="form-group col-md-12">
                                 <div className="alert alert-warning alert-note" role="alert">
-                                    <b>*Note:</b> IAC will attempt to make private flight arrangements from New York, San Francisco, and possibly other cities (depending on interest and participant locations). Please let us know your planned departure city but note that private travel is not guaranteed at this time. We will follow up with confirmation/instructions when available.
+                                    <b>*Note: We are assessing private flight arrangements and will likely have private departures from NYC (Teterboro) and Oakland. 
+                                        Please indicate below if you can get to Teterboro or Oakland on the morning of Monday, November 8th for a flight to Arizona. 
+                                        If not, please choose commercial and enter your flight details. Please plan to arrive at the hotel for a 6:30pm welcome reception on Monday 11/8.
+                                        <br/><br/>PLEASE NOTE:</b> <br/>
+                                        Before you book your commercial flight, please confirm with the IAC Events Team at <a href="mailto: APM2021@iac.com">APM2021@iac.com</a>
+                                        <br/><br/><b><u>Private</u></b><br/>
+                                        <b>Teterboro</b> Jet Aviation: 112 Charles Lindberg Dr., Teterboro, NJ 07608<br/>
+                                        <b>Oakland</b> Metropolitan Oakland International KaiserAir: 8735 Earhart Rd., Oakland, CA 94621<br/>
+                                        <br/>
+                                        Closest commercial airport is Tucson, AZ, which is a 45 minute drive. Phoenix Sky Harbor airport is 1.5-2 hour drive. <span className="highlight">All ground transportation will be arranged by the IAC Events Team.</span>
+                                        <br/><br/>
+                                        <b><u>Hotel address:</u> <br/>
+                                        The Ritz-Carlton, Dove Mountain </b><br/>
+                                        15000 N Secret Springs Dr, Marana, AZ 85658 <br/>
+                                        Phone: (520) 572-3000 <br/>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +80,7 @@ class Step3 extends Component {
                             <div className="form-row">
                                 <div className="form-group col-md-12">
                                     <span className="light-label">Which airport is closest to you for departure?</span>
-                                    <input
+                                    {/* <input
                                         type="text"
                                         className={hasError("privateAirportDeparture") ? "form-control is-invalid" : "form-control"}
                                         id="privateAirportDeparture"
@@ -74,14 +89,13 @@ class Step3 extends Component {
                                         value={privateAirportDeparture}
                                         onChange={handleChange}
                                         required
-                                    />
-                                    {/* <select id="airport" className={hasError("privateAirport") ? "form-control is-invalid select-error" : "form-control"} onChange={handleChange}
-                                            value={privateAirport} name="privateAirport">
+                                    /> */}
+                                    <select id="inputDeparture" className={hasError("privateAirportDeparture") ? "form-control is-invalid select-error" : "form-control"} onChange={handleChange}
+                                            value={privateAirportDeparture} name="privateAirportDeparture">
                                         <option value="Choose airport" disabled>Choose airport</option>
-                                        <option value="Teterboro-112 Charles Lindberg Drive, Teterboro, NJ 08608">Teterboro—112 Charles Lindberg Drive, Teterboro, NJ 08608</option>
-                                        <option value="Denver—Rocky Mountain Metro 9107 Rocky Road, Broomfield, CO 80021">Denver—Rocky Mountain Metro 9107 Rocky Road, Broomfield, CO 80021</option>
-                                        <option value="Oakland–Metropolitan Oakland international, 8735 Earhart Road, Airport station, Oakland CA 94621">Oakland–Metropolitan Oakland international, 8735 Earhart Road, Airport station, Oakland CA 94621</option>
-                                    </select> */}
+                                        <option value="Teterboro">Teterboro-- Jet Aviation: 112 Charles Lindberg Dr., Teterboro, NJ 07608</option>
+                                        <option value="Oakland">Oakland-–Metropolitan Oakland International KaiserAir: 8735 Earhart Rd., Oakland, CA 94621</option>
+                                    </select>
                                     {
                                         hasError("privateAirportDeparture") &&
                                         <div className="invalid-feedback">
@@ -90,24 +104,33 @@ class Step3 extends Component {
                                     }
                                 </div>
                                 <div className="form-group col-md-12">
-                                    <span className="light-label">Which airport do you want to return to?</span>
-                                    <input
-                                        type="text"
-                                        className={hasError("privateAirportReturn") ? "form-control is-invalid" : "form-control"}
-                                        id="privateAirportReturn"
-                                        placeholder="Returning Airport * (ex: Teterboro)"
-                                        name="privateAirportReturn"
-                                        value={privateAirportReturn}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    {
-                                        hasError("privateAirportReturn") &&
-                                        <div className="invalid-feedback">
-                                            Please enter an airport for your return
-                                        </div>
-                                    }
+                                    <span className="light-label">Is your return city the same as your departure city? If No or Other, please specify:</span>
+                                    <select id="inputReturn" className="form-control" onChange={handleChange} value={returnCitySelect} name="returnCitySelect">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No or Other">No or Other</option>
+                                    </select>
                                 </div>
+                                { returnCitySelect === 'No or Other' && 
+                                    <div className="form-group col-md-12">
+                                        <label className="light-label">Please specify<span className="required-break">*required</span></label>
+                                        <input
+                                            type="text"
+                                            className={hasError("privateAirportReturn") ? "form-control is-invalid" : "form-control"}
+                                            id="privateAirportReturn"
+                                            placeholder=""
+                                            name="privateAirportReturn"
+                                            value={privateAirportReturn}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                        {
+                                            hasError("privateAirportReturn") &&
+                                            <div className="invalid-feedback">
+                                                Please specify 
+                                            </div>
+                                        }
+                                    </div>
+                                }
                             </div>
                         }
                         {

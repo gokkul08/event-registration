@@ -34,11 +34,14 @@ const Admin = (props) => {
         emergencyContactName: "",
         emergencyEmail: "",
         emergencyContactNumber: "",
-        specialDiet: "",
+        dietaryRestrictions: "None",
+        allergies: "None",
+        allergyOther: "",
         specialNeeds: "",
         jacketSize: "Choose size",
         commercialOrPrivate: "Choose option",
-        privateAirportDeparture: "",
+        privateAirportDeparture: "Choose airport",
+        returnCitySelect: "Yes",
         privateAirportReturn: "",
         arrivalDate: "",
         departureDate: "",
@@ -58,7 +61,7 @@ const Admin = (props) => {
         maleOrFemaleTherapist: "Choose option",
         tennisPro: "Yes/No",
         golfPro: "Yes/No",
-        golfGroup: "Yes/No",
+        // golfGroup: "Yes/No",
     };
 
     const [state, setFormState] = useState(initialFormState);
@@ -153,11 +156,11 @@ const Admin = (props) => {
     };
 
     const exportData = (responses) => {
-        let responseData = [["First Name", "Last Name", "Company", "Title", "Office Phone", "Mobile Phone", "Email Address", "Address Line 1", "Address Line 2", "City", "State", "Zip Code", "Executive Assistant's Name", "Executive Assistant's Email", "EA's Office Phone", "EA's Mobile Phone", "Emergency Contact Name", "Emergency Contact Email", "Emergency Contact Phone", "Special Diet or Food Allergies", "ADA/Special Needs", "Jacket Size", "Origin/Destination-NYC", "Are you flying Commercial/Private", "Private Airport Departure", "Private Airport Return", "Arrival Date", "Departure Date","Arrival Time", "Departure Time", "Arrival Airport", "Departure Airport", "Arrival Flight#", "Departure Flight#", "Arrival Airline", "Departure Airline", "Origin City", "Destination City", "Arrival Info", "Departure Info", "Massage or Facial", "Therapist Gender", "Tennis Professional Session", "Golf Professional Session", "Group Golf Session"]];
+        let responseData = [["First Name", "Last Name", "Company", "Title", "Office Phone", "Mobile Phone", "Email Address", "Address Line 1", "Address Line 2", "City", "State", "Zip Code", "Executive Assistant's Name", "Executive Assistant's Email", "EA's Office Phone", "EA's Mobile Phone", "Emergency Contact Name", "Emergency Contact Email", "Emergency Contact Phone", "Dietary Restrictions", "Allergies", "Allergies Other", "ADA/Special Needs", "Jacket Size", "Origin/Destination-NYC", "Are you flying Commercial/Private", "Private Airport Departure", "Returning to Same City as Departure", "Return Specifics", "Arrival Date", "Departure Date","Arrival Time", "Departure Time", "Arrival Airport", "Departure Airport", "Arrival Flight#", "Departure Flight#", "Arrival Airline", "Departure Airline", "Origin City", "Destination City", "Arrival Info", "Departure Info", "Massage or Facial", "Therapist Gender", "Tennis Professional Session", "Golf Professional Session"]];
         if (responses && responses.length > 0) {
             responses.forEach(response => {
-                const { firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, specialDiet, specialNeeds, jacketSize, originAndDestination, commercialOrPrivate, privateAirportDeparture, privateAirportReturn, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo, massageOrFacial, maleOrFemaleTherapist,tennisPro,golfPro,golfGroup } = response;
-                let responseArray = [firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, specialDiet, specialNeeds, jacketSize, originAndDestination, commercialOrPrivate, privateAirportDeparture, privateAirportReturn, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo, massageOrFacial, maleOrFemaleTherapist,tennisPro,golfPro,golfGroup];
+                const { firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, dietaryRestrictions, allergies, allergyOther, specialNeeds, jacketSize, originAndDestination, commercialOrPrivate, privateAirportDeparture, returnCitySelect, privateAirportReturn, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo, massageOrFacial, maleOrFemaleTherapist,tennisPro,golfPro } = response;
+                let responseArray = [firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, dietaryRestrictions, allergies, allergyOther, specialNeeds, jacketSize, originAndDestination, commercialOrPrivate, privateAirportDeparture, returnCitySelect, privateAirportReturn, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo, massageOrFacial, maleOrFemaleTherapist,tennisPro,golfPro];
                 responseData.push(responseArray);
             });
             const wb = XLSX.utils.book_new();
@@ -171,6 +174,8 @@ const Admin = (props) => {
         const {
             firstName,
             lastName,
+            company,
+            title,
             mobilePhone,
             emailAddress,
             stateUS,
@@ -180,9 +185,13 @@ const Admin = (props) => {
             emergencyContactName,
             emergencyEmail,
             emergencyContactNumber,
+            allergies,
+            allergyOther,
+            specialNeeds,
             jacketSize,
             commercialOrPrivate,
             privateAirportDeparture,
+            returnCitySelect,
             privateAirportReturn
         } = state;
 
@@ -199,6 +208,16 @@ const Admin = (props) => {
             // Last Name
             if (lastName === '') {
                 errors.push('lastName');
+            }
+
+            // Company 
+            if (company === '') {
+                errors.push('company')
+            }
+
+            // Title
+            if (title === '') {
+                errors.push('title')
             }
 
             // Personal Email
@@ -258,6 +277,19 @@ const Admin = (props) => {
                 errors.push("emergencyEmail");
             }
 
+            // Test Allergy
+            if (allergies === 'Other') {
+                // Test if allergy is specified
+                if (allergyOther === '') {
+                    errors.push('allergyOther');
+                }
+            }
+
+            // Test special needs
+            if (specialNeeds === '') {
+                errors.push('specialNeeds');
+            }
+
             // Giveaway Dropdown
             if(jacketSize === 'Choose size') {
                 errors.push("jacketSize");
@@ -273,12 +305,15 @@ const Admin = (props) => {
             // if we are private check for departure and return info 
             if (commercialOrPrivate === 'Private') {
                 // test departure 
-                if (privateAirportDeparture === '') {
+                if (privateAirportDeparture === 'Choose airport') {
                     errors.push("privateAirportDeparture");
                 }
-                // test return 
-                if (privateAirportReturn === '') {
-                    errors.push("privateAirportReturn");
+
+                if (returnCitySelect === 'No or Other') {
+                    // test return 
+                    if (privateAirportReturn === '') {
+                        errors.push("privateAirportReturn");
+                    }
                 }
             }
         }

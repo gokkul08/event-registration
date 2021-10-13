@@ -172,16 +172,16 @@ const FormsContainer = (props) => {
         }
 
         //Private Airport Validation
-        if(commercialOrPrivate === 'Private') {
-            // test departure 
-            if (privateAirportDeparture === '') {
-                submitErrors.push("privateAirportDeparture");
-            }
-            // test return 
-            if (privateAirportReturn === '') {
-                submitErrors.push("privateAirportReturn");
-            }
-        }
+        // if(commercialOrPrivate === 'Private') {
+        //     // test departure 
+        //     if (privateAirportDeparture === '') {
+        //         submitErrors.push("privateAirportDeparture");
+        //     }
+        //     // test return 
+        //     if (privateAirportReturn === '') {
+        //         submitErrors.push("privateAirportReturn");
+        //     }
+        // }
 
         setError(submitErrors);
 
@@ -392,11 +392,9 @@ const FormsContainer = (props) => {
                     errors.push("privateAirportDeparture");
                 }
 
-                if (returnCitySelect === 'No or Other') {
-                    // test return 
-                    if (privateAirportReturn === '') {
-                        errors.push("privateAirportReturn");
-                    }
+                // test return airport selection / input
+                if (returnCitySelect === 'No or Other' && privateAirportReturn === '') {
+                    errors.push("privateAirportReturn");
                 }
 
                 // test for private "other"

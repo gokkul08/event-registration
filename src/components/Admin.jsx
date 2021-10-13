@@ -107,7 +107,7 @@ const Admin = (props) => {
     const handleSubmit = history => event => {
         event.preventDefault();
 
-        const { commercialOrPrivate, privateAirportDeparture, privateAirportReturn } = state;
+        const { commercialOrPrivate } = state;
         let submitErrors = [];
 
         // Flight Dropdown Validation
@@ -116,16 +116,16 @@ const Admin = (props) => {
         }
 
         //Private Airport Validation
-        if(commercialOrPrivate === 'Private') {
-            // test departure 
-            if (privateAirportDeparture === '') {
-                submitErrors.push("privateAirportDeparture");
-            }
-            // test return 
-            if (privateAirportReturn === '') {
-                submitErrors.push("privateAirportReturn");
-            }
-        }
+        // if(commercialOrPrivate === 'Private') {
+        //     // test departure 
+        //     if (privateAirportDeparture === '') {
+        //         submitErrors.push("privateAirportDeparture");
+        //     }
+        //     // test return 
+        //     if (privateAirportReturn === '') {
+        //         submitErrors.push("privateAirportReturn");
+        //     }
+        // }
 
         setError(submitErrors);
 

@@ -16,7 +16,9 @@ class ForgotPassword extends Component {
         const {email} = this.state;
 
         try {
-            await auth.sendPasswordResetEmail(email);
+            await auth.sendPasswordResetEmail(email)
+            .then(() => console.log('','Your password reset mail has been sent'))
+            .catch(error => console.log('Error', error.message));
             this.setState({emailSent: true});
         } catch (error) {
             console.error(error);

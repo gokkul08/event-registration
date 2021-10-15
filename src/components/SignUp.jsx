@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import Welcome from "./Welcome";
 
 class SignUp extends Component {
-    state = {displayName: '', email: '', password: ''};
+    state = {displayName: '', email: '', password: '', alreadyRegistered: false, hasError: false,};
 
     handleChange = event => {
         const {name, value} = event.target;
@@ -16,19 +16,37 @@ class SignUp extends Component {
         const {email, password, displayName} = this.state;
 
         try {
-            const {user} = await auth.createUserWithEmailAndPassword(email, password);
+            this.setState({alreadyRegistered: false});
+            this.setState({hasError: false});
+            const {user} = await auth.createUserWithEmailAndPassword(email, password)
+            .catch(error => {   
+                console.log(error);
+                switch(error.code) {
+                    case 'auth/email-already-in-use':
+                        this.setState({ alreadyRegistered: true});
+                        break;
+                    default:
+                        this.setState({ hasError: true});
+                        break;
+               }
+             });
 
             await createUserProfileDocument(user, {displayName});
         } catch (error) {
             console.error(error);
         }
 
+        console.log(this.state.alreadyRegistered);
+        console.log(this.state.hasError);
         this.setState({displayName: '', email: '', password: ''});
-        this.props.history.push('/');
+        if (!this.state.alreadyRegistered && !this.state.hasError) {
+            this.props.history.push('/');
+        }
+        
     };
 
     render() {
-        const {displayName, email, password} = this.state;
+        const {displayName, email, password, alreadyRegistered, hasError} = this.state;
         return (
             <div className="form-group">
                 <div className="form-row">
@@ -80,6 +98,8 @@ class SignUp extends Component {
                                                 value={password}
                                                 onChange={this.handleChange}
                                             />
+                                            {alreadyRegistered && <span className="icon-padding"><i className="material-icons">error_outline</i><label className="forgot password">The email address is already in use. Please sign in</label></span>}
+                                            {hasError && <span className="icon-padding"><i className="material-icons">error_outline</i><label className="forgot password">There was an error trying to Register your account.</label></span>}
                                         </div>
                                     </div>
                                     <div className="form-row">

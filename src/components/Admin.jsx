@@ -39,7 +39,7 @@ const Admin = (props) => {
         allergyOther: "",
         specialNeeds: "",
         jacketSize: "Choose size",
-        commercialOrPrivate: "Choose option",
+        // commercialOrPrivate: "Choose option",
         privateAirportDeparture: "Choose airport",
         otherPrivateAirportDeparture: "",
         returnCitySelect: "Yes",
@@ -58,6 +58,8 @@ const Admin = (props) => {
         destination: "",
         arrivalInfo: "",
         departureInfo: "",
+        riseAndShineYoga: "Choose option",
+        guidedMorningHike: "Choose option",
         massageOrFacial: "Choose option",
         maleOrFemaleTherapist: "Choose option",
         tennisPro: "Yes/No",
@@ -107,25 +109,8 @@ const Admin = (props) => {
     const handleSubmit = history => event => {
         event.preventDefault();
 
-        const { commercialOrPrivate } = state;
+        // const { commercialOrPrivate } = state;
         let submitErrors = [];
-
-        // Flight Dropdown Validation
-        if(commercialOrPrivate === 'Choose option') {
-            submitErrors.push("commercialOrPrivate");
-        }
-
-        //Private Airport Validation
-        // if(commercialOrPrivate === 'Private') {
-        //     // test departure 
-        //     if (privateAirportDeparture === '') {
-        //         submitErrors.push("privateAirportDeparture");
-        //     }
-        //     // test return 
-        //     if (privateAirportReturn === '') {
-        //         submitErrors.push("privateAirportReturn");
-        //     }
-        // }
 
         setError(submitErrors);
 
@@ -157,11 +142,11 @@ const Admin = (props) => {
     };
 
     const exportData = (responses) => {
-        let responseData = [["First Name", "Last Name", "Company", "Title", "Office Phone", "Mobile Phone", "Email Address", "Address Line 1", "Address Line 2", "City", "State", "Zip Code", "Executive Assistant's Name", "Executive Assistant's Email", "EA's Office Phone", "EA's Mobile Phone", "Emergency Contact Name", "Emergency Contact Email", "Emergency Contact Phone", "Dietary Restrictions", "Allergies", "Allergies Other", "ADA/Special Needs", "Jacket Size", "Origin/Destination-NYC", "Are you flying Commercial/Private", "Private Airport Departure", "'Other' Private Airport", "Returning to Same City as Departure", "Return Specifics", "Arrival Date", "Departure Date","Arrival Time", "Departure Time", "Arrival Airport", "Departure Airport", "Arrival Flight#", "Departure Flight#", "Arrival Airline", "Departure Airline", "Origin City", "Destination City", "Arrival Info", "Departure Info", "Massage or Facial", "Therapist Gender", "Tennis Professional Session", "Golf Professional Session"]];
+        let responseData = [["First Name", "Last Name", "Company", "Title", "Office Phone", "Mobile Phone", "Email Address", "Address Line 1", "Address Line 2", "City", "State", "Zip Code", "Executive Assistant's Name", "Executive Assistant's Email", "EA's Office Phone", "EA's Mobile Phone", "Emergency Contact Name", "Emergency Contact Email", "Emergency Contact Phone", "Jacket Size", "Dietary Restrictions", "Allergies", "Other Allergies", "ADA/Special Needs", "Closest Airport for Departure", "User Entered Closest Airport for Departure", "Returning to Same City as Departure", "Return Specifics", "Arrival Date", "Departure Date","Arrival Time", "Departure Time", "Arrival Airport", "Departure Airport", "Arrival Flight#", "Departure Flight#", "Arrival Airline", "Departure Airline", "Origin City", "Destination City", "Arrival Info", "Departure Info", "Rise & Shine Yoga", "Guided Morning Hike", "Massage or Facial", "Therapist Gender", "Tennis Professional Session", "Golf Professional Session"]];
         if (responses && responses.length > 0) {
             responses.forEach(response => {
-                const { firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, dietaryRestrictions, allergies, allergyOther, specialNeeds, jacketSize, originAndDestination, commercialOrPrivate, privateAirportDeparture, otherPrivateAirportDeparture, returnCitySelect, privateAirportReturn, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo, massageOrFacial, maleOrFemaleTherapist,tennisPro,golfPro } = response;
-                let responseArray = [firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, dietaryRestrictions, allergies, allergyOther, specialNeeds, jacketSize, originAndDestination, commercialOrPrivate, privateAirportDeparture, otherPrivateAirportDeparture, returnCitySelect, privateAirportReturn, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo, massageOrFacial, maleOrFemaleTherapist,tennisPro,golfPro];
+                const { firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, jacketSize, dietaryRestrictions, allergies, allergyOther, specialNeeds, privateAirportDeparture, otherPrivateAirportDeparture, returnCitySelect, privateAirportReturn, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo, riseAndShineYoga, guidedMorningHike, massageOrFacial, maleOrFemaleTherapist,tennisPro,golfPro } = response;
+                let responseArray = [firstName, lastName, company, title, officePhone, mobilePhone, emailAddress, addressLine1, addressLine2, city, stateUS, zipCode, executiveAsstName, executiveAsstEmail, executiveAsstOfficePhone, executiveAsstMobilePhone, emergencyContactName, emergencyEmail, emergencyContactNumber, jacketSize, dietaryRestrictions, allergies, allergyOther, specialNeeds, privateAirportDeparture, otherPrivateAirportDeparture, returnCitySelect, privateAirportReturn, arrivalDate, departureDate, arrivalTime, departureTime, arrivalAirport, departureAirport, arrivalFlight, departureFlight, arrivalAirline, departureAirline, origin, destination, arrivalInfo, departureInfo, riseAndShineYoga, guidedMorningHike, massageOrFacial, maleOrFemaleTherapist,tennisPro,golfPro];
                 responseData.push(responseArray);
             });
             const wb = XLSX.utils.book_new();
@@ -179,7 +164,10 @@ const Admin = (props) => {
             title,
             mobilePhone,
             emailAddress,
+            addressLine1,
+            city,
             stateUS,
+            zipCode,
             executiveAsstName,
             executiveAsstEmail,
             executiveAsstMobilePhone,
@@ -190,7 +178,7 @@ const Admin = (props) => {
             allergyOther,
             specialNeeds,
             jacketSize,
-            commercialOrPrivate,
+            // commercialOrPrivate,
             privateAirportDeparture,
             otherPrivateAirportDeparture,
             returnCitySelect,
@@ -236,9 +224,24 @@ const Admin = (props) => {
                 errors.push("mobilePhone");
             }
 
+            // Address Line 1
+            if(addressLine1 === '') {
+                errors.push("addressLine1");
+            }
+
+            // City
+            if(city === '') {
+                errors.push("city");
+            }
+
             // State Dropdown
             if(stateUS === 'State') {
                 errors.push("stateUS");
+            }
+
+            // Zip
+            if(zipCode === '') {
+                errors.push("zip");
             }
         }
 
@@ -299,30 +302,23 @@ const Admin = (props) => {
         }
 
         if (step === 3) {
-            // Commercial or Private?
-            if (commercialOrPrivate === "Choose option") {
-                errors.push("commercialOrPrivate");
-            }
             
-            // if we are private check for departure and return info 
-            if (commercialOrPrivate === 'Private') {
-                // test departure 
-                if (privateAirportDeparture === 'Choose airport') {
-                    errors.push("privateAirportDeparture");
-                }
+            // test departure 
+            if (privateAirportDeparture === 'Choose airport') {
+                errors.push("privateAirportDeparture");
+            }
 
-                if (returnCitySelect === 'No or Other') {
-                    // test return 
-                    if (privateAirportReturn === '') {
-                        errors.push("privateAirportReturn");
-                    }
+            if (returnCitySelect === 'No or Other') {
+                // test return 
+                if (privateAirportReturn === '') {
+                    errors.push("privateAirportReturn");
                 }
+            }
 
-                // test for private "other"
-                if (privateAirportDeparture === 'Other') {
-                    if (otherPrivateAirportDeparture === '') {
-                        errors.push("otherPrivateAirportDeparture");
-                    }
+            // test for private "other"
+            if (privateAirportDeparture === 'Other') {
+                if (otherPrivateAirportDeparture === '') {
+                    errors.push("otherPrivateAirportDeparture");
                 }
             }
         }

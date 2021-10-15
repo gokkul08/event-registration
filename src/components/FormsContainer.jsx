@@ -38,7 +38,7 @@ const FormsContainer = (props) => {
         allergyOther: "",
         specialNeeds: "",
         jacketSize: "Choose size",
-        commercialOrPrivate: "Choose option",
+        // commercialOrPrivate: "Choose option",
         privateAirportDeparture: "Choose airport",
         otherPrivateAirportDeparture: "",
         returnCitySelect: "Yes",
@@ -57,6 +57,8 @@ const FormsContainer = (props) => {
         destination: "",
         arrivalInfo: "",
         departureInfo: "",
+        riseAndShineYoga: "Choose option",
+        guidedMorningHike: "Choose option",
         massageOrFacial: "Choose option",
         maleOrFemaleTherapist: "Choose option",
         tennisPro: "Choose option",
@@ -138,7 +140,7 @@ const FormsContainer = (props) => {
             allergyOther,
             specialNeeds,
             jacketSize,
-            commercialOrPrivate,
+            // commercialOrPrivate,
             privateAirportDeparture,
             otherPrivateAirportDeparture,
             returnCitySelect,
@@ -157,6 +159,8 @@ const FormsContainer = (props) => {
             destination,
             arrivalInfo,
             departureInfo,
+            riseAndShineYoga,
+            guidedMorningHike,
             massageOrFacial,
             maleOrFemaleTherapist,
             tennisPro,
@@ -165,23 +169,6 @@ const FormsContainer = (props) => {
         } = state;
 
         let submitErrors = [];
-
-        // Flight Dropdown Validation
-        if(commercialOrPrivate === 'Choose option') {
-            submitErrors.push("commercialOrPrivate");
-        }
-
-        //Private Airport Validation
-        // if(commercialOrPrivate === 'Private') {
-        //     // test departure 
-        //     if (privateAirportDeparture === '') {
-        //         submitErrors.push("privateAirportDeparture");
-        //     }
-        //     // test return 
-        //     if (privateAirportReturn === '') {
-        //         submitErrors.push("privateAirportReturn");
-        //     }
-        // }
 
         setError(submitErrors);
 
@@ -213,7 +200,7 @@ const FormsContainer = (props) => {
                 allergyOther,
                 specialNeeds,
                 jacketSize,
-                commercialOrPrivate,
+                // commercialOrPrivate,
                 privateAirportDeparture,
                 otherPrivateAirportDeparture,
                 returnCitySelect,
@@ -232,6 +219,8 @@ const FormsContainer = (props) => {
                 destination,
                 arrivalInfo,
                 departureInfo,
+                riseAndShineYoga,
+                guidedMorningHike,
                 massageOrFacial,
                 maleOrFemaleTherapist,
                 tennisPro,
@@ -260,7 +249,10 @@ const FormsContainer = (props) => {
             title,
             mobilePhone,
             emailAddress,
+            addressLine1,
+            city,
             stateUS,
+            zipCode,
             executiveAsstName,
             executiveAsstEmail,
             executiveAsstMobilePhone,
@@ -271,7 +263,7 @@ const FormsContainer = (props) => {
             allergyOther,
             specialNeeds,
             jacketSize,
-            commercialOrPrivate,
+            // commercialOrPrivate,
             privateAirportDeparture,
             otherPrivateAirportDeparture,
             returnCitySelect,
@@ -317,9 +309,24 @@ const FormsContainer = (props) => {
                 errors.push("mobilePhone");
             }
 
+            // Address Line 1
+            if(addressLine1 === '') {
+                errors.push("addressLine1");
+            }
+
+            // City
+            if(city === '') {
+                errors.push("city");
+            }
+
             // State Dropdown
             if(stateUS === 'State') {
                 errors.push("stateUS");
+            }
+
+            // Zip
+            if(zipCode === '') {
+                errors.push("zip");
             }
         }
 
@@ -380,28 +387,21 @@ const FormsContainer = (props) => {
         }
 
         if (step === 3) {
-            // Commercial or Private?
-            if (commercialOrPrivate === "Choose option") {
-                errors.push("commercialOrPrivate");
-            }
             
-            // if we are private check for departure and return info 
-            if (commercialOrPrivate === 'Private') {
-                // test departure 
-                if (privateAirportDeparture === 'Choose airport') {
-                    errors.push("privateAirportDeparture");
-                }
+            // test departure 
+            if (privateAirportDeparture === 'Choose airport') {
+                errors.push("privateAirportDeparture");
+            }
 
-                // test return airport selection / input
-                if (returnCitySelect === 'No or Other' && privateAirportReturn === '') {
-                    errors.push("privateAirportReturn");
-                }
+            // test return airport selection / input
+            if (returnCitySelect === 'No or Other' && privateAirportReturn === '') {
+                errors.push("privateAirportReturn");
+            }
 
-                // test for private "other"
-                if (privateAirportDeparture === 'Other') {
-                    if (otherPrivateAirportDeparture === '') {
-                        errors.push("otherPrivateAirportDeparture");
-                    }
+            // test for private "other"
+            if (privateAirportDeparture === 'Other') {
+                if (otherPrivateAirportDeparture === '') {
+                    errors.push("otherPrivateAirportDeparture");
                 }
             }
         }

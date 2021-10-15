@@ -189,6 +189,29 @@ class Step2 extends Component {
                         <div className="lead">Preferences</div>
                     </div>
                     <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <label htmlFor="inputState" className="light-label">Jacket Size<span className="required-break">*required</span></label>
+                            <select id="inputState" className={hasError("jacketSize") ? "form-control is-invalid select select-error" : "form-control"} onChange={handleChange} value={jacketSize} name="jacketSize">
+                                <option value="Choose size" disabled>Choose size</option>
+                                <option value="Womens - Small">Womens - Small</option>
+                                <option value="Womens - Medium">Womens - Medium</option>
+                                <option value="Womens - Large">Womens - Large</option>
+                                <option value="Womens - XL">Womens - XL</option>
+                                <option value="Mens - Small">Mens - Small</option>
+                                <option value="Mens - Medium">Mens - Medium</option>
+                                <option value="Mens - Large">Mens - Large</option>
+                                <option value="Mens - XL">Mens - XL</option>
+                                <option value="Mens - XXL">Mens - XXL</option>
+                            </select>
+                            {
+                                hasError("jacketSize") &&
+                                <div className="invalid-feedback">
+                                    Please select a size
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div className="form-row">
                         <div className="form-group col-md-12">
                             <label className="light-label">
                                 Dietary Restrictions
@@ -261,29 +284,6 @@ class Step2 extends Component {
                                 hasError("specialNeeds") &&
                                 <div className="invalid-feedback">
                                     Please complete
-                                </div>
-                            }
-                        </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group col-md-6">
-                            <label htmlFor="inputState" className="light-label">Jacket Size<span className="required-break">*required</span></label>
-                            <select id="inputState" className={hasError("jacketSize") ? "form-control is-invalid select select-error" : "form-control"} onChange={handleChange} value={jacketSize} name="jacketSize">
-                                <option value="Choose size" disabled>Choose size</option>
-                                <option value="Womens - Small">Womens - Small</option>
-                                <option value="Womens - Medium">Womens - Medium</option>
-                                <option value="Womens - Large">Womens - Large</option>
-                                <option value="Womens - XL">Womens - XL</option>
-                                <option value="Mens - Small">Mens - Small</option>
-                                <option value="Mens - Medium">Mens - Medium</option>
-                                <option value="Mens - Large">Mens - Large</option>
-                                <option value="Mens - XL">Mens - XL</option>
-                                <option value="Mens - XXL">Mens - XXL</option>
-                            </select>
-                            {
-                                hasError("jacketSize") &&
-                                <div className="invalid-feedback">
-                                    Please select a size
                                 </div>
                             }
                         </div>

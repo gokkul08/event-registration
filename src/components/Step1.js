@@ -165,19 +165,26 @@ class Step1 extends Component {
                     </div>
                     <hr className="breaker"/>
                     <div className="form-row">
-                        <p className="lead">Preferred Shipping Address</p>
+                        <p className="lead">Preferred Shipping Address <span className="required">*required</span></p>
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-12">
                             <input
                                 type="text"
-                                className="form-control"
+                                className={hasError("addressLine1") ? "form-control is-invalid" : "form-control"}
                                 id="address1"
-                                placeholder="Address Line 1"
+                                placeholder="Address Line 1 *"
                                 name="addressLine1"
                                 value={addressLine1}
                                 onChange={handleChange}
+                                required
                             />
+                            {
+                                hasError("addressLine1") &&
+                                <div className="invalid-feedback">
+                                    Please enter your Address
+                                </div>
+                            }
                         </div>
                         <div className="form-group col-md-12">
                             <input
@@ -195,17 +202,24 @@ class Step1 extends Component {
                         <div className="form-group col-md-6">
                             <input
                                 type="text"
-                                className="form-control"
+                                className={hasError("city") ? "form-control is-invalid" : "form-control"}
                                 id="city"
-                                placeholder="City"
+                                placeholder="City *"
                                 name="city"
                                 value={city}
                                 onChange={handleChange}
+                                required
                             />
+                            {
+                                hasError("city") &&
+                                <div className="invalid-feedback">
+                                    Please enter your City
+                                </div>
+                            }
                         </div>
                         <div className="form-group col-md-3">
                             <select id="state" className={hasError("stateUS") ? "form-control is-invalid select-error" : "form-control"} onChange={handleChange} value={stateUS} name="stateUS">
-                                <option value="State" disabled>State</option>
+                                <option value="State" disabled>State *</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>
@@ -268,13 +282,20 @@ class Step1 extends Component {
                         <div className="form-group col-md-3">
                             <input
                                 type="text"
-                                className="form-control"
+                                className={hasError("zip") ? "form-control is-invalid" : "form-control"}
                                 id="zip"
-                                placeholder="Zip"
+                                placeholder="Zip *"
                                 name="zipCode"
                                 value={zipCode}
                                 onChange={handleChange}
+                                required
                             />
+                            {
+                                hasError("zip") &&
+                                <div className="invalid-feedback">
+                                    Please enter your Zip
+                                </div>
+                            }
                         </div>
                     </div>
                     <hr className="breaker"/>
